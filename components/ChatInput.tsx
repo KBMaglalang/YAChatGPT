@@ -13,6 +13,8 @@ import { useStateContext } from "@/lib/context/stateContext";
 // components
 import ModelSelection from "./ModelSelection";
 
+import { CHATGPT_DEFAULT } from "@/lib/constants";
+
 type Props = {
   chatId: string;
 };
@@ -26,7 +28,7 @@ function ChatInput({ chatId }: Props) {
   // * there was a change on the api endpoints v1 -> v2
   // useSWR to get models from openai
   const { data: model } = useSWR("model", {
-    fallbackData: "gpt-3.5-turbo", //! TODO: move this to a constants file
+    fallbackData: CHATGPT_DEFAULT,
   });
 
   /**
