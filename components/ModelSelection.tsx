@@ -3,12 +3,14 @@ import React from "react";
 import useSWR from "swr";
 import Select from "react-select";
 
+import { CHATGPT_DEFAULT } from "@/lib/constants";
+
 const fetchModels = () => fetch("/api/getEngines").then((res) => res.json());
 
 function ModelSelection() {
   const { data: models, isLoading } = useSWR("models", fetchModels);
   const { data: model, mutate: setModel } = useSWR("model", {
-    fallbackData: "gpt-3.5-turbo", //! TODO: this needs to be moved into a constant
+    fallbackData: CHATGPT_DEFAULT,
   });
 
   return (
