@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* custom utilities classes with tailwind */
+@layer components {
+  .infoText {
+    @apply p-4 bg-gray-700/50 rounded-lg max-w-[300px]
+  }
+
+  .chatRow {
+    @apply border-gray-700 border-2 rounded-lg px-5 py-3 text-sm flex items-center justify-center space-x-2 hover:bg-indigo-600 cursor-pointer text-white transition-all duration-200 ease-out
+  }
+
+  .messageSettings {
+    @apply text-xs text-gray-400
+  }
+}
+

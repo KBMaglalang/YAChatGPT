@@ -1,0 +1,61 @@
+import React from "react";
+
+interface SliderProps {
+  title: string;
+  min: number;
+  max: number;
+  value: number;
+  callback: (value: number) => void;
+}
+
+const Slider: React.FC<SliderProps> = ({
+  title,
+  min,
+  max,
+  value,
+  callback,
+}) => {
+  const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    callback(parseFloat(e.target.value));
+  };
+
+  /**
+   * Handles the change event of an input element.
+   *
+   * @param {React.ChangeEvent<HTMLInputElement>} e - The change event object.
+   * @returns {void}
+   */
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = parseFloat(e.target.value);
+    if (!isNaN(newValue) && newValue >= min && newValue <= max) {
+      callback(newValue);
+    }
+  };
+
+  return (
+    <div className="flex flex-col items-center">
+      <span className="mb-2 messageSettings">{title}</span>
+
+      <input
+        type="range"
+        min={min}
+        max={max}
+        step={0.1}
+        value={value}
+        onChange={handleSliderChange}
+        className="w-full bg-gray-200 rounded-lg appearance-none cursor-pointer accent-indigo-600"
+      />
+      <input
+        type="number"
+        value={value}
+        onChange={handleInputChange}
+        step={0.1}
+        min={min}
+        max={max}
+        className="w-full mt-2 text-center text-white rounded-md bg-[#212121]"
+      />
+    </div>
+  );
+};
+
+export default Slider;
