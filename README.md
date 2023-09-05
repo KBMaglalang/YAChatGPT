@@ -1,10 +1,8 @@
 # YAChatGPT
 
-Standing for "Yet Another ChatGPT Frontend," this project stemmed from a personal desire to gain more granularity in interacting with ChatGPT. Not just content with the conventional user-interface, the aim was to offer users the ability to view detailed prompts and responses, effectively demystifying the dialogue process. Moreover, the aspiration was to create an environment where users could leverage template prompts, potentially simplifying repeated interactions and laying the groundwork for future user-friendly features. The initiative provided a perfect playground to experiment with the latest web technologies - from diving deep into the functionalities of next.js 13 to tapping into the power of Firebase. The journey was equally intriguing, considering it involved acquainting oneself with a gamut of unfamiliar libraries, making it not just a software development task but also a steep and enriching learning curve.
+Standing for "Yet Another ChatGPT Frontend," this project stemmed from a personal desire to gain more granularity in interacting with ChatGPT. Not just content with the conventional user-interface available on the OpenAI website, the aim was to offer users the ability to view detailed prompts and responses. Moreover, the aspiration was to create an environment where users could leverage template prompts, potentially simplifying repeated interactions and laying the groundwork for future user-friendly features. The initiative provided a perfect playground to experiment with the latest web technologies - from diving deep into the functionalities of Next.js 13 to tapping into the power of Firebase. The journey was equally intriguing, considering it involved acquainting oneself with a gamut of unfamiliar libraries, making it not just a software development task but also a steep and enriching learning curve.
 
 ## Description
-
-Welcome to the spotlight features of my latest brainchild, YAChatGPT. Developed with the modern tech stack, this section delves into what the application does, the why behind my tech choices, the hiccups I encountered along the way, and the road ahead.
 
 ### Key Features:
 
@@ -28,7 +26,7 @@ Welcome to the spotlight features of my latest brainchild, YAChatGPT. Developed 
 
 Initially, Firebase threw me for a loop. Being a PaaS I hadn't ventured into before, there were initial hurdles, a few tutorials, and moments of doubt. But now, I feel I've not only grappled with it but genuinely leveraged its potential. As for the horizon? I'm already brainstorming features to further enhance the user experience and provide even more customizable chat dynamics.
 
-This platform stands as a testament to what one can achieve with determination, curiosity, and a sprinkle of coding magic. Here's to pushing boundaries, one chat at a time.
+I intend to implement these other features over time:
 
 - [ ] Create folders and groups
 - [ ] Drag and Drop
