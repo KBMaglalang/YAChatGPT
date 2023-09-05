@@ -18,3 +18,13 @@
   }
 }
 
+.prose img {
+  max-width: 100%;
+  height: auto;
+}
+
+.prose table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+}

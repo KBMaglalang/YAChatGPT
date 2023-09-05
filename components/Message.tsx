@@ -47,13 +47,13 @@ function Message({ message }: Props) {
           )}
 
           {/* message markdown */}
-          <div className="flex flex-col ">
+          <div className="flex flex-col flex-wrap items-center">
             <ReactMarkdown
-              className="w-full pt-2 prose text-white max-w-none"
-              linkTarget="_blank"
-              children={message.text}
+              className="w-full max-w-4xl pt-2 prose text-white break-words flex-shrink-1"
               remarkPlugins={[remarkGfm]}
-            />
+            >
+              {message.text}
+            </ReactMarkdown>
           </div>
 
           {/* chatgpt end message */}
