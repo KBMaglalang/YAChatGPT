@@ -1,36 +1,68 @@
-[ChatGPT tutorial](https://www.youtube.com/watch?v=V6Hq_EX2LLM)
+# YAChatGPT
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Standing for "Yet Another ChatGPT Frontend," this project stemmed from a personal desire to gain more granularity in interacting with ChatGPT. Not just content with the conventional user-interface, the aim was to offer users the ability to view detailed prompts and responses, effectively demystifying the dialogue process. Moreover, the aspiration was to create an environment where users could leverage template prompts, potentially simplifying repeated interactions and laying the groundwork for future user-friendly features. The initiative provided a perfect playground to experiment with the latest web technologies - from diving deep into the functionalities of next.js 13 to tapping into the power of Firebase. The journey was equally intriguing, considering it involved acquainting oneself with a gamut of unfamiliar libraries, making it not just a software development task but also a steep and enriching learning curve.
 
-## Getting Started
+## Description
 
-First, run the development server:
+Welcome to the spotlight features of my latest brainchild, YAChatGPT. Developed with the modern tech stack, this section delves into what the application does, the why behind my tech choices, the hiccups I encountered along the way, and the road ahead.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+### Key Features:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Seamless Sign-In: Quickly sign in with your Google account.
+- Conversations On-The-Go: Initiate new chat sessions effortlessly.
+- Pick Your Chat Partner: Choose your desired ChatGPT model.
+- Dynamic Template Prompts: Create and integrate template prompts, utilizing the {{text}} placeholder for real-time text integration.
+- Real-time Sync: Update and manage prompt details, instantly mirrored on Firebase.
+- Custom Conversational Experience: Dive into advanced settings; fine-tune ChatGPT responses by adjusting parameters like temperature, topP, frequency penalty, and more.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Technologies Used:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Next.js 13 & TypeScript: Provided a solid foundation for building a performant, type-safe, server-side rendered application.
+- TailwindCSS: Allowed for rapid, utility-first styling, ensuring the application looks snazzy without compromising speed.
+- Firebase: A choice for real-time data handling and authentication. Even though it was a new terrain for me, its scalability and real-time capabilities justified the learning curve.
+- SWR: Ensured data-fetching was smooth and efficient, particularly useful given the chat's dynamic nature.
+- NextAuth: Streamlined the authentication process, particularly integrating with Google accounts.
+- OpenAI API: The bedrock for the ChatGPT functionality, allowing those intriguing machine-human convos.
 
-## Learn More
+### Challenges & Looking Forward:
 
-To learn more about Next.js, take a look at the following resources:
+Initially, Firebase threw me for a loop. Being a PaaS I hadn't ventured into before, there were initial hurdles, a few tutorials, and moments of doubt. But now, I feel I've not only grappled with it but genuinely leveraged its potential. As for the horizon? I'm already brainstorming features to further enhance the user experience and provide even more customizable chat dynamics.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This platform stands as a testament to what one can achieve with determination, curiosity, and a sprinkle of coding magic. Here's to pushing boundaries, one chat at a time.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- [ ] Create folders and groups
+- [ ] Drag and Drop
+- [ ] Implementing search in both Conversations and Prompts
+- [ ] Support external OpenAI API Keys
+- [ ] Implementing pinned Conversations
+- [ ] Change to using streamed responses from OpenAI
+- [ ] Support Import and Export options for both Conversations and Prompts
+- [ ] Create checkpoints in conversations where you can return to and try something else
+- [ ] Add voice input
+- [ ] Global shortcuts
+- [ ] etc.
 
-## Deploy on Vercel
+## Screenshots
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+!['loginHomepage'](doc/1-loginHomepage.png)
+!['homepage'](doc/2-homepage.png)
+!['chatScreen'](doc/3-chatScreen.png)
+!['settingModal'](doc/4-settingsModal.png)
+!['promptModal'](doc/5-promptModal.png)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## How to Install and Run
+
+### Install
+
+1. Clone the repository: `git clone https://github.com/KBMaglalang/YAChatGPT`
+2. Navigate to the project directory: `cd YAChatGPT`
+3. Install the necessary packages: `npm install` or `npm i`
+4. Copy the `.env.example` file. You can create either `.env.local` or `.env` based on your preference
+5. Open the newly created .env or .env.local file and populate the fields with the required values. Ensure the necessary permissions are granted for any services or APIs you're connecting to.
+6. Replace the configuration details in firebase.ts with your specific Firebase configuration information
+
+### Run
+
+1. Run `npm run dev`
+2. Click on the link shown in the terminal, usually `localhost:3000`
+3. Sign in and create an account by clicking on the center icon
