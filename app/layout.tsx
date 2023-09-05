@@ -39,13 +39,13 @@ export default async function RootLayout({
                 {/* client provider - notification  */}
                 <ClientProvider />
 
-                <div className="bg-[#121212] max-w-xs h-screen overflow-y-scroll hidden lg:block lg:min-w-[10rem]">
+                <div className="bg-[#121212] max-w-xs h-screen overflow-y-scroll hidden lg:block min-w-[20rem]">
                   <SideBar />
                 </div>
 
                 <div className="bg-[#212121] flex-1">{children}</div>
 
-                <div className="bg-[#121212] max-w-xs h-screen overflow-y-scroll hidden lg:block lg:min-w-[10rem]">
+                <div className="bg-[#121212] max-w-xs h-screen overflow-y-scroll hidden lg:block min-w-[20rem]">
                   <PromptBar />
                 </div>
               </div>

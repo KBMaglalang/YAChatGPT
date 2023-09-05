@@ -28,3 +28,8 @@
   width: 100%;
   overflow: auto;
 }
+
+.textarea-expandable {
+  max-height: 50vh;
+  overflow-y: auto; /* for scrolling when the max-height is reached */
+}

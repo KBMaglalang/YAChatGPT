@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FormEvent, useRef, KeyboardEvent } from "react";
+import React, { useRef, useEffect, FormEvent, KeyboardEvent } from "react";
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
 import { useSession } from "next-auth/react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
@@ -20,7 +20,7 @@ type Props = {
 };
 
 function ChatInput({ chatId }: Props) {
-  const textareaRef = useRef(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { data: session } = useSession();
   const { userInput, setUserInput, promptSettings, setPromptSettings } =
     useStateContext();
@@ -30,6 +30,15 @@ function ChatInput({ chatId }: Props) {
   const { data: model } = useSWR("model", {
     fallbackData: CHATGPT_DEFAULT,
   });
+
+  // Dynamically adjusts the height of a textarea element based on the user's input
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = "inherit"; // Reset height first to get a "clean slate"
+      const scrollHeight = textareaRef.current.scrollHeight;
+      textareaRef.current.style.height = scrollHeight + "px";
+    }
+  }, [userInput]);
 
   /**
    * Sends a message, adds it to the "messages" collection within a specific chat in the "users" collection of Firebase,
@@ -175,25 +184,30 @@ function ChatInput({ chatId }: Props) {
       </div>
 
       {/* input */}
-      <form onSubmit={sendMessage} className="flex p-5 space-x-5">
-        <textarea
-          autoFocus
-          ref={textareaRef}
-          disabled={!session}
-          value={userInput}
-          onChange={(e) => setUserInput(e.target.value)}
-          onKeyDown={(e) => handleKeyDown(e)}
-          className="flex-1 bg-transparent resize-none focus:outline-none disabled:cursor-not-allowed disabled:text-gray-300"
-          placeholder="Type your message here... (CTRL + ENTER to send)"
-        />
+      <form onSubmit={sendMessage} className="flex p-5 space-x-5 ">
+        <div className="flex w-full textarea-expandable">
+          <textarea
+            autoFocus
+            ref={textareaRef}
+            disabled={!session}
+            value={userInput}
+            onChange={(e) => setUserInput(e.target.value)}
+            onKeyDown={handleKeyDown}
+            className="flex-1 bg-transparent resize-none focus:outline-none disabled:cursor-not-allowed disabled:text-gray-300"
+            placeholder="Type your message here... (CTRL + ENTER to send)"
+          />
+        </div>
 
-        <button
-          type="submit"
-          disabled={!session || !userInput}
-          className="px-4 py-2 font-bold text-white bg-indigo-600 rounded hover:opacity-50 disabled:bg-gray-300 disabled:cursor-not-allowed"
-        >
-          <PaperAirplaneIcon className="w-4 h-4 -rotate-45" />
-        </button>
+        {/* send button */}
+        <div className="flex flex-col justify-end">
+          <button
+            type="submit"
+            disabled={!session || !userInput}
+            className="px-4 py-2 font-bold text-white bg-indigo-600 rounded hover:opacity-50 disabled:bg-gray-300 disabled:cursor-not-allowed textarea-expandable h-content"
+          >
+            <PaperAirplaneIcon className="w-4 h-4 -rotate-45" />
+          </button>
+        </div>
       </form>
 
       {/* model selection when in mobile view */}
