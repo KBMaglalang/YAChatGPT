@@ -33,3 +33,25 @@
   max-height: 50vh;
   overflow-y: auto; /* for scrolling when the max-height is reached */
 }
+
+
+/* scroll bar */
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #212121;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #FFF;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ffffff6e;
+}
