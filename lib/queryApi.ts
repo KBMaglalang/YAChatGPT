@@ -26,8 +26,8 @@ const query = async (
     maxTokens: number;
   }
 ) => {
-  const res = await openai.chat.completions
-    .create({
+  try {
+    const res = await openai.chat.completions.create({
       model,
       messages: prompt,
       temperature: promptSettings.temperature || 0.9,
@@ -36,17 +36,17 @@ const query = async (
       max_tokens: promptSettings.maxTokens || 1000,
       frequency_penalty: promptSettings.frequencyPenalty || 0.0,
       presence_penalty: promptSettings.presencePenalty || 0.0,
-    })
-    .then((res) => {
-      return res;
-    })
-    .catch((err) => {
-      throw new Error(
-        `ChatGPT was unable to find an answer for that! (Error: ${err.message})`
-      );
     });
 
-  return res;
+    return res;
+  } catch (err) {
+    console.error("Error querying OpenAI:", (err as Error).message); // log the error for debugging purposes
+    throw new Error(
+      `ChatGPT was unable to find an answer for that! (Error: ${
+        (err as Error).message
+      })`
+    );
+  }
 };
 
 export default query;
