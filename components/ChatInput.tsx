@@ -85,7 +85,7 @@ function ChatInput({ chatId }: Props) {
     const notification = toast.loading("ChatGPT is thinking...");
 
     // Sends a question to the "/api/askQuestion" endpoint and displays a success message when ChatGPT responds
-    await fetch("/api/askQuestion", {
+    const openAiAnswer = await fetch("/api/askQuestion", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -97,10 +97,18 @@ function ChatInput({ chatId }: Props) {
         session,
         promptSettings,
       }),
-    }).then(() => {
-      toast.success("ChatGPT has responded!", {
-        id: notification, // this will replace the existing toast notification
+    });
+
+    // check if the response from the server failed - update the toast to error
+    if (!openAiAnswer.ok) {
+      toast.error("ChatGPT failed to respond!", {
+        id: notification,
       });
+      return;
+    }
+
+    toast.success("ChatGPT has responded!", {
+      id: notification,
     });
   };
 
