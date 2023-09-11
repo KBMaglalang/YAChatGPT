@@ -106,7 +106,9 @@ function ChatRow({ id }: Props) {
       >
         <ChatBubbleLeftIcon className="w-5 h-5" />
         <p className="flex-1 hidden truncate md:inline-flex">
-          {chatDoc?.data()?.title || "New Chat"}
+          {chatDoc?.data()?.title ||
+            messages?.docs[messages?.docs.length - 1]?.data().text ||
+            "New Chat"}
         </p>
         <PencilSquareIcon
           onClick={modalEditCallback}
