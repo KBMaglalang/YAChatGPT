@@ -7,6 +7,9 @@ import { ChatBubbleLeftIcon, TrashIcon } from "@heroicons/react/24/outline";
 
 import { db } from "@/firebase";
 
+// components
+import ChatDeleteModal from "./ChatDeleteModal";
+
 type Props = {
   id: string;
 };
@@ -15,7 +18,9 @@ function ChatRow({ id }: Props) {
   const { data: session } = useSession();
   const router = useRouter();
   const pathname = usePathname();
+
   const [active, setActive] = useState(false);
+  const [modalDeleteOpen, setModalDeleteOpen] = useState(false);
   const [messages, loading, error] = useCollection(
     collection(db, "users", session?.user?.email!, "chats", id, "messages")
   );
@@ -43,6 +48,14 @@ function ChatRow({ id }: Props) {
     }
   };
 
+  const modalDeleteCallback = async (
+    e: React.MouseEvent<SVGSVGElement, MouseEvent>
+  ) => {
+    e.stopPropagation();
+
+    setModalDeleteOpen(true);
+  };
+
   const handleOnClick = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
     e.stopPropagation();
 
@@ -59,9 +72,17 @@ function ChatRow({ id }: Props) {
         {messages?.docs[messages?.docs.length - 1]?.data().text || "New Chat"}
       </p>
       <TrashIcon
-        onClick={removeChat}
+        onClick={modalDeleteCallback}
         className="w-5 h-5 text-gray-700 hover:text-red-700"
       />
+
+      {/* prompt delete modal */}
+      {modalDeleteOpen && (
+        <ChatDeleteModal
+          setModalOpen={setModalDeleteOpen}
+          callback={removeChat}
+        />
+      )}
     </div>
   );
 }

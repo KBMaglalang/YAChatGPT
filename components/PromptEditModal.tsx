@@ -7,7 +7,7 @@ type Props = {
   prompt: string | undefined;
 };
 
-function PromptModal({
+function PromptEditModal({
   setModalOpen,
   callback,
   title = "",
@@ -80,4 +80,4 @@ function PromptModal({
   );
 }
 
-export default PromptModal;
+export default PromptEditModal;
