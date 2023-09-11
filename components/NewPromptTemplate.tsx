@@ -6,7 +6,7 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "@/firebase";
 
 // components
-import PromptModal from "./PromptModal";
+import PromptModal from "./PromptEditModal";
 
 function NewPromptTemplate() {
   const { data: session } = useSession();
