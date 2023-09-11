@@ -12,7 +12,8 @@ import { db } from "@/firebase";
 import { useStateContext } from "@/lib/context/stateContext";
 
 // components
-import PromptModal from "./PromptModal";
+import PromptEditModal from "./PromptEditModal";
+import PromptDeleteModal from "./PromptDeleteModal";
 
 type Props = {
   id: string;
@@ -21,6 +22,7 @@ type Props = {
 function PromptRow({ id }: Props) {
   const { data: session } = useSession();
   const [modalOpen, setModalOpen] = useState(false);
+  const [modalDeleteOpen, setModalDeleteOpen] = useState(false);
   const [prompts, loading, error] = useDocument(
     doc(db, "users", session?.user?.email!, "prompt", id)
   );
@@ -54,15 +56,31 @@ function PromptRow({ id }: Props) {
   };
 
   /**
-   * Edits a prompt.
+   * Edits a prompt modal.
    *
    * @param {React.MouseEvent<SVGSVGElement, MouseEvent>} e - The click event object.
    * @returns {void}
    */
-  const editPrompt = async (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
+  const modalEditPrompt = async (
+    e: React.MouseEvent<SVGSVGElement, MouseEvent>
+  ) => {
     e.stopPropagation();
 
     setModalOpen(true);
+  };
+
+  /**
+   * Delete a prompt modal.
+   *
+   * @param {React.MouseEvent<SVGSVGElement, MouseEvent>} e - The click event object.
+   * @returns {void}
+   */
+  const modelDeletePrompt = async (
+    e: React.MouseEvent<SVGSVGElement, MouseEvent>
+  ) => {
+    e.stopPropagation();
+
+    setModalDeleteOpen(true);
   };
 
   const handleOnClick = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
@@ -85,23 +103,31 @@ function PromptRow({ id }: Props) {
         </span>
 
         <PencilSquareIcon
-          onClick={editPrompt}
+          onClick={modalEditPrompt}
           className="w-5 h-5 text-gray-700 hover:text-blue-500"
         />
 
         <TrashIcon
-          onClick={removePrompt}
+          onClick={modelDeletePrompt}
           className="w-5 h-5 text-gray-700 hover:text-red-700"
         />
       </div>
 
-      {/* prompt modal */}
+      {/* prompt edit modal */}
       {modalOpen && (
-        <PromptModal
+        <PromptEditModal
           setModalOpen={setModalOpen}
           callback={updatePrompt}
           title={prompts?.data()?.title}
           prompt={prompts?.data()?.prompt}
+        />
+      )}
+
+      {/* prompt delete modal */}
+      {modalDeleteOpen && (
+        <PromptDeleteModal
+          setModalOpen={setModalDeleteOpen}
+          callback={removePrompt}
         />
       )}
     </div>
