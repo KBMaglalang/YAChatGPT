@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { useCollection } from "react-firebase-hooks/firestore";
-import { collection, deleteDoc, doc } from "firebase/firestore";
-import { ChatBubbleLeftIcon, TrashIcon } from "@heroicons/react/24/outline";
+import { useCollection, useDocument } from "react-firebase-hooks/firestore";
+import { collection, deleteDoc, doc, updateDoc } from "firebase/firestore";
+import {
+  ChatBubbleLeftIcon,
+  PencilSquareIcon,
+  TrashIcon,
+} from "@heroicons/react/24/outline";
 
 import { db } from "@/firebase";
 
 // components
+import ChatEditModal from "./ChatEditModal";
 import ChatDeleteModal from "./ChatDeleteModal";
 
 type Props = {
@@ -20,9 +25,17 @@ function ChatRow({ id }: Props) {
   const pathname = usePathname();
 
   const [active, setActive] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const [modalDeleteOpen, setModalDeleteOpen] = useState(false);
+
+  // get subcollection of messages
   const [messages, loading, error] = useCollection(
     collection(db, "users", session?.user?.email!, "chats", id, "messages")
+  );
+
+  // get document fields from firebase
+  const [chatDoc, chatLoading, chatError] = useDocument(
+    doc(db, "users", session?.user?.email!, "chats", id)
   );
 
   useEffect(() => {
@@ -30,6 +43,20 @@ function ChatRow({ id }: Props) {
 
     setActive(pathname.includes(id));
   }, [pathname]);
+
+  // udpate a chjat
+  /**
+   * Updates a prompt.
+   *
+   * @param {string} title - The updated title of the prompt.
+   * @param {string} prompt - The updated content of the prompt.
+   * @returns {void}
+   */
+  const updatePrompt = async (title: string) => {
+    await updateDoc(doc(db, "users", session?.user?.email!, "chats", id), {
+      title: title || "New Prompt",
+    });
+  };
 
   /**
    * Removes a chat from the "users" collection in Firebase and redirects the user to the home page.
@@ -48,6 +75,14 @@ function ChatRow({ id }: Props) {
     }
   };
 
+  const modalEditCallback = async (
+    e: React.MouseEvent<SVGSVGElement, MouseEvent>
+  ) => {
+    e.stopPropagation();
+
+    setModalOpen(true);
+  };
+
   const modalDeleteCallback = async (
     e: React.MouseEvent<SVGSVGElement, MouseEvent>
   ) => {
@@ -63,20 +98,39 @@ function ChatRow({ id }: Props) {
   };
 
   return (
-    <div
-      onClick={handleOnClick}
-      className={`chatRow justify-center ${active && "bg-gray-700/50"}`}
-    >
-      <ChatBubbleLeftIcon className="w-5 h-5" />
-      <p className="flex-1 hidden truncate md:inline-flex">
-        {messages?.docs[messages?.docs.length - 1]?.data().text || "New Chat"}
-      </p>
-      <TrashIcon
-        onClick={modalDeleteCallback}
-        className="w-5 h-5 text-gray-700 hover:text-red-700"
-      />
+    <div>
+      {/* main button */}
+      <div
+        onClick={handleOnClick}
+        className={`chatRow justify-center ${active && "bg-gray-700/50"}`}
+      >
+        <ChatBubbleLeftIcon className="w-5 h-5" />
+        <p className="flex-1 hidden truncate md:inline-flex">
+          {chatDoc?.data()?.title ||
+            messages?.docs[messages?.docs.length - 1]?.data().text ||
+            "New Chat"}
+        </p>
+        <PencilSquareIcon
+          onClick={modalEditCallback}
+          className="w-5 h-5 text-gray-700 hover:text-blue-500"
+        />
 
-      {/* prompt delete modal */}
+        <TrashIcon
+          onClick={modalDeleteCallback}
+          className="w-5 h-5 text-gray-700 hover:text-red-700"
+        />
+      </div>
+
+      {/* chat edit modal */}
+      {modalOpen && (
+        <ChatEditModal
+          setModalOpen={setModalOpen}
+          callback={updatePrompt}
+          title={chatDoc?.data()?.title}
+        />
+      )}
+
+      {/* chat delete modal */}
       {modalDeleteOpen && (
         <ChatDeleteModal
           setModalOpen={setModalDeleteOpen}

@@ -22,6 +22,7 @@ function NewChat() {
       {
         userId: session?.user?.email!,
         createdAt: serverTimestamp(), // ! don't use local timestamp use server timestamp since you don't know where they are in the world
+        title: "",
       }
     );
 

@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 
 type Props = {
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   callback: any;
+  title: string | undefined;
 };
 
-function ChatDeleteModal({ setModalOpen, callback }: Props) {
+function ChatEditModal({ setModalOpen, callback, title = "" }: Props) {
+  const [chatTitle, setchatTitle] = useState(title);
+
   const handleAccept = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
 
-    callback(e);
+    callback(chatTitle);
 
     setModalOpen(false);
   };
@@ -29,8 +32,16 @@ function ChatDeleteModal({ setModalOpen, callback }: Props) {
           <div className="mt-3">
             <div className="flex flex-col mt-2 text-center">
               <h4 className="mb-2 text-xl font-bold text-white ">
-                Delete Chat?
+                Chat Settings
               </h4>
+              <input
+                autoFocus
+                type="text"
+                value={chatTitle}
+                onChange={(e) => setchatTitle(e.target.value)}
+                className="p-2 my-2 text-white rounded-lg bg-gray-700/50 focus:outline-none"
+                placeholder="chat Title"
+              />
             </div>
           </div>
 
@@ -55,4 +66,4 @@ function ChatDeleteModal({ setModalOpen, callback }: Props) {
   );
 }
 
-export default ChatDeleteModal;
+export default ChatEditModal;
