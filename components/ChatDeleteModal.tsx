@@ -25,7 +25,7 @@ function ChatDeleteModal({ setModalOpen, callback }: Props) {
       {/* modal box */}
       <div className="flex items-center min-h-screen px-4 py-8 ">
         <div className="relative w-full max-w-lg p-4 mx-auto rounded-md shadow-2xl bg-[#121212] shadow-gray-700">
-          {/* prompt input */}
+          {/* chat input */}
           <div className="mt-3">
             <div className="flex flex-col mt-2 text-center">
               <h4 className="mb-2 text-xl font-bold text-white ">
