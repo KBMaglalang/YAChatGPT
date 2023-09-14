@@ -3,11 +3,11 @@
   ! using hooks, we need to add 'use client' on this component since it is server component by default
 */
 
-import React from "react";
+import React, { useState } from "react";
 import { useSession } from "next-auth/react";
 import { collection, orderBy, query } from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore"; // ! setups a real time connection to the firebase database
-import { ArrowDownCircleIcon } from "@heroicons/react/24/outline";
+import { ArrowDownCircleIcon, BookOpenIcon } from "@heroicons/react/24/outline";
 
 import { db } from "@/firebase";
 
@@ -20,6 +20,7 @@ import Loading from "./Loading";
 
 function SideBar() {
   const { data: session } = useSession();
+  const [isOpen, setIsOpen] = useState(true);
   const [chats, loading, error] = useCollection(
     session &&
       query(
@@ -28,47 +29,67 @@ function SideBar() {
       )
   );
 
+  const toggleDrawer = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <div className="flex flex-col h-screen p-2 ">
+    <div
+      className={`flex flex-col p-2 h-screen ${isOpen ? "min-w-[20rem]" : ""}`}
+    >
       {/* loading */}
-      {loading && (
-        <div className="flex justify-center h-screen mt-4">
+      {loading && isOpen && (
+        <div className="flex justify-center mt-4 h-screen">
           <Loading />
         </div>
       )}
 
       {/* cta */}
-      {chats?.empty && (
-        <div className="flex flex-col items-center justify-end h-full">
+      {chats?.empty && isOpen && (
+        <div className="flex flex-col justify-end items-center h-full">
           <p className="hidden text-xl font-bold text-white truncate md:inline-flex">
             Create New Chats
           </p>
-          <ArrowDownCircleIcon className="w-10 h-10 mx-auto mt-5 text-white animate-bounce" />
+          <ArrowDownCircleIcon className="mx-auto mt-5 w-10 h-10 text-white animate-bounce" />
         </div>
       )}
 
       {/* chat options */}
-      <div className="flex-1 overflow-y-scroll">
-        <div className="flex flex-col my-2 space-y-2">
-          {/* map through the chatRows */}
-          {!chats?.empty &&
-            chats?.docs.map((chat) => <ChatRow key={chat.id} id={chat.id} />)}
+      {isOpen && (
+        <div className="overflow-y-scroll flex-1">
+          <div className="flex flex-col my-2 space-y-2">
+            {/* map through the chatRows */}
+            {!chats?.empty &&
+              chats?.docs.map((chat) => <ChatRow key={chat.id} id={chat.id} />)}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* model selection */}
-      <div className="hidden sm:inline">
-        <ModelSelection />
-      </div>
+      {isOpen && (
+        <div className="hidden mb-2 sm:inline">
+          <ModelSelection />
+        </div>
+      )}
 
       {/* Settings */}
-      <div className="mt-2">
-        <SettingsRow />
-      </div>
+      {isOpen && (
+        <div className="mb-2">
+          <SettingsRow />
+        </div>
+      )}
 
-      {/* new chat */}
-      <div className="mt-2">
-        <NewChat />
+      <div className={`flex flex-row mt-auto space-x-2 w-full`}>
+        {/* new chat */}
+        {isOpen && (
+          <div className="flex-1">
+            <NewChat />
+          </div>
+        )}
+
+        <div className={`chatRow`} onClick={toggleDrawer}>
+          <BookOpenIcon className="w-4 h-4" />
+        </div>
       </div>
     </div>
   );
