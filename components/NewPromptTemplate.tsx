@@ -34,13 +34,9 @@ function NewPromptTemplate() {
   return (
     <>
       {/* new prompt button */}
-      <div
-        // onClick={createNewTemplate}
-        onClick={() => setModalOpen(true)}
-        className="border-2 border-gray-700 chatRow"
-      >
+      <div onClick={() => setModalOpen(true)} className="chatRow">
         <PlusIcon className="w-4 h-4" />
-        <p>New Prompt</p>
+        <span>New Prompt</span>
       </div>
 
       {/* prompt modal */}
