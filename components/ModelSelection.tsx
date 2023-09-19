@@ -3,12 +3,14 @@ import React from "react";
 import useSWR from "swr";
 import Select from "react-select";
 
-import { CHATGPT_DEFAULT } from "@/lib/constants";
+import { CHATGPT_DEFAULT, REVALIDATE_RATE } from "@/lib/constants";
 
 const fetchModels = () => fetch("/api/getEngines").then((res) => res.json());
 
 function ModelSelection() {
-  const { data: models, isLoading } = useSWR("models", fetchModels);
+  const { data: models, isLoading } = useSWR("models", fetchModels, {
+    refreshInterval: REVALIDATE_RATE,
+  });
   const { data: model, mutate: setModel } = useSWR("model", {
     fallbackData: CHATGPT_DEFAULT,
   });
@@ -22,7 +24,7 @@ function ModelSelection() {
         options={models?.modelOptions}
         isLoading={isLoading}
         menuPosition="fixed"
-        className="mt-2 "
+        className="mt-2"
         styles={{
           control: (baseStyles) => ({
             ...baseStyles,
