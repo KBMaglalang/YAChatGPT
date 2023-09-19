@@ -12,7 +12,7 @@ type Props = {
 
 function ChatPage({ params: { id } }: Props) {
   return (
-    <div className="flex flex-col h-screen overflow-hidden">
+    <div className="flex overflow-hidden flex-col items-center w-screen lg:w-2/3">
       {/* chat window */}
       <Chat chatId={id} />
 
