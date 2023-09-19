@@ -25,7 +25,7 @@ function PromptEditModal({
   };
 
   return (
-    <div className="fixed inset-0 z-10 overflow-y-auto ">
+    <div className="overflow-y-auto fixed inset-0 z-10">
       {/* handles clicks outside the modal box */}
       <div
         className="fixed inset-0 w-full h-full bg-black opacity-40"
@@ -33,12 +33,12 @@ function PromptEditModal({
       ></div>
 
       {/* modal box */}
-      <div className="flex items-center min-h-screen px-4 py-8 ">
+      <div className="flex items-center px-4 py-8 min-h-screen">
         <div className="relative w-full max-w-lg p-4 mx-auto rounded-md shadow-2xl bg-[#121212] shadow-gray-700">
           {/* prompt input */}
           <div className="mt-3">
             <div className="flex flex-col mt-2 text-center">
-              <h4 className="mb-2 text-xl font-bold text-white ">
+              <h4 className="mb-2 text-xl font-bold text-white">
                 Prompt Settings
               </h4>
               <input
@@ -60,7 +60,7 @@ function PromptEditModal({
           </div>
 
           {/* user selection */}
-          <div className="items-center gap-2 mt-3 sm:flex">
+          <div className="gap-2 items-center mt-3 sm:flex">
             <button
               className="w-full mt-2 p-2.5 flex-1 text-white bg-indigo-600 rounded-md outline-none ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
               onClick={handleAccept}
