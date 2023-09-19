@@ -18,7 +18,7 @@ function ChatEditModal({ setModalOpen, callback, title = "" }: Props) {
   };
 
   return (
-    <div className="fixed inset-0 z-10 overflow-y-auto ">
+    <div className="overflow-y-auto fixed inset-0 z-10">
       {/* handles clicks outside the modal box */}
       <div
         className="fixed inset-0 w-full h-full bg-black opacity-40"
@@ -26,12 +26,12 @@ function ChatEditModal({ setModalOpen, callback, title = "" }: Props) {
       ></div>
 
       {/* modal box */}
-      <div className="flex items-center min-h-screen px-4 py-8 ">
+      <div className="flex items-center px-4 py-8 min-h-screen">
         <div className="relative w-full max-w-lg p-4 mx-auto rounded-md shadow-2xl bg-[#121212] shadow-gray-700">
           {/* chat input */}
           <div className="mt-3">
             <div className="flex flex-col mt-2 text-center">
-              <h4 className="mb-2 text-xl font-bold text-white ">
+              <h4 className="mb-2 text-xl font-bold text-white">
                 Chat Settings
               </h4>
               <input
@@ -40,13 +40,13 @@ function ChatEditModal({ setModalOpen, callback, title = "" }: Props) {
                 value={chatTitle}
                 onChange={(e) => setchatTitle(e.target.value)}
                 className="p-2 my-2 text-white rounded-lg bg-gray-700/50 focus:outline-none"
-                placeholder="chat Title"
+                placeholder="Chat Title"
               />
             </div>
           </div>
 
           {/* user selection */}
-          <div className="items-center gap-2 mt-3 sm:flex">
+          <div className="gap-2 items-center mt-3 sm:flex">
             <button
               className="w-full mt-2 p-2.5 flex-1 text-white bg-indigo-600 rounded-md outline-none ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
               onClick={handleAccept}
