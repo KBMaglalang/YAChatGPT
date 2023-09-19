@@ -12,13 +12,15 @@ function Message({ message }: Props) {
   const isAssistant = message.user._id === "assistant";
 
   return (
-    <div className={`py-5 text-white ${isAssistant && "bg-[#434654]"}`}>
+    <div
+      className={`py-5 text-white ${isAssistant && "bg-[#434654] rounded-xl"}`}
+    >
       <div className="flex px-10 mx-auto space-x-5">
         {/* user and chatgpt icons */}
         {isAssistant ? (
           <img src={message.user.avatar} alt="avatar" className="w-8 h-8" />
         ) : (
-          <UserCircleIcon className="w-8 h-8 text-gray-300 " />
+          <UserCircleIcon className="w-8 h-8 text-gray-300" />
         )}
 
         {/* message container */}
@@ -28,18 +30,18 @@ function Message({ message }: Props) {
             <div className="flex flex-col">
               <div className="flex flex-wrap justify-between py-2">
                 <span className="messageSettings">{`${message.model}`}</span>
-                <span className="messageSettings ">{`Temperature: ${message.temperature}`}</span>
-                <span className="messageSettings ">{`Top P: ${message.topP}`}</span>
-                <span className="messageSettings ">{`Frequency Penalty: ${message.frequencyPenalty}`}</span>
-                <span className="messageSettings ">{`Presence Penalty: ${message.presencePenalty}`}</span>
+                <span className="messageSettings">{`Temperature: ${message.temperature}`}</span>
+                <span className="messageSettings">{`Top P: ${message.topP}`}</span>
+                <span className="messageSettings">{`Frequency Penalty: ${message.frequencyPenalty}`}</span>
+                <span className="messageSettings">{`Presence Penalty: ${message.presencePenalty}`}</span>
               </div>
 
               <div className="flex flex-wrap justify-between py-2">
-                <span className="messageSettings ">{`Prompt Tokens: ${message.promptTokens}`}</span>
-                <span className="messageSettings ">{`Completion Tokens: ${message.completionTokens}`}</span>
-                <span className="messageSettings ">{`Total Tokens: ${message.totalTokens}`}</span>
-                <span className="messageSettings ">{`User Set Max Tokens: ${message.maxTokens}`}</span>
-                <span className="messageSettings ">
+                <span className="messageSettings">{`Prompt Tokens: ${message.promptTokens}`}</span>
+                <span className="messageSettings">{`Completion Tokens: ${message.completionTokens}`}</span>
+                <span className="messageSettings">{`Total Tokens: ${message.totalTokens}`}</span>
+                <span className="messageSettings">{`User Set Max Tokens: ${message.maxTokens}`}</span>
+                <span className="messageSettings">
                   {`${message.createdAt.toDate().toLocaleString()}`}
                 </span>
               </div>
@@ -49,7 +51,7 @@ function Message({ message }: Props) {
           {/* message markdown */}
           <div className="flex flex-col flex-wrap items-center">
             <ReactMarkdown
-              className="w-full max-w-4xl pt-2 prose text-white break-words flex-shrink-1"
+              className="pt-2 w-full max-w-4xl text-white break-words prose flex-shrink-1"
               remarkPlugins={[remarkGfm]}
             >
               {message.text}
