@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 
+/* set root background color to black */
+:root {
+  background-color: #212121;
+}
+
 /* custom utilities classes with tailwind */
 @layer components {
   .infoText {
