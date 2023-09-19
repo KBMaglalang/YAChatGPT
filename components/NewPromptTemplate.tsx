@@ -7,18 +7,6 @@ import PromptList from "./PromptList";
 function NewPromptTemplate() {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const handleUpdateSettings = async () => {
-    // const doc = await addDoc(
-    //   collection(db, "users", session?.user?.email!, "settings"),
-    //   {
-    //     userId: session?.user?.email!,
-    //     createdAt: serverTimestamp(), // ! don't use local timestamp use server timestamp since you don't know where they are in the world
-    //     title: title || "New Prompt",
-    //     prompt: prompt || "",
-    //   }
-    // );
-  };
-
   return (
     <div>
       {/* new prompt button */}
@@ -28,12 +16,7 @@ function NewPromptTemplate() {
       </div>
 
       {/* prompt modal */}
-      {modalOpen && (
-        <PromptList
-          setModalOpen={setModalOpen}
-          callback={handleUpdateSettings}
-        />
-      )}
+      {modalOpen && <PromptList setModalOpen={setModalOpen} />}
     </div>
   );
 }

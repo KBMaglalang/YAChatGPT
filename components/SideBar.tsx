@@ -3,15 +3,11 @@
   ! using hooks, we need to add 'use client' on this component since it is server component by default
 */
 
-import React, { useState } from "react";
+import React from "react";
 import { useSession } from "next-auth/react";
 import { collection, orderBy, query } from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore"; // ! setups a real time connection to the firebase database
-import {
-  ArrowDownCircleIcon,
-  ArrowUpCircleIcon,
-  BookOpenIcon,
-} from "@heroicons/react/24/outline";
+import { ArrowUpCircleIcon } from "@heroicons/react/24/outline";
 
 import { db } from "@/firebase";
 
@@ -19,8 +15,6 @@ import { db } from "@/firebase";
 import CreateNewChatButton from "./CreateNewChatButton";
 // import NewChatButton from "./NewChatButton";
 import ChatRow from "./ChatRow";
-import ModelSelection from "./ModelSelection";
-import SettingsRow from "./SettingsRow";
 import Loading from "./Loading";
 
 function SideBar() {
@@ -40,10 +34,6 @@ function SideBar() {
         <div className="flex-1">
           <CreateNewChatButton />
         </div>
-
-        {/* <div className={`chatRow`} onClick={toggleDrawer}>
-          <BookOpenIcon className="w-4 h-4" />
-        </div> */}
       </div>
 
       {/* loading */}
@@ -71,20 +61,6 @@ function SideBar() {
             chats?.docs.map((chat) => <ChatRow key={chat.id} id={chat.id} />)}
         </div>
       </div>
-
-      {/* model selection */}
-      {/* {isOpen && (
-        <div className="hidden mb-2 sm:inline">
-          <ModelSelection />
-        </div>
-      )} */}
-
-      {/* Settings */}
-      {/* {isOpen && (
-        <div className="mb-2">
-          <SettingsRow />
-        </div>
-      )} */}
     </div>
   );
 }

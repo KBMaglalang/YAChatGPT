@@ -32,7 +32,7 @@ function SettingsRow() {
       {modalOpen && (
         <SettingsModal
           setModalOpen={setModalOpen}
-          callback={handleUpdateSettings}
+          // callback={handleUpdateSettings}
           signOut={signOut}
           // data={""}
         />

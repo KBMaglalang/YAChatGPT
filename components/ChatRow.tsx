@@ -44,7 +44,7 @@ function ChatRow({ id }: Props) {
     setActive(pathname.includes(id));
   }, [pathname]);
 
-  // udpate a chjat
+  // udpate a chat
   /**
    * Updates a prompt.
    *
@@ -105,7 +105,7 @@ function ChatRow({ id }: Props) {
         className={`chatRow justify-center ${active && "bg-gray-700/50"}`}
       >
         <ChatBubbleLeftIcon className="w-5 h-5" />
-        <p className="flex-1 hidden truncate md:inline-flex">
+        <p className="hidden flex-1 truncate md:inline-flex">
           {chatDoc?.data()?.title ||
             messages?.docs[messages?.docs.length - 1]?.data().text ||
             "New Chat"}

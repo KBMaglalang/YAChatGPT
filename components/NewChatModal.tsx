@@ -5,15 +5,14 @@ import SideBar from "./SideBar";
 
 type Props = {
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  callback: any;
 };
 
-export default function NewChatModal({ setModalOpen, callback }: Props) {
-  const handleAccept = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.preventDefault();
+export default function NewChatModal({ setModalOpen }: Props) {
+  // const handleAccept = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  //   e.preventDefault();
 
-    setModalOpen(false);
-  };
+  //   setModalOpen(false);
+  // };
 
   return (
     <div className="overflow-y-auto fixed inset-0 z-10">

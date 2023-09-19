@@ -7,19 +7,7 @@ import ChatSettingsModal from "./ChatSettingsModal";
 
 export default function ChatSettings() {
   const [modalOpen, setModalOpen] = useState(false);
-  const { promptSettings, setPromptSettings } = useStateContext();
-
-  const handleUpdateSettings = async () => {
-    // const doc = await addDoc(
-    //   collection(db, "users", session?.user?.email!, "settings"),
-    //   {
-    //     userId: session?.user?.email!,
-    //     createdAt: serverTimestamp(), // ! don't use local timestamp use server timestamp since you don't know where they are in the world
-    //     title: title || "New Prompt",
-    //     prompt: prompt || "",
-    //   }
-    // );
-  };
+  const { setPromptSettings } = useStateContext();
 
   /**
    * Handles the change of a setting value.
@@ -40,12 +28,7 @@ export default function ChatSettings() {
         <p className="hidden lg:block">Chat Settings</p>
       </div>
 
-      {modalOpen && (
-        <ChatSettingsModal
-          setModalOpen={setModalOpen}
-          callback={handleSettingChange}
-        />
-      )}
+      {modalOpen && <ChatSettingsModal setModalOpen={setModalOpen} />}
     </div>
   );
 }

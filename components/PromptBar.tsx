@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useSession } from "next-auth/react";
 import { collection, orderBy, query } from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore"; // ! setups a real time connection to the firebase database
-import { ArrowDownCircleIcon, BookOpenIcon } from "@heroicons/react/24/outline";
+import { ArrowDownCircleIcon } from "@heroicons/react/24/outline";
 
 import { db } from "@/firebase";
 
@@ -24,17 +24,9 @@ function PromptBar() {
       )
   );
 
-  const toggleDrawer = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
     <div className={`flex flex-col p-2`}>
       <div className={`flex flex-row mt-auto space-x-2 w-full`}>
-        {/* <div className={`chatRow`} onClick={toggleDrawer}>
-          <BookOpenIcon className="w-4 h-4" />
-        </div> */}
-
         {/* new prompt button */}
         {isOpen && (
           <div className="flex-1">

@@ -38,18 +38,7 @@ export default async function RootLayout({
               <div className="flex justify-center w-screen h-screen">
                 {/* client provider - notification  */}
                 <ClientProvider />
-
-                {/* <div className="bg-[#121212] max-w-xs h-screen overflow-y-scroll lg:block">
-                  <SideBar />
-                </div> */}
-
-                {/* <div className="bg-[#212121] "> */}
                 {children}
-                {/* </div> */}
-
-                {/* <div className="bg-[#121212] max-w-xs h-screen overflow-y-scroll lg:block">
-                  <PromptBar />
-                </div> */}
               </div>
             </StateProvider>
           )}

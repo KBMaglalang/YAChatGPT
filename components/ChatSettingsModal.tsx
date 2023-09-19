@@ -6,10 +6,9 @@ import Slider from "./Slider";
 
 type Props = {
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  callback: any;
 };
 
-function ChatSettingsModal({ setModalOpen, callback }: Props) {
+function ChatSettingsModal({ setModalOpen }: Props) {
   const { promptSettings, setPromptSettings } = useStateContext();
 
   // /**
@@ -24,17 +23,11 @@ function ChatSettingsModal({ setModalOpen, callback }: Props) {
     setPromptSettings((prev) => ({ ...prev, [key]: newValue }));
   };
 
-  const handleAccept = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-    // key: string,
-    // value: number
-  ) => {
-    e.preventDefault();
+  // const handleAccept = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  //   e.preventDefault();
 
-    // callback(key, value);
-
-    setModalOpen(false);
-  };
+  //   setModalOpen(false);
+  // };
 
   return (
     <div className="overflow-y-auto fixed inset-0 z-10">

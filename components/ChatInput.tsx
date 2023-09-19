@@ -1,23 +1,15 @@
 "use client";
 
-import React, {
-  useState,
-  useRef,
-  useEffect,
-  FormEvent,
-  KeyboardEvent,
-} from "react";
+import React, { useRef, useEffect, FormEvent, KeyboardEvent } from "react";
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
 import { useSession } from "next-auth/react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "@/firebase";
 import { toast } from "react-hot-toast";
 import useSWR from "swr";
-// import Slider from "./Slider";
 import { useStateContext } from "@/lib/context/stateContext";
 
 // components
-// import ModelSelection from "./ModelSelection";
 import NewPromptTemplate from "./NewPromptTemplate";
 import NewChatButton from "./NewChatButton";
 import SettingsRow from "./SettingsRow";
@@ -133,18 +125,6 @@ function ChatInput({ chatId }: Props) {
     }
   };
 
-  // /**
-  //  * Handles the change of a setting value.
-  //  * Updates the prompt settings by merging the new value with the existing settings.
-  //  *
-  //  * @param {string} key - The key of the setting to be changed.
-  //  * @param {number} newValue - The new value to be assigned to the setting.
-  //  * @returns {void}
-  //  */
-  // const handleSettingChange = (key: string, newValue: number) => {
-  //   setPromptSettings((prev) => ({ ...prev, [key]: newValue }));
-  // };
-
   return (
     <div className="px-4 w-full text-sm text-white rounded-t-xl bg-gray-700/50">
       {/* modal bar */}
@@ -181,63 +161,6 @@ function ChatInput({ chatId }: Props) {
           </button>
         </div>
       </form>
-
-      {/* model selection when in mobile view */}
-      {/* <div className="md:hidden">
-        <ModelSelection />
-      </div> */}
-
-      {/* settings */}
-      {/* <div className="flex flex-wrap justify-around items-center p-4 w-full bg-transparent"> */}
-      {/* temperature - slider and input */}
-      {/* <Slider
-          title="Temperature"
-          min={0}
-          max={2}
-          value={promptSettings.temperature}
-          callback={(value) => handleSettingChange("temperature", value)}
-        /> */}
-
-      {/* topP - slider and input */}
-      {/* <Slider
-          title="Top P"
-          min={0}
-          max={1}
-          value={promptSettings.topP}
-          callback={(value) => handleSettingChange("topP", value)}
-        /> */}
-
-      {/* frequencyPenalty - slider and input */}
-      {/* <Slider
-          title="Frequency Penalty"
-          min={-2}
-          max={2}
-          value={promptSettings.frequencyPenalty}
-          callback={(value) => handleSettingChange("frequencyPenalty", value)}
-        /> */}
-
-      {/* presencePenalty - slider and input */}
-      {/* <Slider
-          title="Presence Penalty"
-          min={-2}
-          max={2}
-          value={promptSettings.presencePenalty}
-          callback={(value) => handleSettingChange("presencePenalty", value)}
-        /> */}
-
-      {/* max tokens - input */}
-      {/* <div className="flex flex-col items-center space-x-2">
-          <span className="mb-2 messageSettings">Max Tokens</span>
-          <input
-            type="number"
-            value={promptSettings.maxTokens}
-            className="w-full mt-2 text-center rounded-md bg-[#212121] text-white"
-            onChange={(e) =>
-              handleSettingChange("maxTokens", parseFloat(e.target.value))
-            }
-          />
-        </div> */}
-      {/* </div> */}
     </div>
   );
 }

@@ -6,18 +6,6 @@ import NewChatModal from "./NewChatModal";
 function NewChatButton() {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const handleUpdateSettings = async () => {
-    // const doc = await addDoc(
-    //   collection(db, "users", session?.user?.email!, "settings"),
-    //   {
-    //     userId: session?.user?.email!,
-    //     createdAt: serverTimestamp(), // ! don't use local timestamp use server timestamp since you don't know where they are in the world
-    //     title: title || "New Prompt",
-    //     prompt: prompt || "",
-    //   }
-    // );
-  };
-
   return (
     <div>
       <div className="chatRow" onClick={() => setModalOpen(true)}>
@@ -25,12 +13,7 @@ function NewChatButton() {
         <p className="hidden lg:block">Chat</p>
       </div>
 
-      {modalOpen && (
-        <NewChatModal
-          setModalOpen={setModalOpen}
-          callback={handleUpdateSettings}
-        />
-      )}
+      {modalOpen && <NewChatModal setModalOpen={setModalOpen} />}
     </div>
   );
 }

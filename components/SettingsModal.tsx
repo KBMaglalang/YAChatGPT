@@ -2,17 +2,15 @@ import React from "react";
 
 type Props = {
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  callback: any;
   signOut: any;
-  // data: any;
 };
 
-function SettingsModal({ setModalOpen, callback, signOut }: Props) {
-  const handleAccept = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.preventDefault();
+function SettingsModal({ setModalOpen, signOut }: Props) {
+  // const handleAccept = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  //   e.preventDefault();
 
-    setModalOpen(false);
-  };
+  //   setModalOpen(false);
+  // };
 
   return (
     <div className="overflow-y-auto fixed inset-0 z-10">
