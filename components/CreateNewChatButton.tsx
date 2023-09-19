@@ -6,7 +6,7 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
 import { db } from "@/firebase";
 
-function NewChat() {
+function CreateNewChatButton() {
   const router = useRouter();
   const { data: session } = useSession();
 
@@ -32,9 +32,9 @@ function NewChat() {
   return (
     <div onClick={createNewChat} className="chatRow">
       <PlusIcon className="w-4 h-4" />
-      <span>New Chat</span>
+      <span className="hidden lg:block">New Chat</span>
     </div>
   );
 }
 
-export default NewChat;
+export default CreateNewChatButton;

@@ -33,7 +33,7 @@ const Slider: React.FC<SliderProps> = ({
   };
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center w-full">
       <span className="mb-2 messageSettings">{title}</span>
 
       <input

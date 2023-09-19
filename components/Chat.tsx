@@ -45,23 +45,23 @@ function Chat({ chatId }: Props) {
 
   return (
     <div
-      className="flex-1 overflow-x-hidden overflow-y-auto"
+      className="overflow-y-auto overflow-x-hidden flex-1 w-full"
       ref={scrollContainerRef}
     >
       {/* loading */}
       {loading && (
-        <div className="flex items-center justify-center h-screen">
+        <div className="flex justify-center items-center h-screen">
           <Loading />
         </div>
       )}
 
       {/* cta */}
       {messages?.empty && (
-        <div className="flex flex-col items-center justify-center h-full">
+        <div className="flex flex-col justify-center items-center h-full">
           <p className="mt-10 text-xl font-bold text-center text-white justify">
-            Type a prompt below to get started!
+            Type a prompt below!
           </p>
-          <div className="flex items-center justify-center mt-5">
+          <div className="flex justify-center items-center mt-5">
             <ArrowDownCircleIcon className="w-10 h-10 text-white animate-bounce" />
           </div>
         </div>

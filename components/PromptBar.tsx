@@ -4,12 +4,12 @@ import React, { useState } from "react";
 import { useSession } from "next-auth/react";
 import { collection, orderBy, query } from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore"; // ! setups a real time connection to the firebase database
-import { ArrowDownCircleIcon, BookOpenIcon } from "@heroicons/react/24/outline";
+import { ArrowDownCircleIcon } from "@heroicons/react/24/outline";
 
 import { db } from "@/firebase";
 
 // components
-import NewPromptTemplate from "./NewPromptTemplate";
+import CreateNewPromptButton from "./CreateNewPromptButton";
 import PromptRow from "./PromptRow";
 import Loading from "./Loading";
 
@@ -24,17 +24,20 @@ function PromptBar() {
       )
   );
 
-  const toggleDrawer = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
-    <div
-      className={`flex flex-col p-2 h-screen ${isOpen ? "min-w-[20rem]" : ""}`}
-    >
+    <div className={`flex flex-col p-2`}>
+      <div className={`flex flex-row mt-auto space-x-2 w-full`}>
+        {/* new prompt button */}
+        {isOpen && (
+          <div className="flex-1">
+            <CreateNewPromptButton />
+          </div>
+        )}
+      </div>
+
       {/* prompts loading from firebase */}
       {loading && isOpen && (
-        <div className="flex justify-center mt-4 h-screen">
+        <div className="flex justify-center mt-4">
           <Loading />
         </div>
       )}
@@ -63,19 +66,6 @@ function PromptBar() {
           </div>
         </div>
       )}
-
-      <div className={`flex flex-row mt-auto space-x-2 w-full`}>
-        <div className={`chatRow`} onClick={toggleDrawer}>
-          <BookOpenIcon className="w-4 h-4" />
-        </div>
-
-        {/* new prompt button */}
-        {isOpen && (
-          <div className="flex-1">
-            <NewPromptTemplate />
-          </div>
-        )}
-      </div>
     </div>
   );
 }

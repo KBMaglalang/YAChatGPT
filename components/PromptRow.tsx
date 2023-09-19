@@ -92,11 +92,11 @@ function PromptRow({ id }: Props) {
   return (
     <div>
       {/* button */}
-      <div className={`chatRow justify-center `}>
+      <div className={`justify-center chatRow`}>
         <DocumentTextIcon className="w-5 h-5 text-white" />
 
         <span
-          className="flex-1 hidden truncate md:inline-flex"
+          className="hidden flex-1 truncate md:inline-flex"
           onClick={handleOnClick}
         >
           {prompts?.data()?.title || "New Prompt"}

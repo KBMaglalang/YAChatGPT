@@ -10,3 +10,6 @@ export const HOMEPAGE_PROMPT_DESCRIPTION = `Using templates with AI like ChatGPT
 responses better. It's like giving the AI a helping hand to understand
 you better, so you get the info you need faster and can have a more
 meaningful chat.`;
+
+// swr settings
+export const REVALIDATE_RATE = 1800000; // in ms
