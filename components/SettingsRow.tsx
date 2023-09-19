@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-import { useSession, signOut } from "next-auth/react";
-import { Cog8ToothIcon } from "@heroicons/react/24/outline";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-
-import { db } from "@/firebase";
+import { signOut } from "next-auth/react";
+import { UserIcon } from "@heroicons/react/24/outline";
+// import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+// import { db } from "@/firebase";
 
 // components
 import SettingsModal from "./SettingsModal";
 
 function SettingsRow() {
-  const { data: session } = useSession();
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleUpdateSettings = async () => {
@@ -26,12 +24,9 @@ function SettingsRow() {
 
   return (
     <div>
-      <div
-        className="border-2 border-gray-700 chatRow"
-        onClick={() => setModalOpen(true)}
-      >
-        <Cog8ToothIcon className="w-4 h-4" />
-        <p>Settings</p>
+      <div className="chatRow" onClick={() => setModalOpen(true)}>
+        <UserIcon className="w-4 h-4" />
+        <p className="hidden lg:block">User</p>
       </div>
 
       {modalOpen && (
@@ -39,7 +34,7 @@ function SettingsRow() {
           setModalOpen={setModalOpen}
           callback={handleUpdateSettings}
           signOut={signOut}
-          data={""}
+          // data={""}
         />
       )}
     </div>
