@@ -35,19 +35,21 @@ export default async function RootLayout({
             <Login />
           ) : (
             <StateProvider>
-              <div className="flex h-screen max-w-screen">
+              <div className="flex justify-center w-screen h-screen">
                 {/* client provider - notification  */}
                 <ClientProvider />
 
-                <div className="bg-[#121212] max-w-xs h-screen overflow-y-scroll lg:block">
+                {/* <div className="bg-[#121212] max-w-xs h-screen overflow-y-scroll lg:block">
                   <SideBar />
-                </div>
+                </div> */}
 
-                <div className="bg-[#212121] flex-1">{children}</div>
+                {/* <div className="bg-[#212121] "> */}
+                {children}
+                {/* </div> */}
 
-                <div className="bg-[#121212] max-w-xs h-screen overflow-y-scroll lg:block">
+                {/* <div className="bg-[#121212] max-w-xs h-screen overflow-y-scroll lg:block">
                   <PromptBar />
-                </div>
+                </div> */}
               </div>
             </StateProvider>
           )}
