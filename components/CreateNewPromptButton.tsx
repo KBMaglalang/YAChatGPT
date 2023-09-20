@@ -36,7 +36,7 @@ function CreateNewPromptButton() {
       {/* new prompt button */}
       <div onClick={() => setModalOpen(true)} className="chatRow">
         <PlusIcon className="w-4 h-4" />
-        <span className="hidden lg:block">New Prompt</span>
+        <span>New Prompt</span>
       </div>
 
       {/* prompt modal */}
