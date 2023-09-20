@@ -49,7 +49,7 @@ export default function NewChatModal({ setModalOpen }: Props) {
               className="w-full mt-2 p-2.5 flex-1 text-white rounded-md outline-none border ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
               onClick={(e) => setModalOpen(false)}
             >
-              Cancel
+              Exit
             </button>
           </div>
         </div>
