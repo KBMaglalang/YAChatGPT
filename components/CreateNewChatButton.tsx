@@ -32,7 +32,7 @@ function CreateNewChatButton() {
   return (
     <div onClick={createNewChat} className="chatRow">
       <PlusIcon className="w-4 h-4" />
-      <span className="hidden lg:block">New Chat</span>
+      <span>New Chat</span>
     </div>
   );
 }
