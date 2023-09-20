@@ -11,6 +11,8 @@ import {
 
 import { db } from "@/firebase";
 
+import { getDisplayText } from "@/lib/displayTextLimit";
+
 // components
 import ChatEditModal from "./ChatEditModal";
 import ChatDeleteModal from "./ChatDeleteModal";
@@ -105,11 +107,13 @@ function ChatRow({ id }: Props) {
         className={`chatRow justify-center ${active && "bg-gray-700/50"}`}
       >
         <ChatBubbleLeftIcon className="w-5 h-5" />
-        <p className="flex-1 truncate md:inline-flex">
-          {chatDoc?.data()?.title ||
-            messages?.docs[messages?.docs.length - 1]?.data().text ||
+        <span className="flex-1 md:inline-flex">
+          {getDisplayText(chatDoc?.data()?.title) ||
+            getDisplayText(
+              messages?.docs[messages?.docs.length - 1]?.data().text
+            ) ||
             "New Chat"}
-        </p>
+        </span>
         <PencilSquareIcon
           onClick={modalEditCallback}
           className="w-5 h-5 text-gray-700 hover:text-blue-500"
