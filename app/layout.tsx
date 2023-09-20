@@ -7,8 +7,6 @@ const inter = Inter({ subsets: ["latin"] });
 
 // components
 import Login from "@/components/Login";
-import SideBar from "@/components/SideBar";
-import PromptBar from "@/components/PromptBar";
 
 import { SessionProvider } from "@/components/SessionProvider";
 import { StateProvider } from "@/lib/context/stateContext";
@@ -35,7 +33,7 @@ export default async function RootLayout({
             <Login />
           ) : (
             <StateProvider>
-              <div className="flex justify-center w-screen h-screen">
+              <div className="flex justify-center w-screen h-full md:h-screen">
                 {/* client provider - notification  */}
                 <ClientProvider />
                 {children}
