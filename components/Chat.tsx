@@ -51,7 +51,7 @@ function Chat({ llmMessages, llmIsLoading }: Props) {
 
       {/* messages */}
       {llmMessages?.map((message) => (
-        <Message key={message.id} message={message} />
+        <Message key={message.createdAt} message={message} />
       ))}
     </div>
   );
