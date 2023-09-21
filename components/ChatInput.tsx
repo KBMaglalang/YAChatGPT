@@ -1,21 +1,16 @@
 "use client";
 
 import React, { useRef, useEffect, FormEvent, KeyboardEvent } from "react";
-import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
 import { useSession } from "next-auth/react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "@/firebase";
-import { toast } from "react-hot-toast";
-import useSWR from "swr";
-import { useStateContext } from "@/lib/context/stateContext";
+import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
 
 // components
 import NewPromptTemplate from "./NewPromptTemplate";
 import NewChatButton from "./NewChatButton";
 import SettingsRow from "./SettingsRow";
 import ChatSettings from "./ChatSettings";
-
-import { CHATGPT_DEFAULT } from "@/lib/constants";
 
 type Props = {
   chatId: string;
@@ -38,13 +33,6 @@ function ChatInput({
 }: Props) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { data: session } = useSession();
-  const { userInput, setUserInput, promptSettings } = useStateContext();
-
-  // * there was a change on the api endpoints v1 -> v2
-  // useSWR to get models from openai
-  const { data: model } = useSWR("model", {
-    fallbackData: CHATGPT_DEFAULT,
-  });
 
   // Dynamically adjusts the height of a textarea element based on the user's input
   useEffect(() => {
@@ -53,7 +41,7 @@ function ChatInput({
       const scrollHeight = textareaRef.current.scrollHeight;
       textareaRef.current.style.height = scrollHeight + "px";
     }
-  }, [userInput]);
+  }, [llmInput]);
 
   /**
    * Sends a message, adds it to the "messages" collection within a specific chat in the "users" collection of Firebase,
@@ -66,20 +54,14 @@ function ChatInput({
   const sendMessage = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!userInput) return;
-
-    const input = userInput.trim();
-    setUserInput("");
+    if (!llmInput) return;
 
     const message: Message = {
-      text: input,
+      content: llmInput,
       createdAt: serverTimestamp(),
       user: {
         _id: session?.user?.email!,
         name: "user",
-        avatar:
-          session?.user?.image! ||
-          `https://ui-avatars.com/api/?name=${session?.user?.name!}`,
       },
     };
 
@@ -96,34 +78,7 @@ function ChatInput({
       message
     );
 
-    const notification = toast.loading("ChatGPT is thinking...");
-
-    // Sends a question to the "/api/askQuestion" endpoint and displays a success message when ChatGPT responds
-    const openAiAnswer = await fetch("/api/askQuestion", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        prompt: input,
-        chatId,
-        model,
-        session,
-        promptSettings,
-      }),
-    });
-
-    // check if the response from the server failed - update the toast to error
-    if (!openAiAnswer.ok) {
-      toast.error("ChatGPT failed to respond!", {
-        id: notification,
-      });
-      return;
-    }
-
-    toast.success("ChatGPT has responded!", {
-      id: notification,
-    });
+    llmSubmit(e);
   };
 
   /**
@@ -135,8 +90,7 @@ function ChatInput({
    */
   const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.ctrlKey && e.key === "Enter") {
-      // sendMessage(e as any);
-      llmSubmit(e as any);
+      sendMessage(e as any);
     }
   };
 
@@ -152,15 +106,13 @@ function ChatInput({
 
       {/* input */}
       {/* <form onSubmit={sendMessage} className="flex p-5 space-x-5"> */}
-      <form onSubmit={llmSubmit} className="flex p-5 space-x-5">
+      <form onSubmit={sendMessage} className="flex p-5 space-x-5">
         <div className="flex w-full textarea-expandable">
           <textarea
             autoFocus
             ref={textareaRef}
             disabled={!session}
-            // value={userInput}
             value={llmInput}
-            // onChange={(e) => setUserInput(e.target.value)}
             onChange={llmHandleInputChange}
             onKeyDown={handleKeyDown}
             className="flex-1 bg-transparent resize-none focus:outline-none disabled:cursor-not-allowed disabled:text-gray-300"
@@ -172,7 +124,6 @@ function ChatInput({
         <div className="flex flex-col justify-end">
           <button
             type="submit"
-            // disabled={!session || !userInput}
             disabled={!session || !llmInput}
             className="px-4 py-2 font-bold text-white bg-indigo-600 rounded hover:opacity-50 disabled:bg-gray-300 disabled:cursor-not-allowed textarea-expandable h-content"
           >
