@@ -17,11 +17,17 @@ function Message({ message }: Props) {
     >
       <div className="flex px-10 mx-auto space-x-5">
         {/* user and chatgpt icons */}
-        {/* {isAssistant ? (
-          <img src={message.user.avatar} alt="avatar" className="w-8 h-8" />
+        {isAssistant ? (
+          <img
+            src={
+              "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg"
+            }
+            alt="avatar"
+            className="w-8 h-8"
+          />
         ) : (
           <UserCircleIcon className="w-8 h-8 text-gray-300" />
-        )} */}
+        )}
 
         {/* message container */}
         <div className="flex flex-col w-full">
