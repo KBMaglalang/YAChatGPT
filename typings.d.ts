@@ -4,7 +4,7 @@ type OpenAIMessage = {
 };
 
 interface Message {
-  text: string | ChatCompletion | {};
+  content: string | ChatCompletion | {};
   createdAt: admin.firestore.Timestamp;
 
   user: {
