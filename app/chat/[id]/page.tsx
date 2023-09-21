@@ -1,4 +1,7 @@
+"use client";
+
 import React from "react";
+import { useChat } from "ai/react";
 
 // components
 import Chat from "@/components/Chat";
@@ -11,13 +14,29 @@ type Props = {
 };
 
 function ChatPage({ params: { id } }: Props) {
+  const {
+    messages,
+    input,
+    error,
+    isLoading,
+    handleInputChange,
+    handleSubmit,
+    stop,
+  } = useChat();
+
   return (
     <div className="flex overflow-hidden flex-col items-center w-screen lg:w-2/3">
       {/* chat window */}
-      <Chat chatId={id} />
+      <Chat chatId={id} llmMessages={messages} llmIsLoading={isLoading} />
 
       {/* chat input */}
-      <ChatInput chatId={id} />
+      <ChatInput
+        chatId={id}
+        llmStop={stop}
+        llmInput={input}
+        llmSubmit={handleSubmit}
+        llmHandleInputChange={handleInputChange}
+      />
     </div>
   );
 }

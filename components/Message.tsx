@@ -9,7 +9,7 @@ type Props = {
 };
 
 function Message({ message }: Props) {
-  const isAssistant = message.user._id === "assistant";
+  const isAssistant = message.role === "assistant";
 
   return (
     <div
@@ -17,16 +17,16 @@ function Message({ message }: Props) {
     >
       <div className="flex px-10 mx-auto space-x-5">
         {/* user and chatgpt icons */}
-        {isAssistant ? (
+        {/* {isAssistant ? (
           <img src={message.user.avatar} alt="avatar" className="w-8 h-8" />
         ) : (
           <UserCircleIcon className="w-8 h-8 text-gray-300" />
-        )}
+        )} */}
 
         {/* message container */}
         <div className="flex flex-col w-full">
           {/* chatgpt settings for the response */}
-          {isAssistant && (
+          {/* {isAssistant && (
             <div className="flex flex-col">
               <div className="flex flex-wrap justify-between py-2">
                 <span className="messageSettings">{`${message.model}`}</span>
@@ -46,7 +46,7 @@ function Message({ message }: Props) {
                 </span>
               </div>
             </div>
-          )}
+          )} */}
 
           {/* message markdown */}
           <div className="flex flex-col flex-wrap items-center">
@@ -54,16 +54,16 @@ function Message({ message }: Props) {
               className="pt-2 w-full max-w-4xl text-white break-words prose flex-shrink-1"
               remarkPlugins={[remarkGfm]}
             >
-              {message.text}
+              {message.content}
             </ReactMarkdown>
           </div>
 
           {/* chatgpt end message */}
-          {isAssistant && (
+          {/* {isAssistant && (
             <div className="flex justify-between py-2">
               <span className="ml-auto messageSettings">{`Finish Reason: ${message.finish}`}</span>
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </div>

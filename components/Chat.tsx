@@ -12,9 +12,14 @@ import Loading from "./Loading";
 
 type Props = {
   chatId: string;
+  llmMessages: any;
+  llmIsLoading: boolean;
 };
 
-function Chat({ chatId }: Props) {
+function Chat({ chatId, llmMessages, llmIsLoading }: Props) {
+  console.log("🚀 ~ file: Chat.tsx:20 ~ Chat ~ llmIsLoading:", llmIsLoading);
+  console.log("🚀 ~ file: Chat.tsx:19 ~ Chat ~ llmMessages:", llmMessages);
+
   const { data: session } = useSession();
   const [messages, loading, error] = useCollection(
     session &&
@@ -41,7 +46,7 @@ function Chat({ chatId }: Props) {
       scrollContainerRef.current.scrollTop =
         scrollContainerRef.current.scrollHeight;
     }
-  }, [messages]);
+  }, [llmMessages]);
 
   return (
     <div
@@ -68,8 +73,11 @@ function Chat({ chatId }: Props) {
       )}
 
       {/* messages */}
-      {messages?.docs.map((message) => (
+      {/* {messages?.docs.map((message) => (
         <Message key={message.id} message={message.data()} />
+      ))} */}
+      {llmMessages.map((message) => (
+        <Message key={message.id} message={message} />
       ))}
     </div>
   );

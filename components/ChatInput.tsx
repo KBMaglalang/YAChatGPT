@@ -19,9 +19,23 @@ import { CHATGPT_DEFAULT } from "@/lib/constants";
 
 type Props = {
   chatId: string;
+  llmStop: () => void;
+  llmInput: string;
+  llmSubmit: (e: FormEvent<HTMLFormElement>) => void;
+  llmHandleInputChange: (
+    e:
+      | React.ChangeEvent<HTMLTextAreaElement>
+      | React.ChangeEvent<HTMLInputElement>
+  ) => void;
 };
 
-function ChatInput({ chatId }: Props) {
+function ChatInput({
+  chatId,
+  llmStop,
+  llmInput,
+  llmSubmit,
+  llmHandleInputChange,
+}: Props) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { data: session } = useSession();
   const { userInput, setUserInput, promptSettings } = useStateContext();
@@ -121,7 +135,8 @@ function ChatInput({ chatId }: Props) {
    */
   const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.ctrlKey && e.key === "Enter") {
-      sendMessage(e as any);
+      // sendMessage(e as any);
+      llmSubmit(e as any);
     }
   };
 
@@ -136,14 +151,17 @@ function ChatInput({ chatId }: Props) {
       </div>
 
       {/* input */}
-      <form onSubmit={sendMessage} className="flex p-5 space-x-5">
+      {/* <form onSubmit={sendMessage} className="flex p-5 space-x-5"> */}
+      <form onSubmit={llmSubmit} className="flex p-5 space-x-5">
         <div className="flex w-full textarea-expandable">
           <textarea
             autoFocus
             ref={textareaRef}
             disabled={!session}
-            value={userInput}
-            onChange={(e) => setUserInput(e.target.value)}
+            // value={userInput}
+            value={llmInput}
+            // onChange={(e) => setUserInput(e.target.value)}
+            onChange={llmHandleInputChange}
             onKeyDown={handleKeyDown}
             className="flex-1 bg-transparent resize-none focus:outline-none disabled:cursor-not-allowed disabled:text-gray-300"
             placeholder="Type your message here... (CTRL + ENTER to send)"
@@ -154,10 +172,17 @@ function ChatInput({ chatId }: Props) {
         <div className="flex flex-col justify-end">
           <button
             type="submit"
-            disabled={!session || !userInput}
+            // disabled={!session || !userInput}
+            disabled={!session || !llmInput}
             className="px-4 py-2 font-bold text-white bg-indigo-600 rounded hover:opacity-50 disabled:bg-gray-300 disabled:cursor-not-allowed textarea-expandable h-content"
           >
             <PaperAirplaneIcon className="w-4 h-4 -rotate-45" />
+          </button>
+          <button
+            onClick={llmStop}
+            className="px-4 py-2 my-2 font-bold text-white bg-red-600 rounded hover:opacity-50 disabled:bg-gray-300 disabled:cursor-not-allowed textarea-expandable h-content"
+          >
+            Stop
           </button>
         </div>
       </form>
