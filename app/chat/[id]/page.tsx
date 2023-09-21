@@ -105,7 +105,7 @@ function ChatPage({ params: { id } }: Props) {
   return (
     <div className="flex overflow-hidden flex-col items-center w-screen lg:w-2/3">
       {/* chat window */}
-      <Chat chatId={id} llmMessages={messages} llmIsLoading={isLoading} />
+      <Chat llmMessages={messages} llmIsLoading={isLoading} />
 
       {/* chat input */}
       <ChatInput
