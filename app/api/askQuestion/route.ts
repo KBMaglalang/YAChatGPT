@@ -162,20 +162,24 @@ export async function POST(req: Request) {
 
     // organize information from the response into a ChatGPTMessage
     const message: ChatGPTMessage = {
-      text:
+      content:
         response.choices[0].message.content ||
         "ChatGPT was unable to find an answer for that!",
       finish: response.choices[0].finish_reason,
       createdAt: admin.firestore.Timestamp.now(),
+
       model: response.model,
+
       promptTokens: response.usage?.prompt_tokens,
       completionTokens: response.usage?.completion_tokens,
       totalTokens: response.usage?.total_tokens,
+
       temperature: promptSettings.temperature,
       topP: promptSettings.topP,
       frequencyPenalty: promptSettings.frequencyPenalty,
       presencePenalty: promptSettings.presencePenalty,
       maxTokens: promptSettings.maxTokens,
+
       user: {
         _id: "assistant",
         name: "assistant",
