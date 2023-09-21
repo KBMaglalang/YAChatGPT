@@ -54,8 +54,6 @@ function ChatPage({ params: { id } }: Props) {
         user: {
           _id: "assistant",
           name: "assistant",
-          avatar:
-            "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg",
         },
       };
 
