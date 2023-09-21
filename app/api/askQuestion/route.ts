@@ -110,6 +110,7 @@ type Data = {
 export async function POST(req: Request) {
   try {
     const { prompt, chatId, model, session, promptSettings } = await req.json();
+
     // Input validation
     if (!prompt || !chatId || !model || !session || !promptSettings) {
       // return res.status(400).json({ answer: "Missing parameters" });
@@ -120,6 +121,7 @@ export async function POST(req: Request) {
         { status: 400 }
       );
     }
+
     // Check if user is authenticated
     if (!session?.user?.email) {
       // return res.status(403).json({ answer: "Unauthorized" });
@@ -130,6 +132,7 @@ export async function POST(req: Request) {
         { status: 403 }
       );
     }
+
     /**
      * Fetches a list of messages from the "messages" collection within a specific chat in the "users" collection of Firebase, ordered by creation time.
      *
@@ -153,8 +156,10 @@ export async function POST(req: Request) {
         });
         return messages;
       });
+
     // ChatGPT Query
     const response = await query(messagesList, model, promptSettings);
+
     // organize information from the response into a ChatGPTMessage
     const message: ChatGPTMessage = {
       text:
@@ -178,6 +183,7 @@ export async function POST(req: Request) {
           "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg",
       },
     };
+
     // Save message to Firestore
     await adminDb
       .collection("users")
