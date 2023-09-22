@@ -1,36 +1,16 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import { useSession } from "next-auth/react";
-import { useCollection } from "react-firebase-hooks/firestore";
-import { collection, orderBy, query } from "firebase/firestore";
 import { ArrowDownCircleIcon } from "@heroicons/react/24/outline";
 
-import { db } from "@/firebase";
+// components
 import Message from "./Message";
-import Loading from "./Loading";
 
 type Props = {
-  chatId: string;
+  llmMessages: any;
 };
 
-function Chat({ chatId }: Props) {
-  const { data: session } = useSession();
-  const [messages, loading, error] = useCollection(
-    session &&
-      query(
-        collection(
-          db,
-          "users",
-          session?.user?.email!,
-          "chats",
-          chatId,
-          "messages"
-        ),
-        orderBy("createdAt", "asc")
-      )
-  );
-
+function Chat({ llmMessages }: Props) {
   // Method to scroll to the bottom of a scrollable div container
   // Reference for the scrollable div
   const scrollContainerRef = useRef<null | HTMLDivElement>(null);
@@ -41,22 +21,15 @@ function Chat({ chatId }: Props) {
       scrollContainerRef.current.scrollTop =
         scrollContainerRef.current.scrollHeight;
     }
-  }, [messages]);
+  }, [llmMessages]);
 
   return (
     <div
       className="overflow-y-auto overflow-x-hidden flex-1 w-full"
       ref={scrollContainerRef}
     >
-      {/* loading */}
-      {loading && (
-        <div className="flex justify-center items-center h-screen">
-          <Loading />
-        </div>
-      )}
-
       {/* cta */}
-      {messages?.empty && (
+      {llmMessages?.length === 0 && (
         <div className="flex flex-col justify-center items-center h-full">
           <p className="mt-10 text-xl font-bold text-center text-white justify">
             Type a prompt below!
@@ -68,8 +41,8 @@ function Chat({ chatId }: Props) {
       )}
 
       {/* messages */}
-      {messages?.docs.map((message) => (
-        <Message key={message.id} message={message.data()} />
+      {llmMessages?.map((message: Message) => (
+        <Message key={message.createdAt} message={message} />
       ))}
     </div>
   );
