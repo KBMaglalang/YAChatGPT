@@ -41,7 +41,7 @@ function Chat({ llmMessages }: Props) {
       )}
 
       {/* messages */}
-      {llmMessages?.map((message) => (
+      {llmMessages?.map((message: Message) => (
         <Message key={message.createdAt} message={message} />
       ))}
     </div>
