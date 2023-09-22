@@ -4,7 +4,7 @@ import React, { useRef, useEffect, FormEvent, KeyboardEvent } from "react";
 import { useSession } from "next-auth/react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "@/firebase";
-import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
+import { PaperAirplaneIcon, StopIcon } from "@heroicons/react/24/solid";
 
 // components
 import NewPromptTemplate from "./NewPromptTemplate";
@@ -22,6 +22,7 @@ type Props = {
       | React.ChangeEvent<HTMLTextAreaElement>
       | React.ChangeEvent<HTMLInputElement>
   ) => void;
+  llmIsLoading: boolean;
 };
 
 function ChatInput({
@@ -30,6 +31,7 @@ function ChatInput({
   llmInput,
   llmSubmit,
   llmHandleInputChange,
+  llmIsLoading,
 }: Props) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { data: session } = useSession();
@@ -128,10 +130,11 @@ function ChatInput({
             <PaperAirplaneIcon className="w-4 h-4 -rotate-45" />
           </button>
           <button
+            disabled={!session || !llmIsLoading}
             onClick={llmStop}
             className="px-4 py-2 my-2 font-bold text-white bg-red-600 rounded hover:opacity-50 disabled:bg-gray-300 disabled:cursor-not-allowed textarea-expandable h-content"
           >
-            Stop
+            <StopIcon className="w-4 h-4" />
           </button>
         </div>
       </form>

@@ -34,6 +34,7 @@ function ChatPage({ params: { id } }: Props) {
     messages,
     input,
     error,
+    isLoading,
     handleInputChange,
     handleSubmit,
     stop,
@@ -99,6 +100,7 @@ function ChatPage({ params: { id } }: Props) {
         llmInput={input}
         llmSubmit={handleSubmit}
         llmHandleInputChange={handleInputChange}
+        llmIsLoading={isLoading}
       />
     </div>
   );
