@@ -6,6 +6,8 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "@/firebase";
 import { PaperAirplaneIcon, StopIcon } from "@heroicons/react/24/solid";
 
+import { useStateContext } from "@/lib/context/stateContext";
+
 // components
 import NewPromptTemplate from "./NewPromptTemplate";
 import NewChatButton from "./NewChatButton";
@@ -23,6 +25,7 @@ type Props = {
       | React.ChangeEvent<HTMLInputElement>
   ) => void;
   llmIsLoading: boolean;
+  llmSetInput: React.Dispatch<React.SetStateAction<string>>;
 };
 
 function ChatInput({
@@ -32,9 +35,14 @@ function ChatInput({
   llmSubmit,
   llmHandleInputChange,
   llmIsLoading,
+  llmSetInput,
 }: Props) {
+  const { userInput, setUserInput } = useStateContext();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { data: session } = useSession();
+
+  console.log("🚀 ~ file: ChatInput.tsx:40 ~ llmInput:", llmInput);
+  console.log("🚀 ~ file: ChatInput.tsx:41 ~ userInput:", userInput);
 
   // Dynamically adjusts the height of a textarea element based on the user's input
   useEffect(() => {
@@ -43,6 +51,16 @@ function ChatInput({
       const scrollHeight = textareaRef.current.scrollHeight;
       textareaRef.current.style.height = scrollHeight + "px";
     }
+  }, [llmInput]);
+
+  useEffect(() => {
+    if (llmInput != userInput) {
+      llmSetInput(userInput);
+    }
+  }, [userInput]);
+
+  useEffect(() => {
+    setUserInput(llmInput);
   }, [llmInput]);
 
   /**
