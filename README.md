@@ -12,6 +12,7 @@ Standing for "Yet Another ChatGPT Frontend," this project stemmed from a persona
 - Dynamic Template Prompts: Create and integrate template prompts, utilizing the {{text}} placeholder for real-time text integration.
 - Real-time Sync: Update and manage prompt details, instantly mirrored on Firebase.
 - Custom Conversational Experience: Dive into advanced settings; fine-tune ChatGPT responses by adjusting parameters like temperature, topP, frequency penalty, and more.
+- Text streaming of responses
 
 ### Technologies Used:
 
