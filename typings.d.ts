@@ -6,11 +6,8 @@ type OpenAIMessage = {
 interface Message {
   content: string | ChatCompletion | {};
   createdAt: admin.firestore.Timestamp;
-
-  user: {
-    _id: string;
-    name: string;
-  };
+  role: "user" | "system" | "assistant";
+  id: string;
 }
 
 interface ChatGPTMessage extends Message {
