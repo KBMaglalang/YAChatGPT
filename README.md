@@ -28,17 +28,12 @@ Initially, Firebase threw me for a loop. Being a PaaS I hadn't ventured into bef
 
 I intend to implement these other features over time:
 
-- [ ] Create folders and groups
-- [ ] Drag and Drop
-- [ ] Implementing search in both Conversations and Prompts
-- [ ] Support external OpenAI API Keys
-- [ ] Implementing pinned Conversations
-- [ ] Change to using streamed responses from OpenAI
+- [x] Change to using streamed responses from OpenAI
 - [ ] Support Import and Export options for both Conversations and Prompts
+- [ ] Implementing search in both Conversations and Prompts
 - [ ] Create checkpoints in conversations where you can return to and try something else
 - [ ] Add voice input
 - [ ] Global shortcuts
-- [ ] etc.
 
 ## Screenshots
 
@@ -46,7 +41,10 @@ I intend to implement these other features over time:
 !['homepage'](doc/2-homepage.png)
 !['chatScreen'](doc/3-chatScreen.png)
 !['settingModal'](doc/4-settingsModal.png)
-!['promptModal'](doc/5-promptModal.png)
+!['promptList'](doc/5-promptList.png)
+!['promptModal'](doc/6-promptModal.png)
+!['conversationList'](doc/7-conversationList.png)
+!['settings'](doc/8-settings.png)
 
 ## How to Install and Run
 
