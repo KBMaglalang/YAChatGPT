@@ -10,15 +10,15 @@ interface Message {
   id: string;
 }
 
-interface ChatGPTMessage extends Message {
-  finish: string | null;
-  model: string | null;
-  promptTokens: number | undefined;
-  completionTokens: number | undefined;
-  totalTokens: number | undefined;
-  temperature: number;
-  topP: number;
-  frequencyPenalty: number;
-  presencePenalty: number;
-  maxTokens: number;
-}
+// interface ChatGPTMessage extends Message {
+//   finish: string | null;
+//   model: string | null;
+//   promptTokens: number | undefined;
+//   completionTokens: number | undefined;
+//   totalTokens: number | undefined;
+//   temperature: number;
+//   topP: number;
+//   frequencyPenalty: number;
+//   presencePenalty: number;
+//   maxTokens: number;
+// }
