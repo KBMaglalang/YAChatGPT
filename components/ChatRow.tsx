@@ -110,7 +110,7 @@ function ChatRow({ id }: Props) {
         <span className="flex-1 md:inline-flex">
           {getDisplayText(chatDoc?.data()?.title) ||
             getDisplayText(
-              messages?.docs[messages?.docs.length - 1]?.data().text
+              messages?.docs[messages?.docs.length - 1]?.data().content
             ) ||
             "New Chat"}
         </span>
