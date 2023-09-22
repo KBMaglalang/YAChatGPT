@@ -5,14 +5,12 @@ import { ArrowDownCircleIcon } from "@heroicons/react/24/outline";
 
 // components
 import Message from "./Message";
-import Loading from "./Loading";
 
 type Props = {
   llmMessages: any;
-  llmIsLoading: boolean;
 };
 
-function Chat({ llmMessages, llmIsLoading }: Props) {
+function Chat({ llmMessages }: Props) {
   // Method to scroll to the bottom of a scrollable div container
   // Reference for the scrollable div
   const scrollContainerRef = useRef<null | HTMLDivElement>(null);
@@ -30,15 +28,8 @@ function Chat({ llmMessages, llmIsLoading }: Props) {
       className="overflow-y-auto overflow-x-hidden flex-1 w-full"
       ref={scrollContainerRef}
     >
-      {/* loading */}
-      {llmIsLoading && (
-        <div className="flex justify-center items-center h-screen">
-          <Loading />
-        </div>
-      )}
-
       {/* cta */}
-      {llmMessages?.empty && (
+      {llmMessages?.length === 0 && (
         <div className="flex flex-col justify-center items-center h-full">
           <p className="mt-10 text-xl font-bold text-center text-white justify">
             Type a prompt below!
