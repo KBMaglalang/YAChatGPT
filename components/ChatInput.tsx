@@ -59,10 +59,8 @@ function ChatInput({
     const message: Message = {
       content: llmInput,
       createdAt: serverTimestamp(),
-      user: {
-        _id: session?.user?.email!,
-        name: "user",
-      },
+      role: "user",
+      id: "",
     };
 
     // Adds a new document to the "messages" collection within a specific chat in the "users" collection of firebase
