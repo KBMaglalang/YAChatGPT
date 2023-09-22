@@ -34,32 +34,15 @@ function ChatPage({ params: { id } }: Props) {
     messages,
     input,
     error,
-    isLoading,
     handleInputChange,
     handleSubmit,
     stop,
     setMessages,
   } = useChat({
     onFinish: async (message) => {
-      const responseMessage = {
-        ...message,
-
-        maxTokens: promptSettings.maxTokens,
-        temperature: promptSettings.temperature,
-        topP: promptSettings.topP,
-        frequencyPenalty: promptSettings.frequencyPenalty,
-        presencePenalty: promptSettings.presencePenalty,
-        modelName: model,
-
-        user: {
-          _id: "assistant",
-          name: "assistant",
-        },
-      };
-
       await addDoc(
         collection(db, "users", session?.user?.email!, "chats", id, "messages"),
-        responseMessage
+        message
       );
     },
 
@@ -73,9 +56,17 @@ function ChatPage({ params: { id } }: Props) {
         modelName: model,
       },
     },
+
+    sendExtraMessageFields: true,
   });
 
-  const [firebaseMessages, firebaseLoading, firebaseError] = useCollection(
+  useEffect(() => {
+    if (error) {
+      toast.error(JSON.parse(error.message).message);
+    }
+  }, [error]);
+
+  const [firebaseMessages, firebaseLoading] = useCollection(
     session &&
       query(
         collection(db, "users", session?.user?.email!, "chats", id, "messages"),
@@ -84,28 +75,22 @@ function ChatPage({ params: { id } }: Props) {
   );
 
   useEffect(() => {
-    if (error) {
-      toast.error(JSON.parse(error.message).message);
-    }
-  }, [error]);
-
-  useEffect(() => {
     if (messages.length == 0 && firebaseMessages?.docs?.length! > 0) {
       const newMessage = firebaseMessages?.docs?.map((doc) => ({
-        content: doc.data().content,
-        role: doc.data().role,
-        createdAt: doc.data().createdAt,
-        id: doc.data().id,
+        content: doc?.data().content,
+        role: doc?.data().role,
+        createdAt: doc?.data().createdAt,
+        id: doc?.data().id,
       }));
 
       setMessages(newMessage as Message[]);
     }
-  }, [firebaseMessages, firebaseLoading]);
+  }, [firebaseLoading]);
 
   return (
     <div className="flex overflow-hidden flex-col items-center w-screen lg:w-2/3">
       {/* chat window */}
-      <Chat llmMessages={messages} llmIsLoading={isLoading} />
+      <Chat llmMessages={messages} />
 
       {/* chat input */}
       <ChatInput
