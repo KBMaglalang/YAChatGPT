@@ -30,8 +30,6 @@ export async function POST(req: Request) {
       );
     }
 
-    // check if user is authenticated
-
     const { stream, handlers } = LangChainStream();
     const llm = new ChatOpenAI({
       streaming: true,

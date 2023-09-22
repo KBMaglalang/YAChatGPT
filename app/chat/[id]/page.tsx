@@ -39,6 +39,7 @@ function ChatPage({ params: { id } }: Props) {
     handleSubmit,
     stop,
     setMessages,
+    setInput,
   } = useChat({
     onFinish: async (message) => {
       await addDoc(
@@ -101,6 +102,7 @@ function ChatPage({ params: { id } }: Props) {
         llmSubmit={handleSubmit}
         llmHandleInputChange={handleInputChange}
         llmIsLoading={isLoading}
+        llmSetInput={setInput}
       />
     </div>
   );
