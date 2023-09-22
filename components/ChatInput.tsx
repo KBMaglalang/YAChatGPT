@@ -41,9 +41,6 @@ function ChatInput({
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { data: session } = useSession();
 
-  console.log("🚀 ~ file: ChatInput.tsx:40 ~ llmInput:", llmInput);
-  console.log("🚀 ~ file: ChatInput.tsx:41 ~ userInput:", userInput);
-
   // Dynamically adjusts the height of a textarea element based on the user's input
   useEffect(() => {
     if (textareaRef.current) {
