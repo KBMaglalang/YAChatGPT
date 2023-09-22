@@ -31,29 +31,6 @@ function Message({ message }: Props) {
 
         {/* message container */}
         <div className="flex flex-col w-full">
-          {/* chatgpt settings for the response */}
-          {/* {isAssistant && (
-            <div className="flex flex-col">
-              <div className="flex flex-wrap justify-between py-2">
-                <span className="messageSettings">{`${message.model}`}</span>
-                <span className="messageSettings">{`Temperature: ${message.temperature}`}</span>
-                <span className="messageSettings">{`Top P: ${message.topP}`}</span>
-                <span className="messageSettings">{`Frequency Penalty: ${message.frequencyPenalty}`}</span>
-                <span className="messageSettings">{`Presence Penalty: ${message.presencePenalty}`}</span>
-              </div>
-
-              <div className="flex flex-wrap justify-between py-2">
-                <span className="messageSettings">{`Prompt Tokens: ${message.promptTokens}`}</span>
-                <span className="messageSettings">{`Completion Tokens: ${message.completionTokens}`}</span>
-                <span className="messageSettings">{`Total Tokens: ${message.totalTokens}`}</span>
-                <span className="messageSettings">{`User Set Max Tokens: ${message.maxTokens}`}</span>
-                <span className="messageSettings">
-                  {`${message.createdAt.toDate().toLocaleString()}`}
-                </span>
-              </div>
-            </div>
-          )} */}
-
           {/* message markdown */}
           <div className="flex flex-col flex-wrap items-center">
             <ReactMarkdown
@@ -63,13 +40,6 @@ function Message({ message }: Props) {
               {message.content}
             </ReactMarkdown>
           </div>
-
-          {/* chatgpt end message */}
-          {/* {isAssistant && (
-            <div className="flex justify-between py-2">
-              <span className="ml-auto messageSettings">{`Finish Reason: ${message.finish}`}</span>
-            </div>
-          )} */}
         </div>
       </div>
     </div>
