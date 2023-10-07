@@ -7,12 +7,20 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      colors: {
+        "brand-white": "#FAFAF8",
+        "brand-black": "#1E1E24",
+        "brand-gold": "#A6873B",
+        "brand-blue": "#243B55",
+        "brand-teal": "#30656E",
+        "brand-chat-area": "#2C2C34",
+        "brand-chat-message": "#3E3E48",
+        "brand-additional-elements": "#4A4A56",
+      },
+      fontFamily: {
+        "brand-roboto": ["var(--font-roboto)"],
       },
     },
+    plugins: [require("@tailwindcss/typography")],
   },
-  plugins: [require("@tailwindcss/typography")],
 };
