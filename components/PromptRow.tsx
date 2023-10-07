@@ -96,7 +96,7 @@ function PromptRow({ id }: Props) {
         <DocumentTextIcon className="w-5 h-5 text-white" />
 
         <span
-          className="flex-1 truncate md:inline-flex"
+          className="flex-1 truncate md:inline-flex font-brand-roboto"
           onClick={handleOnClick}
         >
           {prompts?.data()?.title || "New Prompt"}

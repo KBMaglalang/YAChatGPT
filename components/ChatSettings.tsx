@@ -11,7 +11,7 @@ export default function ChatSettings() {
     <div>
       <div className="chatRow" onClick={() => setModalOpen(true)}>
         <Cog8ToothIcon className="w-4 h-4" />
-        <p className="hidden lg:block">Chat Settings</p>
+        <p className="hidden lg:block font-brand-roboto">Chat Settings</p>
       </div>
 
       {modalOpen && <ChatSettingsModal setModalOpen={setModalOpen} />}

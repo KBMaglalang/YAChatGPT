@@ -130,7 +130,7 @@ function ChatInput({
             value={llmInput}
             onChange={llmHandleInputChange}
             onKeyDown={handleKeyDown}
-            className="flex-1 bg-transparent resize-none focus:outline-none disabled:cursor-not-allowed disabled:text-gray-300"
+            className="flex-1 bg-transparent resize-none font-brand-roboto focus:outline-none disabled:cursor-not-allowed disabled:text-gray-300"
             placeholder="Type your message here... (CTRL + ENTER to send)"
           />
         </div>
@@ -140,14 +140,14 @@ function ChatInput({
           <button
             type="submit"
             disabled={!session || !llmInput}
-            className="px-4 py-2 font-bold text-white bg-indigo-600 rounded hover:opacity-50 disabled:bg-gray-300 disabled:cursor-not-allowed textarea-expandable h-content"
+            className="px-4 py-2 font-bold text-white bg-indigo-600 rounded font-brand-roboto hover:opacity-50 disabled:bg-gray-300 disabled:cursor-not-allowed textarea-expandable h-content"
           >
             <PaperAirplaneIcon className="w-4 h-4 -rotate-45" />
           </button>
           <button
             disabled={!session || !llmIsLoading}
             onClick={llmStop}
-            className="px-4 py-2 my-2 font-bold text-white bg-red-600 rounded hover:opacity-50 disabled:bg-gray-300 disabled:cursor-not-allowed textarea-expandable h-content"
+            className="px-4 py-2 my-2 font-bold text-white bg-red-600 rounded font-brand-roboto hover:opacity-50 disabled:bg-gray-300 disabled:cursor-not-allowed textarea-expandable h-content"
           >
             <StopIcon className="w-4 h-4" />
           </button>

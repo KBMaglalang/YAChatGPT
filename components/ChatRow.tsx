@@ -107,7 +107,7 @@ function ChatRow({ id }: Props) {
         className={`chatRow justify-center ${active && "bg-gray-700/50"}`}
       >
         <ChatBubbleLeftIcon className="w-5 h-5" />
-        <span className="flex-1 md:inline-flex">
+        <span className="flex-1 md:inline-flex font-brand-roboto">
           {getDisplayText(chatDoc?.data()?.title) ||
             getDisplayText(
               messages?.docs[messages?.docs.length - 1]?.data().content

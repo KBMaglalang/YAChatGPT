@@ -26,7 +26,9 @@ function SettingsModal({ setModalOpen, signOut }: Props) {
           {/* settings input or logout */}
           <div className="mt-3">
             <div className="flex flex-col mt-2 text-center">
-              <h4 className="mb-2 text-xl font-bold text-white">Settings</h4>
+              <h4 className="mb-2 text-xl font-bold text-white font-brand-roboto">
+                Settings
+              </h4>
 
               {/* api input key */}
               {/* <div className="flex flex-row justify-between items-center mt-2 w-full">
@@ -42,9 +44,11 @@ function SettingsModal({ setModalOpen, signOut }: Props) {
 
               {/* logout */}
               <div className="flex flex-row justify-between items-center mt-2 w-full">
-                <span className="text-xl font-bold text-white">Logout</span>
+                <span className="text-xl font-bold text-white font-brand-roboto">
+                  Logout
+                </span>
                 <button
-                  className="mt-2 p-2.5  text-white bg-red-600 rounded-md outline-none ring-offset-2 focus:ring-2 hover:bg-red-900"
+                  className="mt-2 p-2.5  text-white bg-red-600 rounded-md outline-none ring-offset-2 focus:ring-2 hover:bg-red-900 font-brand-roboto"
                   onClick={() => signOut()}
                 >
                   Logout
@@ -62,7 +66,7 @@ function SettingsModal({ setModalOpen, signOut }: Props) {
               Accept
             </button> */}
             <button
-              className="w-full mt-2 p-2.5 flex-1 text-white rounded-md outline-none border ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
+              className="font-brand-roboto w-full mt-2 p-2.5 flex-1 text-white rounded-md outline-none border ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
               onClick={(e) => setModalOpen(false)}
             >
               Exit

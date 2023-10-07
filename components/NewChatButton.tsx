@@ -10,7 +10,7 @@ function NewChatButton() {
     <div>
       <div className="chatRow" onClick={() => setModalOpen(true)}>
         <PlusIcon className="w-4 h-4" />
-        <p className="hidden lg:block">Chat</p>
+        <p className="hidden lg:block font-brand-roboto">Chat</p>
       </div>
 
       {modalOpen && <NewChatModal setModalOpen={setModalOpen} />}

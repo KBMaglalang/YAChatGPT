@@ -34,7 +34,7 @@ function Message({ message }: Props) {
           {/* message markdown */}
           <div className="flex flex-col flex-wrap items-center">
             <ReactMarkdown
-              className="pt-2 w-full max-w-4xl text-white break-words prose flex-shrink-1"
+              className="pt-2 w-full max-w-4xl text-white break-words prose flex-shrink-1 font-brand-roboto"
               remarkPlugins={[remarkGfm]}
             >
               {message.content}

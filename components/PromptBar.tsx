@@ -45,7 +45,7 @@ function PromptBar() {
       {/* cta */}
       {prompts?.empty && isOpen && (
         <div className="flex flex-col justify-end items-center h-full">
-          <div className="hidden text-xl font-bold text-white truncate md:inline-flex">
+          <div className="hidden text-xl font-bold text-white truncate md:inline-flex font-brand-roboto">
             Create New Prompt
           </div>
           <div className="flex justify-center items-center mt-5">

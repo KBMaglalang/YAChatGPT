@@ -26,7 +26,7 @@ function SettingsRow() {
     <div>
       <div className="chatRow" onClick={() => setModalOpen(true)}>
         <UserIcon className="w-4 h-4" />
-        <p className="hidden lg:block">User</p>
+        <p className="hidden font-medium lg:block font-brand-roboto">User</p>
       </div>
 
       {modalOpen && (

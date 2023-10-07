@@ -24,7 +24,7 @@ function ModelSelection() {
         options={models?.modelOptions}
         isLoading={isLoading}
         menuPosition="fixed"
-        className="mt-2"
+        className="mt-2 font-brand-roboto"
         styles={{
           control: (baseStyles) => ({
             ...baseStyles,

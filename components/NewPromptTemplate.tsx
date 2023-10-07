@@ -12,7 +12,7 @@ function NewPromptTemplate() {
       {/* new prompt button */}
       <div onClick={() => setModalOpen(true)} className="chatRow">
         <BookOpenIcon className="w-4 h-4" />
-        <span className="hidden lg:block">New Prompt</span>
+        <span className="hidden lg:block font-brand-roboto">New Prompt</span>
       </div>
 
       {/* prompt modal */}
