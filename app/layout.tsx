@@ -38,7 +38,7 @@ export default async function RootLayout({
             <Login />
           ) : (
             <StateProvider>
-              <div className="flex justify-center w-screen h-full md:h-screen">
+              <div className="flex justify-center w-screen h-screen">
                 {/* client provider - notification  */}
                 <ClientProvider />
                 {children}
