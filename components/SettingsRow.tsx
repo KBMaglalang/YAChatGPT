@@ -23,10 +23,12 @@ function SettingsRow() {
   };
 
   return (
-    <div>
-      <div className="chatRow" onClick={() => setModalOpen(true)}>
+    <div className="">
+      <div
+        className="p-4 font-bold text-white bg-indigo-600 rounded font-brand-roboto hover:opacity-50 disabled:bg-gray-300 disabled:cursor-not-allowed textarea-expandable h-content"
+        onClick={() => setModalOpen(true)}
+      >
         <UserIcon className="w-4 h-4" />
-        <p className="hidden font-medium lg:block font-brand-roboto">User</p>
       </div>
 
       {modalOpen && (
