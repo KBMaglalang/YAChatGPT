@@ -30,11 +30,6 @@ function ChatRow({ id }: Props) {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalDeleteOpen, setModalDeleteOpen] = useState(false);
 
-  // get subcollection of messages
-  const [messages, loading, error] = useCollection(
-    collection(db, "users", session?.user?.email!, "chats", id, "messages")
-  );
-
   // get document fields from firebase
   const [chatDoc, chatLoading, chatError] = useDocument(
     doc(db, "users", session?.user?.email!, "chats", id)
@@ -108,11 +103,7 @@ function ChatRow({ id }: Props) {
       >
         <ChatBubbleLeftIcon className="w-5 h-5" />
         <span className="flex-1 md:inline-flex font-brand-roboto">
-          {getDisplayText(chatDoc?.data()?.title) ||
-            getDisplayText(
-              messages?.docs[messages?.docs.length - 1]?.data().content
-            ) ||
-            "New Chat"}
+          {getDisplayText(chatDoc?.data()?.title) || "New Chat"}
         </span>
         <PencilSquareIcon
           onClick={modalEditCallback}

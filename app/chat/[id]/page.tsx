@@ -3,10 +3,11 @@
 import React, { useEffect } from "react";
 import { useChat, Message } from "ai/react";
 import { useSession } from "next-auth/react";
-import { useCollection } from "react-firebase-hooks/firestore";
-import { orderBy, query, addDoc, collection } from "firebase/firestore";
+import { useCollection, useDocument } from "react-firebase-hooks/firestore";
+import { orderBy, query, addDoc, collection, doc } from "firebase/firestore";
 import useSWR from "swr";
 import { toast } from "react-hot-toast";
+import { MagnifyingGlassCircleIcon } from "@heroicons/react/24/outline";
 
 import { useStateContext } from "@/lib/context/stateContext";
 import { CHATGPT_DEFAULT } from "@/lib/constants";
@@ -18,6 +19,7 @@ import Chat from "@/components/Chat";
 import ChatInput from "@/components/ChatInput";
 import SideBar from "@/components/SideBar";
 import PromptBar from "@/components/PromptBar";
+import { getDisplayText } from "@/lib/displayTextLimit";
 
 type Props = {
   params: {
@@ -32,6 +34,7 @@ function ChatPage({ params: { id } }: Props) {
     fallbackData: CHATGPT_DEFAULT,
   });
   const { data: session } = useSession();
+
   const { promptSettings } = useStateContext();
   const {
     messages,
@@ -71,6 +74,11 @@ function ChatPage({ params: { id } }: Props) {
     }
   }, [error]);
 
+  // get document fields from firebase
+  const [chatDoc, chatLoading, chatError] = useDocument(
+    session && doc(db, "users", session?.user?.email!, "chats", id)
+  );
+
   const [firebaseMessages, firebaseLoading] = useCollection(
     session &&
       query(
@@ -96,10 +104,15 @@ function ChatPage({ params: { id } }: Props) {
     <div className="container flex flex-col my-8 w-full">
       <div className="flex justify-between space-x-4 text-brand-white">
         <div className="p-4 w-9/12 rounded-xl bg-brand-additional-elements">
-          title
+          {getDisplayText(chatDoc?.data()?.title) || "New Chat"}
         </div>
-        <div className="p-4 w-3/12 rounded-xl bg-brand-additional-elements">
-          search
+        <div className="flex flex-row p-4 w-3/12 rounded-xl bg-brand-additional-elements">
+          <MagnifyingGlassCircleIcon className="mr-2 w-6 h-6" />
+          <input
+            type="text"
+            className="flex-1 px-4 rounded bg-brand-additional-elements focus:outline-none"
+            placeholder="Search - Coming Soon"
+          />
         </div>
       </div>
 
