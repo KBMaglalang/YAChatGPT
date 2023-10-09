@@ -10,9 +10,6 @@ const roboto = Roboto({
   variable: "--font-roboto",
 });
 
-// components
-import Login from "@/components/Login";
-
 import { SessionProvider } from "@/components/SessionProvider";
 import { StateProvider } from "@/lib/context/stateContext";
 import ClientProvider from "@/components/ClientProvider";
@@ -33,19 +30,14 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`${roboto.variable}  font-sans`}>
-        <SessionProvider session={session}>
-          {!session ? (
-            <Login />
-          ) : (
-            <StateProvider>
-              <div className="flex justify-center w-screen h-screen">
-                {/* client provider - notification  */}
-                <ClientProvider />
-
-                {children}
-              </div>
-            </StateProvider>
-          )}
+        <SessionProvider>
+          <StateProvider>
+            <div className="flex justify-center w-screen h-screen">
+              {/* client provider - notification  */}
+              <ClientProvider />
+              {children}
+            </div>
+          </StateProvider>
         </SessionProvider>
       </body>
     </html>

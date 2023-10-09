@@ -1,7 +1,11 @@
 import React from "react";
+import { getServerSession } from "next-auth";
+
+import { authOptions } from "@/lib/auth/auth";
 
 // components
 import BaseLayout from "@/components/BaseLayout";
+import Login from "@/components/Login";
 
 import {
   HOMEPAGE_CONVERSATION_TITLE,
@@ -10,25 +14,38 @@ import {
   HOMEPAGE_PROMPT_DESCRIPTION,
 } from "@/lib/constants";
 
-function HomePage() {
+async function HomePage() {
+  const session = await getServerSession(authOptions);
+
   return (
     <BaseLayout layoutTitle={"YAChatGPT"}>
       <div className="flex flex-col justify-center items-center px-2 text-white lg:overflow-hidden">
         <div className="p-4 m-4 w-full rounded-xl bg-brand-additional-elements md:w-1/2 shadow-gray-700">
-          <h2 className="mb-4 text-3xl font-medium font-brand-roboto">
+          <h2 className="mb-4 text-3xl font-medium text-center font-brand-roboto">
             {HOMEPAGE_CONVERSATION_TITLE}
           </h2>
-          <p className="font-brand-roboto">
+          <p className="text-center font-brand-roboto">
             {HOMEPAGE_CONVERSATION_DESCRIPTION}
           </p>
         </div>
 
         <div className="p-4 m-4 w-full rounded-xl bg-brand-additional-elements md:w-1/2 shadow-gray-700">
-          <h2 className="mb-4 text-3xl font-medium font-brand-roboto">
+          <h2 className="mb-4 text-3xl font-medium text-center font-brand-roboto">
             {HOMEPAGE_PROMPT_TITLE}
           </h2>
-          <p className="font-brand-roboto">{HOMEPAGE_PROMPT_DESCRIPTION}</p>
+          <p className="text-center font-brand-roboto">
+            {HOMEPAGE_PROMPT_DESCRIPTION}
+          </p>
         </div>
+
+        {!session && (
+          <div className="p-4 m-4 w-full rounded-xl bg-brand-additional-elements md:w-1/2 shadow-gray-700">
+            <h2 className="mb-4 text-2xl font-medium text-center font-brand-roboto">
+              Login or Create an Account to Start
+            </h2>
+            <Login />
+          </div>
+        )}
       </div>
     </BaseLayout>
   );

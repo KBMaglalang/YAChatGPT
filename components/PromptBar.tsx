@@ -28,6 +28,13 @@ function PromptBar() {
     <div
       className={`flex flex-col p-4 h-full rounded bg-brand-additional-elements`}
     >
+      {/* no session */}
+      {!session && (
+        <div className="flex flex-col justify-center items-center mt-4 h-full text-xl font-bold text-white font-brand-roboto">
+          <span>Sign In</span>
+        </div>
+      )}
+
       {/* prompts loading from firebase */}
       {loading && isOpen && (
         <div className="flex justify-center items-center mt-4 h-full">
@@ -60,14 +67,16 @@ function PromptBar() {
         </div>
       )}
 
-      <div className={`flex flex-row mt-auto space-x-2 w-full`}>
-        {/* new prompt button */}
-        {isOpen && (
-          <div className="flex-1">
-            <CreateNewPromptButton />
-          </div>
-        )}
-      </div>
+      {session && (
+        <div className={`flex flex-row mt-auto space-x-2 w-full`}>
+          {/* new prompt button */}
+          {isOpen && (
+            <div className="flex-1">
+              <CreateNewPromptButton />
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }

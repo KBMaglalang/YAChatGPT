@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { useChat, Message } from "ai/react";
 import { useSession } from "next-auth/react";
 import { useCollection, useDocument } from "react-firebase-hooks/firestore";
@@ -30,9 +31,10 @@ function ChatPage({ params: { id } }: Props) {
   const { data: model } = useSWR("model", {
     fallbackData: CHATGPT_DEFAULT,
   });
-  const { data: session } = useSession();
-
   const { promptSettings } = useStateContext();
+  const { data: session } = useSession();
+  const router = useRouter();
+
   const {
     messages,
     input,
@@ -64,6 +66,12 @@ function ChatPage({ params: { id } }: Props) {
 
     sendExtraMessageFields: true,
   });
+
+  useEffect(() => {
+    if (!session) {
+      router.replace("/");
+    }
+  }, []);
 
   useEffect(() => {
     if (error) {

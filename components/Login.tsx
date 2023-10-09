@@ -6,21 +6,12 @@ import Image from "next/image";
 
 function Login() {
   return (
-    <div className="bg-[#212121] h-screen flex flex-col items-center justify-center text-center">
+    <div className="flex flex-col justify-center items-center text-center">
       <div
-        className="flex flex-col justify-center items-center p-4 animate-pulse cursor-pointer hover:shadow-2xl hover:shadow-gray-700 hover:rounded-2xl"
+        className="flex flex-col justify-center items-center p-4 rounded-2xl transition-all duration-200 ease-out cursor-pointer hover:shadow-2xl"
         onClick={() => signIn("google")}
       >
-        <Image
-          src={"/assets/images/brain.png"}
-          width={200}
-          height={200}
-          alt="logo"
-          className="scale-[1.5]"
-        />
-        <div className="m-4 text-3xl font-bold text-[#363636] animate-pulse">
-          Sign In
-        </div>
+        <div className="m-4 text-3xl font-bold text-brand-white">Sign In</div>
       </div>
     </div>
   );
