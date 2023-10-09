@@ -14,15 +14,15 @@ export default function BaseLayout({ children, layoutTitle }: Props) {
   return (
     <div className="container flex flex-col my-8 w-full">
       <div className="flex justify-between space-x-4 text-brand-white">
-        <div className="overflow-hidden p-4 w-9/12 rounded-xl bg-brand-additional-elements">
+        <div className="flex overflow-hidden flex-1 p-4 rounded-xl bg-brand-additional-elements">
           {/* {chatDoc?.data()?.title || "New Chat"} */}
           {layoutTitle}
         </div>
         <div className="flex flex-row p-4 rounded-xl bg-brand-additional-elements">
-          <MagnifyingGlassCircleIcon className="mr-2 w-6 h-6" />
+          <MagnifyingGlassCircleIcon className="w-6 h-6" />
           <input
             type="text"
-            className="flex px-4 rounded bg-brand-additional-elements focus:outline-none"
+            className="hidden px-4 ml-2 rounded bg-brand-additional-elements focus:outline-none lg:block"
             placeholder="Search - Coming Soon"
           />
         </div>
