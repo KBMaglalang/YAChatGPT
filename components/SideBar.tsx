@@ -40,7 +40,7 @@ function SideBar() {
 
       {/* cta */}
       {chats?.empty && (
-        <div className="flex flex-col justify-end items-center mt-6 h-full">
+        <div className="flex flex-col justify-center items-center mt-6 h-full">
           <ArrowUpCircleIcon className="mx-auto mt-5 w-10 h-10 text-white animate-bounce" />
           <p className="hidden text-xl font-bold text-white truncate md:inline-flex font-brand-roboto">
             Create New Chats
