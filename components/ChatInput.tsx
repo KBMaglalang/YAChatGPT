@@ -13,6 +13,8 @@ import NewPromptTemplate from "./NewPromptTemplate";
 import NewChatButton from "./NewChatButton";
 import SettingsRow from "./SettingsRow";
 import ChatSettings from "./ChatSettings";
+import UserSendButton from "./UserSendButton";
+import UserStopButton from "./UserStopButton";
 
 type Props = {
   chatId: string;
@@ -110,15 +112,7 @@ function ChatInput({
   };
 
   return (
-    <div className="px-4 w-full text-sm text-white rounded-t-xl bg-gray-700/50">
-      {/* modal bar */}
-      <div className="flex flex-grow justify-around mt-4">
-        <SettingsRow />
-        <NewChatButton />
-        <ChatSettings />
-        <NewPromptTemplate />
-      </div>
-
+    <div className="px-4 mt-4 w-full text-sm text-white rounded-t-xl bg-gray-700/50">
       {/* input */}
       {/* <form onSubmit={sendMessage} className="flex p-5 space-x-5"> */}
       <form onSubmit={sendMessage} className="flex p-5 space-x-5">
@@ -135,22 +129,16 @@ function ChatInput({
           />
         </div>
 
-        {/* send button */}
-        <div className="flex flex-col justify-end">
-          <button
-            type="submit"
-            disabled={!session || !llmInput}
-            className="px-4 py-2 font-bold text-white bg-indigo-600 rounded font-brand-roboto hover:opacity-50 disabled:bg-gray-300 disabled:cursor-not-allowed textarea-expandable h-content"
-          >
-            <PaperAirplaneIcon className="w-4 h-4 -rotate-45" />
-          </button>
-          <button
-            disabled={!session || !llmIsLoading}
-            onClick={llmStop}
-            className="px-4 py-2 my-2 font-bold text-white bg-red-600 rounded font-brand-roboto hover:opacity-50 disabled:bg-gray-300 disabled:cursor-not-allowed textarea-expandable h-content"
-          >
-            <StopIcon className="w-4 h-4" />
-          </button>
+        {/* user control buttons */}
+        <div className="flex flex-wrap gap-4 justify-end w-1/6">
+          <UserSendButton session={session} llmInput={llmInput} />
+          <UserStopButton
+            session={session}
+            llmIsLoading={llmIsLoading}
+            llmStop={llmStop}
+          />
+          <ChatSettings />
+          <SettingsRow />
         </div>
       </form>
     </div>
