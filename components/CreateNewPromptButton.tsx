@@ -36,7 +36,7 @@ function CreateNewPromptButton() {
       {/* new prompt button */}
       <div
         onClick={() => setModalOpen(true)}
-        className="chatRow font-brand-roboto"
+        className="createNewButton font-brand-roboto"
       >
         <PlusIcon className="w-4 h-4" />
         <span>New Prompt</span>
