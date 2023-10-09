@@ -11,10 +11,13 @@ import { toast } from "react-hot-toast";
 import { useStateContext } from "@/lib/context/stateContext";
 import { CHATGPT_DEFAULT } from "@/lib/constants";
 
+import { db } from "@/firebase";
+
 // components
 import Chat from "@/components/Chat";
 import ChatInput from "@/components/ChatInput";
-import { db } from "@/firebase";
+import SideBar from "@/components/SideBar";
+import PromptBar from "@/components/PromptBar";
 
 type Props = {
   params: {
@@ -90,20 +93,41 @@ function ChatPage({ params: { id } }: Props) {
   }, [firebaseLoading]);
 
   return (
-    <div className="flex overflow-hidden flex-col items-center w-screen lg:w-2/3">
-      {/* chat window */}
-      <Chat llmMessages={messages} />
+    <div className="container flex flex-col my-8 w-full">
+      <div className="flex justify-between space-x-4 text-brand-white">
+        <div className="p-4 w-9/12 rounded-xl bg-brand-additional-elements">
+          title
+        </div>
+        <div className="p-4 w-3/12 rounded-xl bg-brand-additional-elements">
+          search
+        </div>
+      </div>
 
-      {/* chat input */}
-      <ChatInput
-        chatId={id}
-        llmStop={stop}
-        llmInput={input}
-        llmSubmit={handleSubmit}
-        llmHandleInputChange={handleInputChange}
-        llmIsLoading={isLoading}
-        llmSetInput={setInput}
-      />
+      <div className="container flex overflow-hidden flex-row gap-2 mt-8 h-full rounded-xl bg-brand-chat-area">
+        <div className="w-1/6">
+          <SideBar />
+        </div>
+
+        <div className="flex flex-col flex-grow">
+          {/* chat window */}
+          <Chat llmMessages={messages} />
+
+          {/* chat input */}
+          <ChatInput
+            chatId={id}
+            llmStop={stop}
+            llmInput={input}
+            llmSubmit={handleSubmit}
+            llmHandleInputChange={handleInputChange}
+            llmIsLoading={isLoading}
+            llmSetInput={setInput}
+          />
+        </div>
+
+        <div className="w-1/6">
+          <PromptBar />
+        </div>
+      </div>
     </div>
   );
 }

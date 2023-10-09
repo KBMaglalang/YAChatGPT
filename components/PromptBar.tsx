@@ -25,16 +25,9 @@ function PromptBar() {
   );
 
   return (
-    <div className={`flex flex-col p-2`}>
-      <div className={`flex flex-row mt-auto space-x-2 w-full`}>
-        {/* new prompt button */}
-        {isOpen && (
-          <div className="flex-1">
-            <CreateNewPromptButton />
-          </div>
-        )}
-      </div>
-
+    <div
+      className={`flex flex-col p-4 h-full rounded bg-brand-additional-elements`}
+    >
       {/* prompts loading from firebase */}
       {loading && isOpen && (
         <div className="flex justify-center mt-4">
@@ -45,7 +38,7 @@ function PromptBar() {
       {/* cta */}
       {prompts?.empty && isOpen && (
         <div className="flex flex-col justify-end items-center h-full">
-          <div className="hidden text-xl font-bold text-white truncate md:inline-flex">
+          <div className="hidden text-xl font-bold text-white truncate md:inline-flex font-brand-roboto">
             Create New Prompt
           </div>
           <div className="flex justify-center items-center mt-5">
@@ -66,6 +59,15 @@ function PromptBar() {
           </div>
         </div>
       )}
+
+      <div className={`flex flex-row mt-auto space-x-2 w-full`}>
+        {/* new prompt button */}
+        {isOpen && (
+          <div className="flex-1">
+            <CreateNewPromptButton />
+          </div>
+        )}
+      </div>
     </div>
   );
 }

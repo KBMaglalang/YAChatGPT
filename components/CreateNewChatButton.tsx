@@ -30,7 +30,7 @@ function CreateNewChatButton() {
   };
 
   return (
-    <div onClick={createNewChat} className="chatRow">
+    <div onClick={createNewChat} className="createNewButton font-brand-roboto">
       <PlusIcon className="w-4 h-4" />
       <span>New Chat</span>
     </div>

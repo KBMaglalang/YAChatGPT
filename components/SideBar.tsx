@@ -28,14 +28,9 @@ function SideBar() {
   );
 
   return (
-    <div className={`flex flex-col p-2`}>
-      <div className={`flex flex-row mt-auto space-x-2 w-full`}>
-        {/* new chat */}
-        <div className="flex-1">
-          <CreateNewChatButton />
-        </div>
-      </div>
-
+    <div
+      className={`flex flex-col p-4 h-full rounded bg-brand-additional-elements`}
+    >
       {/* loading */}
       {loading && (
         <div className="flex justify-center mt-4">
@@ -47,7 +42,7 @@ function SideBar() {
       {chats?.empty && (
         <div className="flex flex-col justify-end items-center mt-6 h-full">
           <ArrowUpCircleIcon className="mx-auto mt-5 w-10 h-10 text-white animate-bounce" />
-          <p className="hidden text-xl font-bold text-white truncate md:inline-flex">
+          <p className="hidden text-xl font-bold text-white truncate md:inline-flex font-brand-roboto">
             Create New Chats
           </p>
         </div>
@@ -59,6 +54,13 @@ function SideBar() {
           {/* map through the chatRows */}
           {!chats?.empty &&
             chats?.docs.map((chat) => <ChatRow key={chat.id} id={chat.id} />)}
+        </div>
+      </div>
+
+      <div className={`flex flex-row mt-auto space-x-2 w-full`}>
+        {/* new chat */}
+        <div className="flex-1">
+          <CreateNewChatButton />
         </div>
       </div>
     </div>

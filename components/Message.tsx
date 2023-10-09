@@ -12,9 +12,7 @@ function Message({ message }: Props) {
   const isAssistant = message.role === "assistant";
 
   return (
-    <div
-      className={`py-5 text-white ${isAssistant && "bg-[#434654] rounded-xl"}`}
-    >
+    <div className={`py-5 text-white rounded-xl bg-brand-chat-message`}>
       <div className="flex px-10 mx-auto space-x-5">
         {/* user and chatgpt icons */}
         {isAssistant ? (
@@ -34,7 +32,7 @@ function Message({ message }: Props) {
           {/* message markdown */}
           <div className="flex flex-col flex-wrap items-center">
             <ReactMarkdown
-              className="pt-2 w-full max-w-4xl text-white break-words prose flex-shrink-1"
+              className="pt-2 w-full max-w-4xl text-white break-words prose flex-shrink-1 font-brand-roboto"
               remarkPlugins={[remarkGfm]}
             >
               {message.content}

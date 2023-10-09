@@ -8,7 +8,7 @@ function Login() {
   return (
     <div className="bg-[#212121] h-screen flex flex-col items-center justify-center text-center">
       <div
-        className="flex flex-col items-center justify-center p-4 cursor-pointer animate-pulse hover:shadow-2xl hover:shadow-gray-700 hover:rounded-2xl"
+        className="flex flex-col justify-center items-center p-4 animate-pulse cursor-pointer hover:shadow-2xl hover:shadow-gray-700 hover:rounded-2xl"
         onClick={() => signIn("google")}
       >
         <Image

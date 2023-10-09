@@ -31,7 +31,7 @@ function Chat({ llmMessages }: Props) {
       {/* cta */}
       {llmMessages?.length === 0 && (
         <div className="flex flex-col justify-center items-center h-full">
-          <p className="mt-10 text-xl font-bold text-center text-white justify">
+          <p className="mt-10 text-xl font-bold text-center text-white justify font-brand-roboto">
             Type a prompt below!
           </p>
           <div className="flex justify-center items-center mt-5">
@@ -41,9 +41,11 @@ function Chat({ llmMessages }: Props) {
       )}
 
       {/* messages */}
-      {llmMessages?.map((message: Message) => (
-        <Message key={message.createdAt} message={message} />
-      ))}
+      <div className="space-y-4">
+        {llmMessages?.map((message: Message) => (
+          <Message key={message.createdAt} message={message} />
+        ))}
+      </div>
     </div>
   );
 }
