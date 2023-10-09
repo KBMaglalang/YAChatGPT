@@ -7,7 +7,6 @@ import { useCollection, useDocument } from "react-firebase-hooks/firestore";
 import { orderBy, query, addDoc, collection, doc } from "firebase/firestore";
 import useSWR from "swr";
 import { toast } from "react-hot-toast";
-import { MagnifyingGlassCircleIcon } from "@heroicons/react/24/outline";
 
 import { useStateContext } from "@/lib/context/stateContext";
 import { CHATGPT_DEFAULT } from "@/lib/constants";
@@ -17,9 +16,7 @@ import { db } from "@/firebase";
 // components
 import Chat from "@/components/Chat";
 import ChatInput from "@/components/ChatInput";
-import SideBar from "@/components/SideBar";
-import PromptBar from "@/components/PromptBar";
-import { getDisplayText } from "@/lib/displayTextLimit";
+import BaseLayout from "@/components/BaseLayout";
 
 type Props = {
   params: {
@@ -101,47 +98,21 @@ function ChatPage({ params: { id } }: Props) {
   }, [firebaseLoading]);
 
   return (
-    <div className="container flex flex-col my-8 w-full">
-      <div className="flex justify-between space-x-4 text-brand-white">
-        <div className="overflow-hidden p-4 w-9/12 rounded-xl bg-brand-additional-elements">
-          {chatDoc?.data()?.title || "New Chat"}
-        </div>
-        <div className="flex flex-row p-4 w-3/12 rounded-xl bg-brand-additional-elements">
-          <MagnifyingGlassCircleIcon className="mr-2 w-6 h-6" />
-          <input
-            type="text"
-            className="flex-1 px-4 rounded bg-brand-additional-elements focus:outline-none"
-            placeholder="Search - Coming Soon"
-          />
-        </div>
-      </div>
+    <BaseLayout layoutTitle={chatDoc?.data()?.title || "New Chat"}>
+      {/* chat window */}
+      <Chat llmMessages={messages} />
 
-      <div className="container flex overflow-hidden flex-row gap-2 mt-8 h-full rounded-xl bg-brand-chat-area">
-        <div className="w-2/12">
-          <SideBar />
-        </div>
-
-        <div className="flex flex-col flex-grow w-8/12">
-          {/* chat window */}
-          <Chat llmMessages={messages} />
-
-          {/* chat input */}
-          <ChatInput
-            chatId={id}
-            llmStop={stop}
-            llmInput={input}
-            llmSubmit={handleSubmit}
-            llmHandleInputChange={handleInputChange}
-            llmIsLoading={isLoading}
-            llmSetInput={setInput}
-          />
-        </div>
-
-        <div className="w-2/12">
-          <PromptBar />
-        </div>
-      </div>
-    </div>
+      {/* chat input */}
+      <ChatInput
+        chatId={id}
+        llmStop={stop}
+        llmInput={input}
+        llmSubmit={handleSubmit}
+        llmHandleInputChange={handleInputChange}
+        llmIsLoading={isLoading}
+        llmSetInput={setInput}
+      />
+    </BaseLayout>
   );
 }
 
