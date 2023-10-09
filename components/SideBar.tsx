@@ -7,7 +7,7 @@ import React from "react";
 import { useSession } from "next-auth/react";
 import { collection, orderBy, query } from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore"; // ! setups a real time connection to the firebase database
-import { ArrowUpCircleIcon } from "@heroicons/react/24/outline";
+import { ArrowDownCircleIcon } from "@heroicons/react/24/outline";
 
 import { db } from "@/firebase";
 
@@ -40,8 +40,8 @@ function SideBar() {
 
       {/* cta */}
       {chats?.empty && (
-        <div className="flex flex-col justify-end items-center mt-6 h-full">
-          <ArrowUpCircleIcon className="mx-auto mt-5 w-10 h-10 text-white animate-bounce" />
+        <div className="flex flex-col justify-center items-center mt-6 h-full">
+          <ArrowDownCircleIcon className="mx-auto mt-5 w-10 h-10 text-white animate-bounce" />
           <p className="hidden text-xl font-bold text-white truncate md:inline-flex font-brand-roboto">
             Create New Chats
           </p>
