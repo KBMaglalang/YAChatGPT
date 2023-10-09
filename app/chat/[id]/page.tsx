@@ -104,11 +104,11 @@ function ChatPage({ params: { id } }: Props) {
       </div>
 
       <div className="container flex overflow-hidden flex-row gap-2 mt-8 h-full rounded-xl bg-brand-chat-area">
-        <div className="w-1/6">
+        <div className="w-2/12">
           <SideBar />
         </div>
 
-        <div className="flex flex-col flex-grow">
+        <div className="flex flex-col flex-grow w-8/12">
           {/* chat window */}
           <Chat llmMessages={messages} />
 
@@ -124,7 +124,7 @@ function ChatPage({ params: { id } }: Props) {
           />
         </div>
 
-        <div className="w-1/6">
+        <div className="w-2/12">
           <PromptBar />
         </div>
       </div>
