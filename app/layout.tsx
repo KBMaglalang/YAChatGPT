@@ -41,6 +41,7 @@ export default async function RootLayout({
               <div className="flex justify-center w-screen h-screen">
                 {/* client provider - notification  */}
                 <ClientProvider />
+
                 {children}
               </div>
             </StateProvider>

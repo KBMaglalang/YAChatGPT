@@ -30,7 +30,7 @@ function PromptBar() {
     >
       {/* prompts loading from firebase */}
       {loading && isOpen && (
-        <div className="flex justify-center mt-4">
+        <div className="flex justify-center items-center mt-4 h-full">
           <Loading />
         </div>
       )}
