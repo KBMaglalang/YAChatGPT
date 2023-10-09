@@ -2,29 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
 /* set root background color to black */
 :root {
   background-color: #1E1E24;
-}
-
-/* custom utilities classes with tailwind */
-@layer components {
-  .infoText {
-    @apply p-4 bg-gray-700/50 rounded-lg max-w-[300px]
-  }
-
-  .chatRow {
-    @apply border-gray-700 border-2 rounded-lg px-5 py-3 text-sm flex items-center justify-center space-x-2 hover:bg-indigo-600 cursor-pointer text-white transition-all duration-200 ease-out
-  }
-
-  .messageSettings {
-    @apply text-xs text-gray-400
-  }
-
-  .createNewButton{
-    @apply bg-brand-chat-area border-gray-700 border-2 rounded-2xl px-5 py-3 text-sm flex items-center justify-center space-x-2 hover:bg-indigo-600 cursor-pointer text-white transition-all duration-200 ease-out
-  }
 }
 
 .prose img {
@@ -64,3 +44,19 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #ffffff6e;
 }
+
+/* custom utilities classes with tailwind */
+@layer components {
+  .chatRow {
+    @apply bg-brand-chat-message border-gray-700 border-2 rounded-lg px-5 py-3 text-sm flex items-center justify-center space-x-2 hover:bg-indigo-600 cursor-pointer text-brand-white transition-all duration-200 ease-out
+  }
+
+  .messageSettings {
+    @apply text-xs text-gray-400
+  }
+
+  .createNewButton{
+    @apply bg-brand-chat-area border-gray-700 border-2 rounded-2xl px-5 py-3 text-sm flex items-center justify-center space-x-2 hover:bg-indigo-600 cursor-pointer text-white transition-all duration-200 ease-out
+  }
+}
+
