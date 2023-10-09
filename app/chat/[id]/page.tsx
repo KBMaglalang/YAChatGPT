@@ -103,8 +103,8 @@ function ChatPage({ params: { id } }: Props) {
   return (
     <div className="container flex flex-col my-8 w-full">
       <div className="flex justify-between space-x-4 text-brand-white">
-        <div className="p-4 w-9/12 rounded-xl bg-brand-additional-elements">
-          {getDisplayText(chatDoc?.data()?.title) || "New Chat"}
+        <div className="overflow-hidden p-4 w-9/12 rounded-xl bg-brand-additional-elements">
+          {chatDoc?.data()?.title || "New Chat"}
         </div>
         <div className="flex flex-row p-4 w-3/12 rounded-xl bg-brand-additional-elements">
           <MagnifyingGlassCircleIcon className="mr-2 w-6 h-6" />
