@@ -23,7 +23,7 @@ export default function PromptList({ setModalOpen }: Props) {
 
       {/* modal box */}
       <div className="flex items-center px-4 py-8 min-h-screen">
-        <div className="relative w-full max-w-lg p-4 mx-auto rounded-md shadow-2xl bg-[#121212] shadow-gray-700">
+        <div className="relative p-4 mx-auto w-full max-w-lg rounded-md shadow-2xl bg-brand-additional-elements shadow-gray-700">
           {/* settings input or logout */}
           <div className="mt-3">
             <h4 className="mb-2 text-xl font-bold text-center text-white font-brand-roboto">
