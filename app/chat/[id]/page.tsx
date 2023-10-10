@@ -7,7 +7,7 @@ import { useSession } from "next-auth/react";
 import { useCollection, useDocument } from "react-firebase-hooks/firestore";
 import { orderBy, query, addDoc, collection, doc } from "firebase/firestore";
 import useSWR from "swr";
-import { toast } from "react-hot-toast";
+// import { toast } from "react-hot-toast";
 
 import { useStateContext } from "@/lib/context/stateContext";
 import { CHATGPT_DEFAULT } from "@/lib/constants";
@@ -73,11 +73,11 @@ function ChatPage({ params: { id } }: Props) {
     }
   }, []);
 
-  useEffect(() => {
-    if (error) {
-      toast.error(JSON.parse(error.message).message);
-    }
-  }, [error]);
+  // useEffect(() => {
+  //   if (error) {
+  //     toast.error(JSON.parse(error.message).message);
+  //   }
+  // }, [error]);
 
   // get document fields from firebase
   const [chatDoc, chatLoading, chatError] = useDocument(
