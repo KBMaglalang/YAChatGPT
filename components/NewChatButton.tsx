@@ -7,10 +7,12 @@ function NewChatButton() {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
-    <div>
-      <div className="chatRow" onClick={() => setModalOpen(true)}>
+    <div className="block lg:hidden">
+      <div
+        className="p-4 font-bold text-white bg-indigo-600 rounded font-brand-roboto hover:opacity-50 disabled:bg-gray-300 disabled:cursor-not-allowed textarea-expandable h-content"
+        onClick={() => setModalOpen(true)}
+      >
         <PlusIcon className="w-4 h-4" />
-        <p className="hidden lg:block font-brand-roboto">Chat</p>
       </div>
 
       {modalOpen && <NewChatModal setModalOpen={setModalOpen} />}
