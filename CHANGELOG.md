@@ -2,6 +2,45 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.3](https://github.com/KBMaglalang/YAChatGPT/compare/v0.1.2...v0.1.3) (2023-10-11)
+
+
+### Features
+
+* add spacing around messages ([15a29a0](https://github.com/KBMaglalang/YAChatGPT/commit/15a29a0fac3cc9717c0732fdd9249de967fb0c62))
+* create styling for create new buttons ([2c88b2a](https://github.com/KBMaglalang/YAChatGPT/commit/2c88b2abb96c093f070c7bf71fe761ddb972ec9a))
+* create user stop and send buttons ([fa2e93a](https://github.com/KBMaglalang/YAChatGPT/commit/fa2e93adc92f4235ee92388f3e534b82b4ce8a01))
+* hide chat and prompt bar depending on width ([c4e41e7](https://github.com/KBMaglalang/YAChatGPT/commit/c4e41e77163e2bba414a18a848394a3c36de7a1b))
+* implement side bar and prompt bar on the page ([80e5c53](https://github.com/KBMaglalang/YAChatGPT/commit/80e5c53b20eec0c2a97a78e71e93d50f10824416))
+* rearrange create new chat or prompt button ([b2960db](https://github.com/KBMaglalang/YAChatGPT/commit/b2960db76c95a0759c6af81866c40f31aee8f5cb))
+* setup colors and fonts in the app ([662a3ff](https://github.com/KBMaglalang/YAChatGPT/commit/662a3ff921378b9952cac7c3164ea4a6f80e3fd6))
+* setup overflow and text limit ([456d8ab](https://github.com/KBMaglalang/YAChatGPT/commit/456d8ab2c8ebc87e1456d2bc7ed70582e50b232f))
+* setup roboto from next font google ([0c44d60](https://github.com/KBMaglalang/YAChatGPT/commit/0c44d6017b62e07b24a6941a999c71efd7cae28c))
+* show chat title ([f5c829f](https://github.com/KBMaglalang/YAChatGPT/commit/f5c829fc5de2016b8756171a26e2e57c8b48454a))
+* update background color of the modals ([2a401db](https://github.com/KBMaglalang/YAChatGPT/commit/2a401dba591531e792b7c533816b9aad426a9e0c))
+* update background color to brand color ([a045e58](https://github.com/KBMaglalang/YAChatGPT/commit/a045e58162880ace78c73d18141bcc9e2569bf0d))
+* update chat title and search to grow and shrink for mobile ([4abc142](https://github.com/KBMaglalang/YAChatGPT/commit/4abc142c6a0503f012f011f8a32e64858ab71918))
+* update css style for chat row ([6db004d](https://github.com/KBMaglalang/YAChatGPT/commit/6db004daff7a9b8ac4294139fcd98df55c296bb0))
+* update login to be on the homepage ([7da6d78](https://github.com/KBMaglalang/YAChatGPT/commit/7da6d78039c8d3239101e35a0996de361b967019))
+* update readme with new images ([d98f931](https://github.com/KBMaglalang/YAChatGPT/commit/d98f9313a4a6ae7140b23b0b532c830a59cbe4f3))
+* update spacing ([c8c39b7](https://github.com/KBMaglalang/YAChatGPT/commit/c8c39b71071855e2af46fbd379aae1144fc8f12d))
+* update styling for chat row and prompt row ([5077e68](https://github.com/KBMaglalang/YAChatGPT/commit/5077e68692bc254c06ba9f5bfa72cce1c0774525))
+* update the readmen with new images ([bf522cc](https://github.com/KBMaglalang/YAChatGPT/commit/bf522cc1fe0d0f6eae36b3f6e572986fe54de368))
+* update to center call to action ([62ab446](https://github.com/KBMaglalang/YAChatGPT/commit/62ab4469ff2ab79f73bc0acd4ce44947dba0b057))
+* update to include chat and prompt buttons on smaller screens ([740d771](https://github.com/KBMaglalang/YAChatGPT/commit/740d771b5d77deafafded908e1027273a450bd52))
+* update to use consistent button styling ([f990673](https://github.com/KBMaglalang/YAChatGPT/commit/f990673f871ddc5881e0e6af004ea9bd04edafa0))
+* update to use custom color for chat mesxaaage ([c3c810d](https://github.com/KBMaglalang/YAChatGPT/commit/c3c810dc826ae693ea3b3427c1e6147aed9a3b05))
+* update to use the base layout for homepage and chat ([58d18b5](https://github.com/KBMaglalang/YAChatGPT/commit/58d18b514b1ac0b9ec7ca3026b3a1649aa89aa08))
+* use new styling settings ([1e5f093](https://github.com/KBMaglalang/YAChatGPT/commit/1e5f093829a658e14925cad6bbbd306f89d21da8))
+
+
+### Bug Fixes
+
+* height settings ([0c0a993](https://github.com/KBMaglalang/YAChatGPT/commit/0c0a993477879c8d27611502681e6a38cf36bf19))
+* section width settings ([8abf7cb](https://github.com/KBMaglalang/YAChatGPT/commit/8abf7cbe4f7cb09c9bd671a15d4af3987c4bb5a5))
+* settings to openai route ([eae7eee](https://github.com/KBMaglalang/YAChatGPT/commit/eae7eee5cf435de04903d125f199910e2e499d21))
+* update background color to be consistent with other pages ([ccc802f](https://github.com/KBMaglalang/YAChatGPT/commit/ccc802f4f8b0c47a50aa69226945e92833deb6b9))
+
 ### [0.1.2](https://github.com/KBMaglalang/YAChatGPT/compare/v0.1.1...v0.1.2) (2023-09-22)
 
 
