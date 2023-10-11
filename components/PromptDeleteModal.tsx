@@ -24,7 +24,7 @@ function PromptDeleteModal({ setModalOpen, callback }: Props) {
 
       {/* modal box */}
       <div className="flex items-center px-4 py-8 min-h-screen">
-        <div className="relative w-full max-w-lg p-4 mx-auto rounded-md shadow-2xl bg-[#121212] shadow-gray-700">
+        <div className="relative p-4 mx-auto w-full max-w-lg rounded-md shadow-2xl bg-brand-additional-elements shadow-gray-700">
           {/* prompt input */}
           <div className="mt-3">
             <div className="flex flex-col mt-2 text-center">
