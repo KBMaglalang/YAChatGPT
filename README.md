@@ -38,14 +38,18 @@ I intend to implement these other features over time:
 
 ## Screenshots
 
-!['loginHomepage'](doc/1-loginHomepage.png)
-!['homepage'](doc/2-homepage.png)
-!['chatScreen'](doc/3-chatScreen.png)
-!['settingModal'](doc/4-settingsModal.png)
-!['promptList'](doc/5-promptList.png)
-!['promptModal'](doc/6-promptModal.png)
-!['conversationList'](doc/7-conversationList.png)
-!['settings'](doc/8-settings.png)
+!['homepage'](doc/1-homepage.PNG)
+!['loginHomepage'](doc/2-loginHomepage.PNG)
+!['chat'](doc/3-chat.PNG)
+!['updatedTitle'](doc/4-updated%20title.PNG)
+!['mobileView'](doc/5-mobileView.PNG)
+!['settingsModal'](doc/6-chatSettingsModal.PNG)
+!['updateTitleModal'](doc/7-updateTitleModal.PNG)
+!['deletChatModal'](doc/8-deleteChatModal.PNG)
+!['createNewPromptModal'](doc/9-createNewPromptModal.PNG)
+!['editPromptModal'](doc/10-editPromptModal.PNG)
+!['deletePromptModal'](doc/11-deletePromptModal.PNG)
+!['webAppSettingsModal'](doc/12-webAppSettingsModal.PNG)
 
 ## How to Install and Run
 
