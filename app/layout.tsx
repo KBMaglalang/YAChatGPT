@@ -14,10 +14,11 @@ import { SessionProvider } from "@/components/SessionProvider";
 import { StateProvider } from "@/lib/context/stateContext";
 import ClientProvider from "@/components/ClientProvider";
 
+import { WEBSITE_TITLE, WEBSITE_DESCRIPTION } from "@/lib/constants";
+
 export const metadata = {
-  title: "YAChatGPT",
-  description:
-    "Enhance your experience with our ChatGPT frontend. Store messages, create prompt templates, switch models, and modify responses easily",
+  title: { WEBSITE_TITLE },
+  description: { WEBSITE_DESCRIPTION },
 };
 
 export default async function RootLayout({
