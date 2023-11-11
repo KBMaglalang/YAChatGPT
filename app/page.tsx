@@ -18,9 +18,9 @@ async function HomePage() {
   const session = await getServerSession(authOptions);
 
   return (
-    <BaseLayout layoutTitle={"YAChatGPT"}>
-      <div className="flex flex-col justify-center items-center px-2 text-white lg:overflow-hidden">
-        <div className="p-4 m-4 w-full rounded-xl bg-brand-additional-elements md:w-1/2 shadow-gray-700">
+    <BaseLayout>
+      <div className="flex flex-col items-center justify-center px-2 text-white lg:overflow-hidden">
+        <div className="w-full p-4 m-4 rounded-xl bg-brand-additional-elements md:w-1/2 shadow-gray-700">
           <h2 className="mb-4 text-3xl font-medium text-center font-brand-roboto">
             {HOMEPAGE_CONVERSATION_TITLE}
           </h2>
@@ -29,7 +29,7 @@ async function HomePage() {
           </p>
         </div>
 
-        <div className="p-4 m-4 w-full rounded-xl bg-brand-additional-elements md:w-1/2 shadow-gray-700">
+        <div className="w-full p-4 m-4 rounded-xl bg-brand-additional-elements md:w-1/2 shadow-gray-700">
           <h2 className="mb-4 text-3xl font-medium text-center font-brand-roboto">
             {HOMEPAGE_PROMPT_TITLE}
           </h2>
@@ -39,7 +39,7 @@ async function HomePage() {
         </div>
 
         {!session && (
-          <div className="p-4 m-4 w-full rounded-xl bg-brand-additional-elements md:w-1/2 shadow-gray-700">
+          <div className="w-full p-4 m-4 rounded-xl bg-brand-additional-elements md:w-1/2 shadow-gray-700">
             <h2 className="mb-4 text-2xl font-medium text-center font-brand-roboto">
               Login or Create an Account to Start
             </h2>

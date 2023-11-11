@@ -1,3 +1,8 @@
+// website
+export const WEBSITE_TITLE = "EasyAIChat";
+export const WEBSITE_DESCRIPTION =
+  "Enhance your experience with our ChatGPT frontend. Store messages, create prompt templates, switch models, and modify responses easily";
+
 export const CHATGPT_DEFAULT = "gpt-3.5-turbo";
 
 // homepage title
