@@ -44,9 +44,9 @@ function ChatSettingsModal({ setModalOpen }: Props) {
 
       {/* modal box */}
       <div className="flex items-center px-4 py-8 min-h-screen">
-        <div className="relative p-4 mx-auto w-full max-w-lg rounded-md shadow-2xl bg-brand-additional-elements shadow-gray-700">
+        <div className="relative py-4 mx-auto w-full max-w-lg rounded-md shadow-2xl bg-brand-additional-elements shadow-gray-700">
           {/* settings input or logout */}
-          <div className="mt-3">
+          <div className="mt-3 px-4">
             <div className="flex flex-col mt-2 text-center">
               <h4 className="mb-2 text-xl font-bold text-white font-brand-roboto">
                 Chat Settings
@@ -54,7 +54,7 @@ function ChatSettingsModal({ setModalOpen }: Props) {
             </div>
 
             {/* settings */}
-            <div className="flex flex-wrap justify-around items-center p-4 space-y-4 w-full bg-transparent lg:flex-col">
+            <div className="flex flex-wrap justify-around items-center space-y-4 w-full bg-transparent lg:flex-col">
               {/* temperature - slider and input */}
               <Slider
                 title="Temperature"
@@ -96,19 +96,35 @@ function ChatSettingsModal({ setModalOpen }: Props) {
               />
 
               {/* max tokens - input */}
-              <div className="flex flex-col items-center space-x-2 w-full">
-                <span className="mb-2 messageSettings font-brand-roboto">
-                  Max Tokens
-                </span>
+              <div className="form-control w-full ">
+                <label className="label w-full">
+                  <span className="label-text">Max Tokens</span>
+                </label>
+
                 <input
                   type="number"
                   value={promptSettings.maxTokens}
-                  className="w-full mt-2 text-center rounded-md bg-[#212121] text-white font-brand-roboto"
+                  className="input input-bordered  bg-transparent"
                   onChange={(e) =>
                     handleSettingChange("maxTokens", parseInt(e.target.value))
                   }
                 />
               </div>
+
+              {/* <div className="flex flex-row justify-between items-center space-x-2 w-full">
+                <span className="mb-2 messageSettings font-brand-roboto">
+                  Max Tokens
+                </span>
+
+                <input
+                  type="number"
+                  value={promptSettings.maxTokens}
+                  className="input input-bordered  bg-transparent"
+                  onChange={(e) =>
+                    handleSettingChange("maxTokens", parseInt(e.target.value))
+                  }
+                />
+              </div> */}
             </div>
 
             {/* model selection */}
@@ -116,7 +132,7 @@ function ChatSettingsModal({ setModalOpen }: Props) {
           </div>
 
           {/* user selection */}
-          <div className="gap-2 items-center mt-3 sm:flex">
+          <div className="gap-2 items-center mt-3 sm:flex px-4">
             {/* <button
               className="w-full mt-2 p-2.5 flex-1 text-white bg-indigo-600 rounded-md outline-none ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
               onClick={handleAccept}
@@ -124,7 +140,8 @@ function ChatSettingsModal({ setModalOpen }: Props) {
               Accept
             </button> */}
             <button
-              className="font-brand-roboto w-full mt-2 p-2.5 flex-1 text-white rounded-md outline-none border ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
+              // className="font-brand-roboto w-full mt-2 p-2.5 flex-1 text-white rounded-md outline-none border ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
+              className="btn btn-outline flex-1 text-white font-brand-roboto"
               onClick={(e) => setModalOpen(false)}
             >
               Exit

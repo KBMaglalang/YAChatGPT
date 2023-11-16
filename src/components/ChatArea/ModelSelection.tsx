@@ -21,7 +21,11 @@ function ModelSelection() {
   });
 
   return (
-    <div className="mt-2">
+    <div className="form-control w-full">
+      <label className="label w-full">
+        <span className="label-text">Model</span>
+      </label>
+
       <Select
         isSearchable
         defaultValue={model}
@@ -29,12 +33,12 @@ function ModelSelection() {
         options={models?.modelOptions}
         isLoading={isLoading}
         menuPosition="fixed"
-        className="mt-2 font-brand-roboto"
+        className="mt-2 font-brand-roboto bg-transparent"
         styles={{
           control: (baseStyles) => ({
             ...baseStyles,
-            backgroundColor: "#212121",
-            borderColor: "#212121",
+            backgroundColor: "none",
+            // borderColor: "none",
           }),
           option: (baseStyles) => ({
             ...baseStyles,
