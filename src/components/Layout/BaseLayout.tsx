@@ -3,12 +3,12 @@ import { MagnifyingGlassCircleIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
 // components
-// import SideBar from "./ChatsBar/SideBar";
 import { SideBar } from "../ChatsBar";
-// import PromptBar from "./PromptsBar/PromptBar";
 import { PromptBar } from "../PromptsBar";
 
-// import { WEBSITE_TITLE } from "@/lib/constants";
+// context or store
+
+// constants or functions
 import { WEBSITE_TITLE } from "@/constants";
 
 type Props = {

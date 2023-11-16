@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { PlusIcon } from "@heroicons/react/24/outline";
 
+// components
 import NewChatModal from "./NewChatModal";
+
+// context or store
+
+// constants or functions
 
 function NewChatButton() {
   const [modalOpen, setModalOpen] = useState(false);

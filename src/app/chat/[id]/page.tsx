@@ -7,16 +7,17 @@ import { useSession } from "next-auth/react";
 import { useCollection, useDocument } from "react-firebase-hooks/firestore";
 import { orderBy, query, addDoc, collection, doc } from "firebase/firestore";
 import useSWR from "swr";
-// import { toast } from "react-hot-toast";
-
-import { useStateContext } from "@/context/stateContext";
-import { CHATGPT_DEFAULT } from "@/constants";
-
-import { db } from "@/config/firebase/firebase";
 
 // components
 import { Chat, ChatInput } from "@/components/ChatArea";
 import { BaseLayout } from "@/components/Layout";
+
+// context or store
+import { useStateContext } from "@/context/stateContext";
+
+// constants or functions
+import { CHATGPT_DEFAULT } from "@/constants";
+import { db } from "@/config/firebase/firebase";
 
 type Props = {
   params: {

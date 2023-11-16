@@ -1,5 +1,11 @@
 import React from "react";
 
+// components
+
+// context or store
+
+// constants or functions
+
 interface SliderProps {
   title: string;
   min: number;

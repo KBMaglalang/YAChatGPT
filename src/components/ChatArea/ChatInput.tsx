@@ -3,12 +3,6 @@
 import React, { useRef, useEffect, FormEvent, KeyboardEvent } from "react";
 import { useSession } from "next-auth/react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-// import { db } from "@/firebase";
-// import { db } from "@/config/firebase";
-import { db } from "@/config/firebase/firebase";
-import { PaperAirplaneIcon, StopIcon } from "@heroicons/react/24/solid";
-
-import { useStateContext } from "@/context/stateContext";
 
 // components
 import NewPromptTemplate from "./NewPromptTemplate";
@@ -17,6 +11,12 @@ import SettingsRow from "./SettingsRow";
 import ChatSettings from "./ChatSettings";
 import UserSendButton from "./UserSendButton";
 import UserStopButton from "./UserStopButton";
+
+// context or store
+import { useStateContext } from "@/context/stateContext";
+
+// constants or functions
+import { db } from "@/config/firebase/firebase";
 
 type Props = {
   chatId: string;

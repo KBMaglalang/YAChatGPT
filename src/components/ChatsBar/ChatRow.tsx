@@ -9,13 +9,15 @@ import {
   TrashIcon,
 } from "@heroicons/react/24/outline";
 
-import { db } from "@/config/firebase/firebase";
-
-import { getDisplayText } from "@/lib/displayTextLimit";
-
 // components
 import ChatEditModal from "./ChatEditModal";
 import ChatDeleteModal from "./ChatDeleteModal";
+
+// context or store
+
+// constants or functions
+import { db } from "@/config/firebase/firebase";
+import { getDisplayText } from "@/lib/displayTextLimit";
 
 type Props = {
   id: string;

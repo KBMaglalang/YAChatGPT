@@ -4,6 +4,10 @@ import { BookOpenIcon } from "@heroicons/react/24/outline";
 // components
 import PromptList from "./PromptList";
 
+// context or store
+
+// constants or functions
+
 function NewPromptTemplate() {
   const [modalOpen, setModalOpen] = useState(false);
 

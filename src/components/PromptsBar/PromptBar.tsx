@@ -6,15 +6,15 @@ import { collection, orderBy, query } from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore"; // ! setups a real time connection to the firebase database
 import { ArrowDownCircleIcon } from "@heroicons/react/24/outline";
 
-// import { db } from "@/firebase";
-// import { db } from "@/config/firebase";
-import { db } from "@/config/firebase/firebase";
-
 // components
 import CreateNewPromptButton from "./CreateNewPromptButton";
 import PromptRow from "./PromptRow";
-// import Loading from "../Common/Loading";
 import { Loading } from "../Common";
+
+// context or store
+
+// constants or functions
+import { db } from "@/config/firebase/firebase";
 
 export function PromptBar() {
   const { data: session } = useSession();

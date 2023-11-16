@@ -9,14 +9,15 @@ import { collection, orderBy, query } from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore"; // ! setups a real time connection to the firebase database
 import { ArrowDownCircleIcon } from "@heroicons/react/24/outline";
 
-import { db } from "@/config/firebase/firebase";
-
 // components
 import CreateNewChatButton from "./CreateNewChatButton";
-// import NewChatButton from "./NewChatButton";
 import ChatRow from "./ChatRow";
-// import Loading from "../Common/Loading";
 import { Loading } from "../Common";
+
+// context or store
+
+// constants or functions
+import { db } from "@/config/firebase/firebase";
 
 export function SideBar() {
   const { data: session } = useSession();

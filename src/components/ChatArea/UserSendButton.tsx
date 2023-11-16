@@ -1,6 +1,12 @@
 import React from "react";
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
 
+// components
+
+// context or store
+
+// constants or functions
+
 type Props = {
   session: any;
   llmInput: string;

@@ -7,6 +7,10 @@ import { UserIcon } from "@heroicons/react/24/outline";
 // components
 import SettingsModal from "./SettingsModal";
 
+// context or store
+
+// constants or functions
+
 function SettingsRow() {
   const [modalOpen, setModalOpen] = useState(false);
 

@@ -2,7 +2,12 @@
 
 import React from "react";
 import { signIn } from "next-auth/react";
-import Image from "next/image";
+
+// components
+
+// context or store
+
+// constants or functions
 
 export function Login() {
   return (

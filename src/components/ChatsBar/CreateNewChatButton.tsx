@@ -4,6 +4,11 @@ import { useRouter } from "next/navigation"; // ! Don't use the next/router use 
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
+// components
+
+// context or store
+
+// constants or functions
 import { db } from "@/config/firebase/firebase";
 
 function CreateNewChatButton() {

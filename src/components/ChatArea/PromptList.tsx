@@ -1,7 +1,11 @@
 import React from "react";
 
-// import PromptBar from "./PromptsBar/PromptBar";
+// components
 import { PromptBar } from "../PromptsBar";
+
+// context or store
+
+// constants or functions
 
 type Props = {
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;

@@ -3,12 +3,13 @@ import { useSession } from "next-auth/react";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
-// import { db } from "@/firebase";
-// import { db } from "@/config/firebase";
-import { db } from "@/config/firebase/firebase";
-
 // components
 import PromptModal from "./PromptEditModal";
+
+// context or store
+
+// constants or functions
+import { db } from "@/config/firebase/firebase";
 
 function CreateNewPromptButton() {
   const { data: session } = useSession();

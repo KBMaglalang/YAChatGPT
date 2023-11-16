@@ -1,8 +1,11 @@
 import React from "react";
 
 // components
-// import SideBar from "./ChatsBar/SideBar";
 import { SideBar } from "../ChatsBar";
+
+// context or store
+
+// constants or functions
 
 type Props = {
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;

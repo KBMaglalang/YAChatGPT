@@ -6,6 +6,10 @@ import { ArrowDownCircleIcon } from "@heroicons/react/24/outline";
 // components
 import Message from "./Message";
 
+// context or store
+
+// constants or functions
+
 type Props = {
   llmMessages: any;
 };

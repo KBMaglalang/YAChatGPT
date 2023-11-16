@@ -1,8 +1,14 @@
 import React from "react";
+import { DocumentData } from "firebase/firestore";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { DocumentData } from "firebase/firestore";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
+
+// components
+
+// context or store
+
+// constants or functions
 
 type Props = {
   message: DocumentData;

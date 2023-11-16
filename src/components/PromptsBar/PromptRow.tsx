@@ -8,14 +8,15 @@ import {
 import { useDocument } from "react-firebase-hooks/firestore";
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 
-// import { db } from "@/firebase";
-// import { db } from "@/config/firebase";
-import { db } from "@/config/firebase/firebase";
-import { useStateContext } from "@/context/stateContext";
-
 // components
 import PromptEditModal from "./PromptEditModal";
 import PromptDeleteModal from "./PromptDeleteModal";
+
+// context or store
+import { useStateContext } from "@/context/stateContext";
+
+// constants or functions
+import { db } from "@/config/firebase/firebase";
 
 type Props = {
   id: string;

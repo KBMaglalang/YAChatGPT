@@ -1,6 +1,12 @@
 import React from "react";
 import { StopIcon } from "@heroicons/react/24/solid";
 
+// components
+
+// context or store
+
+// constants or functions
+
 type Props = {
   session: any;
   llmIsLoading: boolean;

@@ -4,6 +4,10 @@ import { Cog8ToothIcon } from "@heroicons/react/24/outline";
 // component
 import ChatSettingsModal from "./ChatSettingsModal";
 
+// context or store
+
+// constants or functions
+
 export default function ChatSettings() {
   const [modalOpen, setModalOpen] = useState(false);
 

@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
+
+// components
+import ModelSelection from "./ModelSelection";
+import { Slider } from "../Common";
+
+// context or store
 import { useStateContext } from "@/context/stateContext";
 
-import ModelSelection from "./ModelSelection";
-// import Slider from "../Common/Slider";
-import { Slider } from "../Common";
+// constants or functions
 
 type Props = {
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
