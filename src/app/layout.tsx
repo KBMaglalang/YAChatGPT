@@ -6,6 +6,7 @@ import { Roboto } from "next/font/google";
 // components
 import { ClientProvider, SessionProvider } from "@/providers";
 import { StateProvider } from "@/context/stateContext";
+import { Header } from "@/components/Header";
 
 // context or store
 
@@ -37,9 +38,12 @@ export default async function RootLayout({
       <body className={`${roboto.variable}  font-sans`}>
         <SessionProvider>
           <StateProvider>
+            <Header />
+
             <div className="flex justify-center w-screen h-screen">
               {/* client provider - notification  */}
               <ClientProvider />
+
               {children}
             </div>
           </StateProvider>
