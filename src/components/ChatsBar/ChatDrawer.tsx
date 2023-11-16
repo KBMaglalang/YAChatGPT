@@ -47,7 +47,6 @@ export function ChatDrawer() {
         ></label>
 
         {/* content */}
-
         <div className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
           {/* no session */}
           {!session && (
@@ -55,12 +54,14 @@ export function ChatDrawer() {
               <span>Sign In</span>
             </div>
           )}
+
           {/* loading */}
           {loading && (
             <div className="flex justify-center items-center mt-4 h-full">
               <Loading />
             </div>
           )}
+
           {/* cta */}
           {chats?.empty && (
             <div className="flex flex-col justify-center items-center mt-6 h-full">
@@ -70,6 +71,7 @@ export function ChatDrawer() {
               </p>
             </div>
           )}
+
           {/* chat options */}
           <div className="overflow-y-scroll flex-1">
             <div className="flex flex-col my-2 space-y-2">

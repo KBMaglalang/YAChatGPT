@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { signOut } from "next-auth/react";
 import { UserIcon } from "@heroicons/react/24/outline";
@@ -29,7 +31,8 @@ function SettingsRow() {
   return (
     <div className="">
       <div
-        className="p-4 font-bold text-white bg-indigo-600 rounded font-brand-roboto hover:opacity-50 disabled:bg-gray-300 disabled:cursor-not-allowed textarea-expandable h-content"
+        // className="p-4 font-bold text-white bg-indigo-600 rounded font-brand-roboto hover:opacity-50 disabled:bg-gray-300 disabled:cursor-not-allowed textarea-expandable h-content"
+        className="btn btn-outline "
         onClick={() => setModalOpen(true)}
       >
         <UserIcon className="w-4 h-4" />

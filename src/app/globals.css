@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 /* set root background color to black */
-:root {
+/* :root {
   background-color: #1E1E24;
-}
+} */
 
-.prose img {
+/* .prose img {
   max-width: 100%;
   height: auto;
 }
@@ -16,12 +16,13 @@
   display: block;
   width: 100%;
   overflow: auto;
-}
+} */
 
-.textarea-expandable {
+/* .textarea-expandable {
   max-height: 50vh;
-  overflow-y: auto; /* for scrolling when the max-height is reached */
-}
+  overflow-y: auto;  */
+  /* for scrolling when the max-height is reached */
+/* } */
 
 
 /* scroll bar */
@@ -46,7 +47,7 @@
 }
 
 /* custom utilities classes with tailwind */
-@layer components {
+/* @layer components {
   .chatRow {
     @apply bg-brand-chat-message border-gray-700 border-2 rounded-lg px-5 py-3 text-sm flex items-center justify-center space-x-2 hover:bg-indigo-600 cursor-pointer text-brand-white transition-all duration-200 ease-out
   }
@@ -59,4 +60,4 @@
     @apply bg-brand-chat-area border-gray-700 border-2 rounded-2xl px-5 py-3 text-sm flex items-center justify-center space-x-2 hover:bg-indigo-600 cursor-pointer text-white transition-all duration-200 ease-out
   }
 }
-
+ */

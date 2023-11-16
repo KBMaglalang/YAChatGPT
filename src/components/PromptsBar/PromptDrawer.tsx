@@ -39,6 +39,7 @@ export function PromptDrawer() {
           <DocumentTextIcon className="w-5 h-5" />
         </label>
       </div>
+
       <div className="drawer-side">
         <label
           htmlFor="my-drawer-4"

@@ -4,6 +4,7 @@ import Link from "next/link";
 // components
 import { ChatDrawer } from "../ChatsBar";
 import { PromptDrawer } from "../PromptsBar";
+import SettingsRow from "../ChatArea/SettingsRow";
 
 // context or store
 
@@ -28,8 +29,11 @@ export function Header() {
         </div>
 
         {/* prompt bar */}
-        <div className="navbar-end">
-          <PromptDrawer />
+        <div className="navbar-end ">
+          <div className="flex flex-row space-x-2">
+            <SettingsRow />
+            <PromptDrawer />
+          </div>
         </div>
       </div>
     </header>

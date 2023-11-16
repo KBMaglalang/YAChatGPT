@@ -133,18 +133,21 @@ export function ChatInput({
 
         {/* user control buttons */}
         <div className="flex flex-wrap gap-4 justify-end w-1/6">
-          <UserSendButton session={session} llmInput={llmInput} />
-          <UserStopButton
-            session={session}
-            llmIsLoading={llmIsLoading}
-            llmStop={llmStop}
-          />
+          {llmIsLoading ? (
+            <UserStopButton
+              session={session}
+              llmIsLoading={llmIsLoading}
+              llmStop={llmStop}
+            />
+          ) : (
+            <UserSendButton session={session} llmInput={llmInput} />
+          )}
           <ChatSettings />
-          <SettingsRow />
+          {/* <SettingsRow /> */}
 
           {/* hidden options for mobile view */}
-          <NewChatButton />
-          <NewPromptTemplate />
+          {/* <NewChatButton /> */}
+          {/* <NewPromptTemplate /> */}
         </div>
       </form>
     </div>
