@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ChatDrawer } from "../ChatsBar";
 import { PromptDrawer } from "../PromptsBar";
 import SettingsRow from "../ChatArea/SettingsRow";
+import { ThemeToggle } from "../Common";
 
 // context or store
 
@@ -17,7 +18,10 @@ export function Header() {
       <div className="navbar bg-base-100">
         {/* chat bar */}
         <div className="navbar-start">
-          <ChatDrawer />
+          <div className="flex flex-row space-x-2">
+            <ChatDrawer />
+            <ThemeToggle />
+          </div>
         </div>
 
         {/* website name */}
