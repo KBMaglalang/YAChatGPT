@@ -26,7 +26,6 @@ export function Header() {
 
         {/* website name */}
         <div className="navbar-center">
-          {/* <a className="btn btn-ghost text-xl">daisyUI</a> */}
           <Link href={"/"}>
             <h1 className="text-xl font-bold">{WEBSITE_TITLE}</h1>
           </Link>

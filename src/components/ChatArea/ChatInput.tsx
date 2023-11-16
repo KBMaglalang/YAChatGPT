@@ -5,9 +5,6 @@ import { useSession } from "next-auth/react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
 // components
-import NewPromptTemplate from "./NewPromptTemplate";
-import NewChatButton from "./NewChatButton";
-import SettingsRow from "./SettingsRow";
 import ChatSettings from "./ChatSettings";
 import UserSendButton from "./UserSendButton";
 import UserStopButton from "./UserStopButton";

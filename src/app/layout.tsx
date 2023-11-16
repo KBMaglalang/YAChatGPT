@@ -38,11 +38,11 @@ export default async function RootLayout({
       <body className={`${roboto.variable}  font-sans`}>
         <SessionProvider>
           <StateProvider>
-            <Header />
-
-            <div className="flex justify-center w-screen h-screen">
+            <div className="flex flex-col w-screen h-screen">
               {/* client provider - notification  */}
               <ClientProvider />
+
+              <Header />
 
               {children}
             </div>
