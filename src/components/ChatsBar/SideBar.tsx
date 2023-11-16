@@ -30,9 +30,7 @@ export function SideBar() {
   );
 
   return (
-    <div
-      className={`flex flex-col p-4 h-full rounded bg-brand-additional-elements`}
-    >
+    <div className={`flex flex-col p-4 h-full rounded `}>
       {/* no session */}
       {!session && (
         <div className="flex flex-col justify-center items-center mt-4 h-full text-xl font-bold text-white font-brand-roboto">

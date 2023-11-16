@@ -114,7 +114,7 @@ export function ChatInput({
   };
 
   return (
-    <div className="px-4 mt-2 w-full text-sm text-white rounded-t-xl bg-gray-700/50">
+    <div className="px-4 mt-2 w-full text-sm text-white rounded-t-xl ">
       {/* input */}
       {/* <form onSubmit={sendMessage} className="flex p-5 space-x-5"> */}
       <form onSubmit={sendMessage} className="flex flex-row p-5 space-x-5">
@@ -126,13 +126,13 @@ export function ChatInput({
             value={llmInput}
             onChange={llmHandleInputChange}
             onKeyDown={handleKeyDown}
-            className="flex-1 bg-transparent resize-none font-brand-roboto focus:outline-none disabled:cursor-not-allowed disabled:text-gray-300"
+            className="textarea textarea-ghost bg-transparent flex-1 resize-none font-brand-roboto disabled:cursor-not-allowed disabled:text-gray-300"
             placeholder="Type your message here... (CTRL + ENTER to send)"
           />
         </div>
 
         {/* user control buttons */}
-        <div className="flex flex-wrap gap-4 justify-end w-1/6">
+        <div className="flex flex-wrap h-content gap-4 justify-end w-1/6">
           {llmIsLoading ? (
             <UserStopButton
               session={session}
@@ -143,11 +143,6 @@ export function ChatInput({
             <UserSendButton session={session} llmInput={llmInput} />
           )}
           <ChatSettings />
-          {/* <SettingsRow /> */}
-
-          {/* hidden options for mobile view */}
-          {/* <NewChatButton /> */}
-          {/* <NewPromptTemplate /> */}
         </div>
       </form>
     </div>

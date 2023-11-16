@@ -22,13 +22,13 @@ export default function PromptList({ setModalOpen }: Props) {
     <div className="overflow-y-auto fixed inset-0 z-10">
       {/* handles clicks outside the modal box */}
       <div
-        className="fixed inset-0 w-full h-full bg-black opacity-40"
+        className="fixed inset-0 w-full h-full  opacity-40"
         onClick={(e) => setModalOpen(false)}
       ></div>
 
       {/* modal box */}
       <div className="flex items-center px-4 py-8 min-h-screen">
-        <div className="relative p-4 mx-auto w-full max-w-lg rounded-md shadow-2xl bg-brand-additional-elements shadow-gray-700">
+        <div className="relative p-4 mx-auto w-full max-w-lg rounded-md shadow-2xl  shadow-gray-700">
           {/* settings input or logout */}
           <div className="mt-3">
             <h4 className="mb-2 text-xl font-bold text-center text-white font-brand-roboto">

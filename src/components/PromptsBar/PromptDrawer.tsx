@@ -48,7 +48,7 @@ export function PromptDrawer() {
         ></label>
 
         {/* Sidebar content here */}
-        <div className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+        <div className="menu p-4 w-80 min-h-full  text-base-content">
           {/* no session */}
           {!session && (
             <div className="flex flex-col justify-center items-center mt-4 h-full text-xl font-bold text-white font-brand-roboto">

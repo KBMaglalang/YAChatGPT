@@ -46,7 +46,7 @@ export function BaseLayout({ children, layoutTitle }: Props) {
         </div> */}
       </div>
 
-      <div className="container flex flex-row h-full gap-2 mt-8 overflow-hidden rounded-xl bg-brand-chat-area">
+      <div className="container flex flex-row h-full gap-2 mt-8 overflow-hidden rounded-xl ">
         {/* <div className="hidden w-2/12 lg:block">
           <SideBar />
         </div> */}

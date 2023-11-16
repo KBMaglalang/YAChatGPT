@@ -15,7 +15,7 @@ import { WEBSITE_TITLE } from "@/constants";
 export function Header() {
   return (
     <header className="">
-      <div className="navbar bg-base-100">
+      <div className="navbar ">
         {/* chat bar */}
         <div className="navbar-start">
           <div className="flex flex-row space-x-2">
