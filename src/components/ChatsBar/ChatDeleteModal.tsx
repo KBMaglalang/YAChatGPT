@@ -43,13 +43,15 @@ function ChatDeleteModal({ setModalOpen, callback }: Props) {
           {/* user selection */}
           <div className="gap-2 items-center mt-3 sm:flex">
             <button
-              className="font-brand-roboto w-full mt-2 p-2.5 flex-1 text-white bg-indigo-600 rounded-md outline-none ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
+              // className="font-brand-roboto w-full mt-2 p-2.5 flex-1 text-white bg-indigo-600 rounded-md outline-none ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
+              className="btn btn-primary font-brand-roboto flex-1"
               onClick={handleAccept}
             >
               Accept
             </button>
             <button
-              className="font-brand-roboto w-full mt-2 p-2.5 flex-1 text-white rounded-md outline-none border ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
+              // className="font-brand-roboto w-full mt-2 p-2.5 flex-1 text-white rounded-md outline-none border ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
+              className="btn btn-outline text-white font-brand-roboto flex-1"
               onClick={(e) => setModalOpen(false)}
             >
               Cancel

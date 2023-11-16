@@ -9,7 +9,8 @@ import React from "react";
 export function Loading() {
   return (
     <div role="status">
-      <svg
+      <span className="loading loading-infinity loading-lg"></span>
+      {/* <svg
         aria-hidden="true"
         className="mr-2 w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-indigo-600"
         viewBox="0 0 100 101"
@@ -25,7 +26,7 @@ export function Loading() {
           fill="currentFill"
         />
       </svg>
-      <span className="sr-only font-brand-roboto">Loading...</span>
+      <span className="sr-only font-brand-roboto">Loading...</span> */}
     </div>
   );
 }

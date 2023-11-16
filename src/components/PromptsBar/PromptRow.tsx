@@ -95,7 +95,10 @@ function PromptRow({ id }: Props) {
   return (
     <div>
       {/* button */}
-      <div className={`justify-center chatRow`}>
+      <div
+        // className={`justify-center chatRow`}
+        className={`btn btn-neutral w-full font-brand-roboto`}
+      >
         <DocumentTextIcon className="w-5 h-5 text-white" />
 
         <span
@@ -112,6 +115,7 @@ function PromptRow({ id }: Props) {
 
         <TrashIcon
           onClick={modelDeletePrompt}
+          // className="w-5 h-5 text-brand-white hover:text-red-700"
           className="w-5 h-5 text-brand-white hover:text-red-700"
         />
       </div>
