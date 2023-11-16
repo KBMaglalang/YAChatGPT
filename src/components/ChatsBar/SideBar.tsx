@@ -9,17 +9,16 @@ import { collection, orderBy, query } from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore"; // ! setups a real time connection to the firebase database
 import { ArrowDownCircleIcon } from "@heroicons/react/24/outline";
 
-// import { db } from "@/firebase";
-// import { db } from "@/config/firebase";
 import { db } from "@/config/firebase/firebase";
 
 // components
 import CreateNewChatButton from "./CreateNewChatButton";
 // import NewChatButton from "./NewChatButton";
 import ChatRow from "./ChatRow";
-import Loading from "./Loading";
+// import Loading from "../Common/Loading";
+import { Loading } from "../Common";
 
-function SideBar() {
+export function SideBar() {
   const { data: session } = useSession();
   const [chats, loading, error] = useCollection(
     session &&
@@ -77,5 +76,3 @@ function SideBar() {
     </div>
   );
 }
-
-export default SideBar;

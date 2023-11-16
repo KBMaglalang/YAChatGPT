@@ -1,6 +1,5 @@
 import React from "react";
 import { StopIcon } from "@heroicons/react/24/solid";
-import { type } from "os";
 
 type Props = {
   session: any;

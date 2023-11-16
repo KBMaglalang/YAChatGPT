@@ -1,6 +1,7 @@
 import React from "react";
 
-import PromptBar from "./PromptBar";
+// import PromptBar from "./PromptsBar/PromptBar";
+import { PromptBar } from "../PromptsBar";
 
 type Props = {
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;

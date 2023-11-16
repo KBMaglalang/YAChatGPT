@@ -1,6 +1,6 @@
 import React from "react";
 
-function Loading() {
+export function Loading() {
   return (
     <div role="status">
       <svg
@@ -23,5 +23,3 @@ function Loading() {
     </div>
   );
 }
-
-export default Loading;

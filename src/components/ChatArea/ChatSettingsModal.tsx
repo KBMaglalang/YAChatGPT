@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useStateContext } from "@/context/stateContext";
 
 import ModelSelection from "./ModelSelection";
-import Slider from "./Slider";
+// import Slider from "../Common/Slider";
+import { Slider } from "../Common";
 
 type Props = {
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;

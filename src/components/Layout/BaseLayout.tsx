@@ -3,8 +3,10 @@ import { MagnifyingGlassCircleIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
 // components
-import SideBar from "./SideBar";
-import PromptBar from "./PromptBar";
+// import SideBar from "./ChatsBar/SideBar";
+import { SideBar } from "../ChatsBar";
+// import PromptBar from "./PromptsBar/PromptBar";
+import { PromptBar } from "../PromptsBar";
 
 // import { WEBSITE_TITLE } from "@/lib/constants";
 import { WEBSITE_TITLE } from "@/constants";
@@ -14,7 +16,7 @@ type Props = {
   layoutTitle?: string;
 };
 
-export default function BaseLayout({ children, layoutTitle }: Props) {
+export function BaseLayout({ children, layoutTitle }: Props) {
   return (
     <div className="container flex flex-col w-full my-8">
       <div className="flex justify-between space-x-4 text-brand-white">

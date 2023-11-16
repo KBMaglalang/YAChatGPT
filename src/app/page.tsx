@@ -2,8 +2,10 @@ import React from "react";
 import { getServerSession } from "next-auth";
 
 // components
-import BaseLayout from "@/components/BaseLayout";
-import Login from "@/components/Login";
+// import BaseLayout from "@/components/BaseLayout";
+import { BaseLayout } from "@/components/Layout";
+// import Login from "@/components/Login";
+import { Login } from "@/components/Common";
 
 // context or store
 

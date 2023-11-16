@@ -10,7 +10,7 @@ type Props = {
   llmMessages: any;
 };
 
-function Chat({ llmMessages }: Props) {
+export function Chat({ llmMessages }: Props) {
   // Method to scroll to the bottom of a scrollable div container
   // Reference for the scrollable div
   const scrollContainerRef = useRef<null | HTMLDivElement>(null);
@@ -49,5 +49,3 @@ function Chat({ llmMessages }: Props) {
     </div>
   );
 }
-
-export default Chat;

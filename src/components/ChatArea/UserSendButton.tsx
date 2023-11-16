@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
 
 type Props = {

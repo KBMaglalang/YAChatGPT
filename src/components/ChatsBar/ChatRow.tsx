@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { useCollection, useDocument } from "react-firebase-hooks/firestore";
-import { collection, deleteDoc, doc, updateDoc } from "firebase/firestore";
+import { useDocument } from "react-firebase-hooks/firestore";
+import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import {
   ChatBubbleLeftIcon,
   PencilSquareIcon,
   TrashIcon,
 } from "@heroicons/react/24/outline";
 
-// import { db } from "@/firebase";
-// import { db } from "@/config/firebase";
 import { db } from "@/config/firebase/firebase";
 
 import { getDisplayText } from "@/lib/displayTextLimit";

@@ -32,7 +32,7 @@ type Props = {
   llmSetInput: React.Dispatch<React.SetStateAction<string>>;
 };
 
-function ChatInput({
+export function ChatInput({
   chatId,
   llmStop,
   llmInput,
@@ -150,5 +150,3 @@ function ChatInput({
     </div>
   );
 }
-
-export default ChatInput;

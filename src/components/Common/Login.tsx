@@ -4,7 +4,7 @@ import React from "react";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
 
-function Login() {
+export function Login() {
   return (
     <div className="flex flex-col justify-center items-center text-center">
       <div
@@ -16,5 +16,3 @@ function Login() {
     </div>
   );
 }
-
-export default Login;

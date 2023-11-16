@@ -10,17 +10,13 @@ import useSWR from "swr";
 // import { toast } from "react-hot-toast";
 
 import { useStateContext } from "@/context/stateContext";
-// import { CHATGPT_DEFAULT } from "@/lib/constants";
 import { CHATGPT_DEFAULT } from "@/constants";
 
-// import { db } from "@/firebase";
-// import { db } from "@/config/firebase";
 import { db } from "@/config/firebase/firebase";
 
 // components
-import Chat from "@/components/Chat";
-import ChatInput from "@/components/ChatInput";
-import BaseLayout from "@/components/BaseLayout";
+import { Chat, ChatInput } from "@/components/ChatArea";
+import { BaseLayout } from "@/components/Layout";
 
 type Props = {
   params: {

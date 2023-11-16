@@ -1,7 +1,8 @@
 import React from "react";
 
 // components
-import SideBar from "./SideBar";
+// import SideBar from "./ChatsBar/SideBar";
+import { SideBar } from "../ChatsBar";
 
 type Props = {
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;

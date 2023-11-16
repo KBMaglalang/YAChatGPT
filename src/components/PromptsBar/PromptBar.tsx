@@ -13,9 +13,10 @@ import { db } from "@/config/firebase/firebase";
 // components
 import CreateNewPromptButton from "./CreateNewPromptButton";
 import PromptRow from "./PromptRow";
-import Loading from "./Loading";
+// import Loading from "../Common/Loading";
+import { Loading } from "../Common";
 
-function PromptBar() {
+export function PromptBar() {
   const { data: session } = useSession();
   const [isOpen, setIsOpen] = useState(true);
   const [prompts, loading, error] = useCollection(
@@ -82,5 +83,3 @@ function PromptBar() {
     </div>
   );
 }
-
-export default PromptBar;
