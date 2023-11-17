@@ -21,7 +21,6 @@ import { db } from "@/config/firebase/firebase";
 
 export function PromptDrawer() {
   const { data: session } = useSession();
-  const [isOpen, setIsOpen] = useState(true);
   const [prompts, loading, error] = useCollection(
     session &&
       query(
@@ -48,35 +47,35 @@ export function PromptDrawer() {
         ></label>
 
         {/* Sidebar content here */}
-        <div className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+        <div className="menu p-4 w-80 h-full bg-base-200 text-base-content">
           {/* no session */}
           {!session && (
-            <div className="flex flex-col justify-center items-center mt-4 h-full text-xl font-bold text-white font-brand-roboto">
+            <div className="flex flex-col justify-center items-center mt-4 h-full text-xl font-bold  font-brand-roboto">
               <span>Sign In</span>
             </div>
           )}
 
           {/* prompts loading from firebase */}
-          {loading && isOpen && (
+          {loading && (
             <div className="flex justify-center items-center mt-4 h-full">
               <Loading />
             </div>
           )}
 
           {/* cta */}
-          {prompts?.empty && isOpen && (
-            <div className="flex flex-col justify-center items-center h-full">
-              <div className="hidden text-xl font-bold text-white truncate md:inline-flex font-brand-roboto">
+          {prompts?.empty && (
+            <div className="flex flex-col justify-center items-center flex-1 text-xl font-bold  font-brand-roboto">
+              <div className="hidden text-xl font-bold  truncate md:inline-flex font-brand-roboto">
                 Create New Prompt
               </div>
               <div className="flex justify-center items-center mt-5">
-                <ArrowDownCircleIcon className="w-10 h-10 text-white animate-bounce" />
+                <ArrowDownCircleIcon className="mx-auto mt-5 w-10 h-10  animate-bounce" />
               </div>
             </div>
           )}
 
           {/* prompt options */}
-          {isOpen && (
+          {session && !prompts?.empty && (
             <div className="overflow-y-scroll flex-1">
               <div className="flex flex-col my-2 space-y-2">
                 {/* map through the chatRows */}
@@ -91,11 +90,9 @@ export function PromptDrawer() {
           {session && (
             <div className={`flex flex-row mt-auto space-x-2 w-full`}>
               {/* new prompt button */}
-              {isOpen && (
-                <div className="flex-1">
-                  <CreateNewPromptButton />
-                </div>
-              )}
+              <div className="flex-1">
+                <CreateNewPromptButton />
+              </div>
             </div>
           )}
         </div>

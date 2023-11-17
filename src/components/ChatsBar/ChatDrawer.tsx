@@ -47,10 +47,10 @@ export function ChatDrawer() {
         ></label>
 
         {/* content */}
-        <div className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+        <div className="menu p-4 w-80 h-full bg-base-200 text-base-content">
           {/* no session */}
           {!session && (
-            <div className="flex flex-col justify-center items-center mt-4 h-full text-xl font-bold text-white font-brand-roboto">
+            <div className="flex flex-col justify-center items-center mt-4 h-full text-xl font-bold  font-brand-roboto">
               <span>Sign In</span>
             </div>
           )}
@@ -64,24 +64,26 @@ export function ChatDrawer() {
 
           {/* cta */}
           {chats?.empty && (
-            <div className="flex flex-col justify-center items-center mt-6 h-full">
-              <ArrowDownCircleIcon className="mx-auto mt-5 w-10 h-10 text-white animate-bounce" />
-              <p className="hidden text-xl font-bold text-white truncate md:inline-flex font-brand-roboto">
+            <div className="flex flex-col justify-center items-center mt-4 flex-1 text-xl font-bold  font-brand-roboto">
+              <div className="hidden text-xl font-bold  truncate md:inline-flex font-brand-roboto">
                 Create New Chats
-              </p>
+              </div>
+              <ArrowDownCircleIcon className="mx-auto mt-5 w-10 h-10  animate-bounce" />
             </div>
           )}
 
           {/* chat options */}
-          <div className="overflow-y-scroll flex-1">
-            <div className="flex flex-col my-2 space-y-2">
-              {/* map through the chatRows */}
-              {!chats?.empty &&
-                chats?.docs.map((chat) => (
-                  <ChatRow key={chat.id} id={chat.id} />
-                ))}
+          {session && !chats?.empty && (
+            <div className="overflow-y-scroll flex-1">
+              <div className="flex flex-col my-2 space-y-2">
+                {/* map through the chatRows */}
+                {!chats?.empty &&
+                  chats?.docs.map((chat) => (
+                    <ChatRow key={chat.id} id={chat.id} />
+                  ))}
+              </div>
             </div>
-          </div>
+          )}
 
           {session && (
             <div className={`flex flex-row mt-auto space-x-2 w-full`}>
