@@ -21,8 +21,8 @@ export default async function Home() {
 
   return (
     <BaseLayout>
-      <div className="flex flex-col items-center justify-center px-2 text-white lg:overflow-hidden">
-        <div className="w-full p-4 m-4 rounded-xl  md:w-1/2 shadow-gray-700">
+      <div className="flex flex-col items-center justify-center px-2  lg:overflow-hidden">
+        <div className="w-full p-4 m-4 rounded-xl  md:w-1/2 ">
           <h2 className="mb-4 text-3xl font-medium text-center font-brand-roboto">
             {HOMEPAGE_CONVERSATION_TITLE}
           </h2>
@@ -31,7 +31,7 @@ export default async function Home() {
           </p>
         </div>
 
-        <div className="w-full p-4 m-4 rounded-xl  md:w-1/2 shadow-gray-700">
+        <div className="w-full p-4 m-4 rounded-xl  md:w-1/2 ">
           <h2 className="mb-4 text-3xl font-medium text-center font-brand-roboto">
             {HOMEPAGE_PROMPT_TITLE}
           </h2>
@@ -41,10 +41,11 @@ export default async function Home() {
         </div>
 
         {!session && (
-          <div className="w-full p-4 m-4 rounded-xl  md:w-1/2 shadow-gray-700">
+          <div className="w-full p-4 m-4 rounded-xl  md:w-1/2 ">
             <h2 className="mb-4 text-2xl font-medium text-center font-brand-roboto">
               Login or Create an Account to Start
             </h2>
+
             <Login />
           </div>
         )}
