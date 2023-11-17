@@ -4,7 +4,8 @@ import { getServerSession } from "next-auth";
 import { Roboto } from "next/font/google";
 
 // components
-import { ClientProvider, SessionProvider } from "@/providers";
+import SessionProvider from "@/providers/SessionProvider";
+import { ClientProvider } from "@/providers";
 import { StateProvider } from "@/context/stateContext";
 
 // context or store
