@@ -18,8 +18,8 @@ function Message({ message }: Props) {
   const isAssistant = message.role === "assistant";
 
   return (
-    <div className={`py-5  rounded-xl bg-base-300`}>
-      <div className="flex px-10 mx-auto space-x-5">
+    <div className={`py-5 rounded-xl bg-base-300`}>
+      <div className="flex flex-col items-center md:items-start md:flex-row px-10 mx-auto space-x-5">
         {/* user and chatgpt icons */}
         {isAssistant ? (
           <img
