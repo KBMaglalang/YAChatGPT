@@ -48,34 +48,28 @@ export function PromptDrawer() {
 
         {/* Sidebar content here */}
         <div className="menu p-4 w-80 h-full bg-base-200 text-base-content">
-          {/* no session */}
-          {!session && (
-            <div className="flex flex-col justify-center items-center mt-4 h-full text-xl font-bold  font-brand-roboto">
-              <span>Sign In</span>
-            </div>
-          )}
-
-          {/* prompts loading from firebase */}
-          {loading && (
-            <div className="flex justify-center items-center mt-4 h-full">
-              <Loading />
-            </div>
-          )}
-
-          {/* cta */}
-          {prompts?.empty && (
+          {(prompts?.empty || loading || !session) && (
             <div className="flex flex-col justify-center items-center flex-1 text-xl font-bold  font-brand-roboto">
-              <div className="hidden text-xl font-bold  truncate md:inline-flex font-brand-roboto">
-                Create New Prompt
-              </div>
-              <div className="flex justify-center items-center mt-5">
-                <ArrowDownCircleIcon className="mx-auto mt-5 w-10 h-10  animate-bounce" />
-              </div>
+              {/* prompts loading from firebase */}
+              {loading && <Loading />}
+
+              {/* no session */}
+              {!session && <span>Sign In</span>}
+
+              {/* cta */}
+              {!loading && prompts?.empty && (
+                <>
+                  <div className="hidden text-xl font-bold  truncate md:inline-flex font-brand-roboto">
+                    Create New Prompt
+                  </div>
+                  <ArrowDownCircleIcon className="mx-auto mt-5 w-10 h-10  animate-bounce" />
+                </>
+              )}
             </div>
           )}
 
           {/* prompt options */}
-          {session && !prompts?.empty && (
+          {session && !loading && !prompts?.empty && (
             <div className="overflow-y-scroll flex-1">
               <div className="flex flex-col my-2 space-y-2">
                 {/* map through the chatRows */}
