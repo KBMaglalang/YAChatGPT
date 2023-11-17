@@ -32,7 +32,7 @@ export default function NewChatModal({ setModalOpen }: Props) {
           {/* settings input or logout */}
           <div className="mt-3">
             <div className="flex flex-col mt-2 text-center">
-              <h4 className="mb-2 text-xl font-bold text-white font-brand-roboto">
+              <h4 className="mb-2 text-xl font-bold  font-brand-roboto">
                 Conversations
               </h4>
 
@@ -44,13 +44,13 @@ export default function NewChatModal({ setModalOpen }: Props) {
           {/* user selection */}
           <div className="gap-2 items-center mt-3 sm:flex">
             {/* <button
-              className="w-full mt-2 p-2.5 flex-1 text-white bg-indigo-600 rounded-md outline-none ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
+              className="w-full mt-2 p-2.5 flex-1  bg-indigo-600 rounded-md outline-none ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
               onClick={handleAccept}
             >
               Accept
             </button> */}
             <button
-              className="font-brand-roboto w-full mt-2 p-2.5 flex-1 text-white rounded-md outline-none border ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
+              className="font-brand-roboto w-full mt-2 p-2.5 flex-1  rounded-md outline-none border ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
               onClick={(e) => setModalOpen(false)}
             >
               Exit

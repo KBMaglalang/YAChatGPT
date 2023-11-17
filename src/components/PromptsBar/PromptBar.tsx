@@ -31,7 +31,7 @@ export function PromptBar() {
     <div className={`flex flex-col p-4 h-full rounded `}>
       {/* no session */}
       {!session && (
-        <div className="flex flex-col justify-center items-center mt-4 h-full text-xl font-bold text-white font-brand-roboto">
+        <div className="flex flex-col justify-center items-center mt-4 h-full text-xl font-bold  font-brand-roboto">
           <span>Sign In</span>
         </div>
       )}
@@ -46,11 +46,11 @@ export function PromptBar() {
       {/* cta */}
       {prompts?.empty && isOpen && (
         <div className="flex flex-col justify-center items-center h-full">
-          <div className="hidden text-xl font-bold text-white truncate md:inline-flex font-brand-roboto">
+          <div className="hidden text-xl font-bold  truncate md:inline-flex font-brand-roboto">
             Create New Prompt
           </div>
           <div className="flex justify-center items-center mt-5">
-            <ArrowDownCircleIcon className="w-10 h-10 text-white animate-bounce" />
+            <ArrowDownCircleIcon className="w-10 h-10  animate-bounce" />
           </div>
         </div>
       )}

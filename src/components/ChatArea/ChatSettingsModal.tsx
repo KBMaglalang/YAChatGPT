@@ -134,13 +134,12 @@ function ChatSettingsModal({ setModalOpen }: Props) {
           {/* user selection */}
           <div className="gap-2 items-center mt-3 sm:flex px-4">
             {/* <button
-              className="w-full mt-2 p-2.5 flex-1 text-white bg-indigo-600 rounded-md outline-none ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
+              className="btn btn-outline flex-1 text-base-content font-brand-roboto"
               onClick={handleAccept}
             >
               Accept
             </button> */}
             <button
-              // className="font-brand-roboto w-full mt-2 p-2.5 flex-1 text-white rounded-md outline-none border ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
               className="btn btn-outline flex-1 text-base-content font-brand-roboto"
               onClick={(e) => setModalOpen(false)}
             >

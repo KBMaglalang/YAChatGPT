@@ -31,7 +31,7 @@ function SettingsRow() {
   return (
     <div className="">
       <button
-        // className="p-4 font-bold text-white bg-indigo-600 rounded font-brand-roboto hover:opacity-50 disabled:bg-gray-300 disabled:cursor-not-allowed textarea-expandable h-content"
+        // className="p-4 font-bold  bg-indigo-600 rounded font-brand-roboto hover:opacity-50 disabled:bg-gray-300 disabled:cursor-not-allowed textarea-expandable h-content"
         className="btn btn-outline "
         onClick={() => setModalOpen(true)}
       >

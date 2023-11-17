@@ -111,7 +111,7 @@ export function ChatInput({
   };
 
   return (
-    <div className="px-4 mt-2 w-full text-sm text-white rounded-t-xl ">
+    <div className="px-4 mt-2 w-full text-sm  rounded-t-xl ">
       {/* input */}
       {/* <form onSubmit={sendMessage} className="flex p-5 space-x-5"> */}
       <form onSubmit={sendMessage} className="flex flex-row p-5 space-x-5">

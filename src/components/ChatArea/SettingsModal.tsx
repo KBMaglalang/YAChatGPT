@@ -38,7 +38,7 @@ function SettingsModal({ setModalOpen, signOut }: Props) {
 
               {/* api input key */}
               {/* <div className="flex flex-row justify-between items-center mt-2 w-full">
-                <span className="mr-4 text-xl font-bold text-white">
+                <span className="mr-4 text-xl font-bold ">
                   API Key
                 </span>
                 <input
@@ -54,7 +54,7 @@ function SettingsModal({ setModalOpen, signOut }: Props) {
                   Logout
                 </span>
                 <button
-                  // className="mt-2 p-2.5  text-white bg-red-600 rounded-md outline-none ring-offset-2 focus:ring-2 hover:bg-red-900 font-brand-roboto"
+                  // className="mt-2 p-2.5   bg-red-600 rounded-md outline-none ring-offset-2 focus:ring-2 hover:bg-red-900 font-brand-roboto"
                   className="btn btn-error font-brand-roboto "
                   onClick={() => signOut()}
                 >
@@ -67,13 +67,13 @@ function SettingsModal({ setModalOpen, signOut }: Props) {
           {/* user selection */}
           <div className="gap-2 items-center mt-3 sm:flex">
             {/* <button
-              className="w-full mt-2 p-2.5 flex-1 text-white bg-indigo-600 rounded-md outline-none ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
+              className="w-full mt-2 p-2.5 flex-1  bg-indigo-600 rounded-md outline-none ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
               onClick={handleAccept}
             >
               Accept
             </button> */}
             <button
-              // className="font-brand-roboto w-full mt-2 p-2.5 flex-1 text-white rounded-md outline-none border ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
+              // className="font-brand-roboto w-full mt-2 p-2.5 flex-1  rounded-md outline-none border ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
               className="btn btn-outline  font-brand-roboto flex-1"
               onClick={(e) => setModalOpen(false)}
             >

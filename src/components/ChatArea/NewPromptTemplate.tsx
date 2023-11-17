@@ -16,7 +16,7 @@ function NewPromptTemplate() {
       {/* new prompt button */}
       <div
         onClick={() => setModalOpen(true)}
-        className="p-4 font-bold text-white bg-indigo-600 rounded font-brand-roboto hover:opacity-50 disabled:bg-gray-300 disabled:cursor-not-allowed textarea-expandable h-content"
+        className="p-4 font-bold  bg-indigo-600 rounded font-brand-roboto hover:opacity-50 disabled:bg-gray-300 disabled:cursor-not-allowed textarea-expandable h-content"
       >
         <BookOpenIcon className="w-4 h-4" />
       </div>

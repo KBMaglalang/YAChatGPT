@@ -2,27 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* set root background color to black */
-/* :root {
-  background-color: #1E1E24;
-} */
-
-/* .prose img {
-  max-width: 100%;
-  height: auto;
-}
-
-.prose table {
-  display: block;
-  width: 100%;
-  overflow: auto;
-} */
-
-/* .textarea-expandable {
-  max-height: 50vh;
-  overflow-y: auto;  */
-  /* for scrolling when the max-height is reached */
-/* } */
 
 
 /* scroll bar */
@@ -46,18 +25,3 @@
   background: #ffffff6e;
 }
 
-/* custom utilities classes with tailwind */
-/* @layer components {
-  .chatRow {
-    @apply bg-brand-chat-message border-gray-700 border-2 rounded-lg px-5 py-3 text-sm flex items-center justify-center space-x-2 hover:bg-indigo-600 cursor-pointer text-brand-white transition-all duration-200 ease-out
-  }
-
-  .messageSettings {
-    @apply text-xs text-gray-400
-  }
-
-  .createNewButton{
-    @apply bg-brand-chat-area border-gray-700 border-2 rounded-2xl px-5 py-3 text-sm flex items-center justify-center space-x-2 hover:bg-indigo-600 cursor-pointer text-white transition-all duration-200 ease-out
-  }
-}
- */

@@ -31,7 +31,7 @@ export default function PromptList({ setModalOpen }: Props) {
         <div className="relative p-4 mx-auto w-full max-w-lg rounded-md shadow-2xl  shadow-gray-700">
           {/* settings input or logout */}
           <div className="mt-3">
-            <h4 className="mb-2 text-xl font-bold text-center text-white font-brand-roboto">
+            <h4 className="mb-2 text-xl font-bold text-center  font-brand-roboto">
               Prompts
             </h4>
 
@@ -41,7 +41,7 @@ export default function PromptList({ setModalOpen }: Props) {
           {/* user selection */}
           <div className="gap-2 items-center mt-3 sm:flex">
             <button
-              className="font-brand-roboto w-full mt-2 p-2.5 flex-1 text-white rounded-md outline-none border ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
+              className="font-brand-roboto w-full mt-2 p-2.5 flex-1  rounded-md outline-none border ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
               onClick={(e) => setModalOpen(false)}
             >
               Exit

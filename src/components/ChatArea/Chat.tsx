@@ -35,11 +35,11 @@ export function Chat({ llmMessages }: Props) {
       {/* cta */}
       {llmMessages?.length === 0 && (
         <div className="flex flex-col justify-center items-center h-full">
-          <p className="mt-10 text-xl font-bold text-center text-white justify font-brand-roboto">
+          <p className="mt-10 text-xl font-bold text-center  justify font-brand-roboto">
             Type a prompt below!
           </p>
           <div className="flex justify-center items-center mt-5">
-            <ArrowDownCircleIcon className="w-10 h-10 text-white animate-bounce" />
+            <ArrowDownCircleIcon className="w-10 h-10  animate-bounce" />
           </div>
         </div>
       )}

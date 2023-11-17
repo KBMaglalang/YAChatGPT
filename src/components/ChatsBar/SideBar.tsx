@@ -33,7 +33,7 @@ export function SideBar() {
     <div className={`flex flex-col p-4 h-full rounded `}>
       {/* no session */}
       {!session && (
-        <div className="flex flex-col justify-center items-center mt-4 h-full text-xl font-bold text-white font-brand-roboto">
+        <div className="flex flex-col justify-center items-center mt-4 h-full text-xl font-bold  font-brand-roboto">
           <span>Sign In</span>
         </div>
       )}
@@ -48,8 +48,8 @@ export function SideBar() {
       {/* cta */}
       {chats?.empty && (
         <div className="flex flex-col justify-center items-center mt-6 h-full">
-          <ArrowDownCircleIcon className="mx-auto mt-5 w-10 h-10 text-white animate-bounce" />
-          <p className="hidden text-xl font-bold text-white truncate md:inline-flex font-brand-roboto">
+          <ArrowDownCircleIcon className="mx-auto mt-5 w-10 h-10  animate-bounce" />
+          <p className="hidden text-xl font-bold  truncate md:inline-flex font-brand-roboto">
             Create New Chats
           </p>
         </div>
