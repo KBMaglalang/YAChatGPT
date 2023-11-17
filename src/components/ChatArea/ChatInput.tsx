@@ -57,10 +57,6 @@ export function ChatInput({
     }
   }, [userInput, llmInput, llmSetInput]);
 
-  useEffect(() => {
-    setUserInput(llmInput);
-  }, [llmInput, setUserInput]);
-
   /**
    * Sends a message, adds it to the "messages" collection within a specific chat in the "users" collection of Firebase,
    * and sends a question to the "/api/askQuestion" endpoint for ChatGPT to respond.
@@ -80,6 +76,8 @@ export function ChatInput({
       role: "user",
       id: "",
     };
+
+    setUserInput("");
 
     // Adds a new document to the "messages" collection within a specific chat in the "users" collection of firebase
     await addDoc(
@@ -119,8 +117,8 @@ export function ChatInput({
             autoFocus
             ref={textareaRef}
             disabled={!session}
-            value={llmInput}
-            onChange={llmHandleInputChange}
+            value={userInput}
+            onChange={(e) => setUserInput(e.target.value)}
             onKeyDown={handleKeyDown}
             className="textarea textarea-bordered bg-transparent flex-1 resize-none font-brand-roboto disabled:cursor-not-allowed disabled:text-gray-300"
             placeholder="Type your message here... (CTRL + ENTER to send)"
