@@ -47,7 +47,7 @@ export function Chat({ llmMessages }: Props) {
       {/* messages */}
       <div className="space-y-2">
         {llmMessages?.map((message: Message) => (
-          <Message key={message.createdAt} message={message} />
+          <Message key={message.id} message={message} />
         ))}
       </div>
     </div>

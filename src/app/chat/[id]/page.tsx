@@ -86,17 +86,23 @@ function ChatPage({ params: { id } }: Props) {
   );
 
   useEffect(() => {
-    if (messages.length == 0 && firebaseMessages?.docs?.length! > 0) {
-      const newMessage = firebaseMessages?.docs?.map((doc) => ({
-        content: doc?.data().content,
-        role: doc?.data().role,
-        createdAt: doc?.data().createdAt,
-        id: doc?.data().id,
-      }));
+    if (
+      !firebaseLoading &&
+      messages.length == 0 &&
+      firebaseMessages?.docs?.length! > 0
+    ) {
+      const newMessage = firebaseMessages?.docs
+        ?.filter((doc) => doc.id !== "")
+        ?.map((doc) => ({
+          content: doc?.data().content,
+          role: doc?.data().role,
+          createdAt: doc?.data().createdAt,
+          id: doc?.data().id,
+        }));
 
       setMessages(newMessage as Message[]);
     }
-  }, [firebaseLoading, firebaseMessages, messages, setMessages]);
+  }, [firebaseLoading, messages, setMessages]);
 
   return (
     <BaseLayout layoutTitle={chatDoc?.data()?.title || "New Chat"}>

@@ -3,6 +3,7 @@
 import React, { useRef, useEffect, FormEvent, KeyboardEvent } from "react";
 import { useSession } from "next-auth/react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { v4 as uuidv4 } from "uuid";
 
 // components
 import ChatSettings from "./ChatSettings";
@@ -74,7 +75,7 @@ export function ChatInput({
       content: llmInput,
       createdAt: serverTimestamp(),
       role: "user",
-      id: "",
+      id: uuidv4(),
     };
 
     setUserInput("");
