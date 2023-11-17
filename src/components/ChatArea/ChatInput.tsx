@@ -111,10 +111,10 @@ export function ChatInput({
   };
 
   return (
-    <div className="mt-2 w-full text-sm ">
+    <div className="mt-2 w-full text-sm">
       {/* input */}
       <form onSubmit={sendMessage} className="flex flex-row space-x-5">
-        <div className="flex flex-1 w-full textarea-expandable">
+        <div className="flex flex-1 w-full ">
           <textarea
             autoFocus
             ref={textareaRef}
