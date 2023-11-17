@@ -52,15 +52,15 @@ function ChatEditModal({ setModalOpen, callback, title = "" }: Props) {
           </div>
 
           {/* user selection */}
-          <div className="gap-2 items-center mt-3 sm:flex">
+          <div className="gap-2 items-center mt-3 flex flex-col  w-full">
             <button
-              className="btn btn-primary font-brand-roboto flex-1"
+              className="btn btn-primary font-brand-roboto w-full"
               onClick={handleAccept}
             >
               Accept
             </button>
             <button
-              className="btn btn-outline  font-brand-roboto flex-1"
+              className="btn btn-outline  font-brand-roboto w-full"
               onClick={(e) => setModalOpen(false)}
             >
               Cancel

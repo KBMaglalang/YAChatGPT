@@ -132,7 +132,7 @@ function ChatSettingsModal({ setModalOpen }: Props) {
           </div>
 
           {/* user selection */}
-          <div className="gap-2 items-center mt-3 sm:flex px-4">
+          <div className="gap-2 items-center mt-3 w-full px-4 flex flex-col">
             {/* <button
               className="btn btn-outline flex-1 text-base-content font-brand-roboto"
               onClick={handleAccept}
@@ -140,7 +140,7 @@ function ChatSettingsModal({ setModalOpen }: Props) {
               Accept
             </button> */}
             <button
-              className="btn btn-outline flex-1 text-base-content font-brand-roboto"
+              className="btn btn-outline w-full text-base-content font-brand-roboto"
               onClick={(e) => setModalOpen(false)}
             >
               Exit

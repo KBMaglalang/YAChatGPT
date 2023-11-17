@@ -65,7 +65,7 @@ function SettingsModal({ setModalOpen, signOut }: Props) {
           </div>
 
           {/* user selection */}
-          <div className="gap-2 items-center mt-3 sm:flex">
+          <div className="gap-2 items-center mt-3 flex flex-col  w-full">
             {/* <button
               className="w-full mt-2 p-2.5 flex-1  bg-indigo-600 rounded-md outline-none ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
               onClick={handleAccept}
@@ -74,7 +74,7 @@ function SettingsModal({ setModalOpen, signOut }: Props) {
             </button> */}
             <button
               // className="font-brand-roboto w-full mt-2 p-2.5 flex-1  rounded-md outline-none border ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
-              className="btn btn-outline  font-brand-roboto flex-1"
+              className="btn btn-outline  font-brand-roboto w-full"
               onClick={(e) => setModalOpen(false)}
             >
               Exit
