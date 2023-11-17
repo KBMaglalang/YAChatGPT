@@ -28,11 +28,11 @@ function SettingsModal({ setModalOpen, signOut }: Props) {
 
       {/* modal box */}
       <div className="flex items-center px-4 py-8 min-h-screen">
-        <div className="relative p-4 mx-auto w-full max-w-lg rounded-md shadow-2xl  shadow-gray-700">
+        <div className="relative p-4 mx-auto w-full max-w-lg rounded-md shadow-2xl bg-base-200  shadow-gray-700">
           {/* settings input or logout */}
           <div className="mt-3">
             <div className="flex flex-col mt-2 text-center">
-              <h4 className="mb-2 text-xl font-bold text-white font-brand-roboto">
+              <h4 className="mb-2 text-xl font-bold text-base-content font-brand-roboto">
                 Settings
               </h4>
 
@@ -49,12 +49,13 @@ function SettingsModal({ setModalOpen, signOut }: Props) {
               </div> */}
 
               {/* logout */}
-              <div className="flex flex-row justify-between items-center mt-2 w-full">
-                <span className="text-xl font-bold text-white font-brand-roboto">
+              <div className="flex flex-row justify-between items-center mt-2 w-full text-base-content">
+                <span className="text-xl font-bold text-base-content font-brand-roboto">
                   Logout
                 </span>
                 <button
-                  className="mt-2 p-2.5  text-white bg-red-600 rounded-md outline-none ring-offset-2 focus:ring-2 hover:bg-red-900 font-brand-roboto"
+                  // className="mt-2 p-2.5  text-white bg-red-600 rounded-md outline-none ring-offset-2 focus:ring-2 hover:bg-red-900 font-brand-roboto"
+                  className="btn btn-error font-brand-roboto "
                   onClick={() => signOut()}
                 >
                   Logout
@@ -72,7 +73,8 @@ function SettingsModal({ setModalOpen, signOut }: Props) {
               Accept
             </button> */}
             <button
-              className="font-brand-roboto w-full mt-2 p-2.5 flex-1 text-white rounded-md outline-none border ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
+              // className="font-brand-roboto w-full mt-2 p-2.5 flex-1 text-white rounded-md outline-none border ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
+              className="btn btn-outline  font-brand-roboto flex-1"
               onClick={(e) => setModalOpen(false)}
             >
               Exit
