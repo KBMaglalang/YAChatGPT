@@ -41,7 +41,7 @@ function ChatRow({ id }: Props) {
     if (!pathname) return;
 
     setActive(pathname.includes(id));
-  }, [pathname]);
+  }, [pathname, id]);
 
   // udpate a chat
   /**

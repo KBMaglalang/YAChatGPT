@@ -38,7 +38,6 @@ function ChatPage({ params: { id } }: Props) {
   const {
     messages,
     input,
-    error,
     isLoading,
     handleInputChange,
     handleSubmit,
@@ -71,13 +70,7 @@ function ChatPage({ params: { id } }: Props) {
     if (!session) {
       router.replace("/");
     }
-  }, []);
-
-  // useEffect(() => {
-  //   if (error) {
-  //     toast.error(JSON.parse(error.message).message);
-  //   }
-  // }, [error]);
+  }, [router, session]);
 
   // get document fields from firebase
   const [chatDoc, chatLoading, chatError] = useDocument(
@@ -103,7 +96,7 @@ function ChatPage({ params: { id } }: Props) {
 
       setMessages(newMessage as Message[]);
     }
-  }, [firebaseLoading]);
+  }, [firebaseLoading, firebaseMessages, messages, setMessages]);
 
   return (
     <BaseLayout layoutTitle={chatDoc?.data()?.title || "New Chat"}>
