@@ -18,7 +18,7 @@ export default function UserSendButton({ session, llmInput }: Props) {
       <button
         type="submit"
         disabled={!session || !llmInput}
-        className="px-4 py-4 font-bold  bg-indigo-600 rounded font-brand-roboto hover:opacity-50 disabled:bg-gray-300 disabled:cursor-not-allowed textarea-expandable h-content"
+        className="btn btn-primary disabled:bg-gray-300 disabled:cursor-not-allowed"
       >
         <PaperAirplaneIcon className="w-4 h-4 -rotate-45" />
       </button>

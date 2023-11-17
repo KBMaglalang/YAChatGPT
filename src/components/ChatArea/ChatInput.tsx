@@ -55,11 +55,11 @@ export function ChatInput({
     if (llmInput != userInput) {
       llmSetInput(userInput);
     }
-  }, [userInput]);
+  }, [userInput, llmInput, llmSetInput]);
 
   useEffect(() => {
     setUserInput(llmInput);
-  }, [llmInput]);
+  }, [llmInput, setUserInput]);
 
   /**
    * Sends a message, adds it to the "messages" collection within a specific chat in the "users" collection of Firebase,
@@ -111,10 +111,9 @@ export function ChatInput({
   };
 
   return (
-    <div className="px-4 mt-2 w-full text-sm  rounded-t-xl ">
+    <div className="mt-2 w-full text-sm ">
       {/* input */}
-      {/* <form onSubmit={sendMessage} className="flex p-5 space-x-5"> */}
-      <form onSubmit={sendMessage} className="flex flex-row p-5 space-x-5">
+      <form onSubmit={sendMessage} className="flex flex-row space-x-5">
         <div className="flex flex-1 w-full textarea-expandable">
           <textarea
             autoFocus
@@ -123,13 +122,13 @@ export function ChatInput({
             value={llmInput}
             onChange={llmHandleInputChange}
             onKeyDown={handleKeyDown}
-            className="textarea textarea-ghost bg-transparent flex-1 resize-none font-brand-roboto disabled:cursor-not-allowed disabled:text-gray-300"
+            className="textarea textarea-bordered bg-transparent flex-1 resize-none font-brand-roboto disabled:cursor-not-allowed disabled:text-gray-300"
             placeholder="Type your message here... (CTRL + ENTER to send)"
           />
         </div>
 
         {/* user control buttons */}
-        <div className="flex flex-wrap h-content gap-4 justify-end w-1/6">
+        <div className="flex flex-col space-y-2">
           {llmIsLoading ? (
             <UserStopButton
               session={session}

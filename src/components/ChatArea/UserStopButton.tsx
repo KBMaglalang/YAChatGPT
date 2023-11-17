@@ -23,7 +23,7 @@ export default function UserStopButton({
       <button
         disabled={!session || !llmIsLoading}
         onClick={llmStop}
-        className="px-4 py-4 font-bold  bg-red-600 rounded font-brand-roboto hover:opacity-50 disabled:bg-gray-300 disabled:cursor-not-allowed textarea-expandable h-content"
+        className="btn btn-error disabled:bg-gray-300 disabled:cursor-not-allowed"
       >
         <StopIcon className="w-4 h-4" />
       </button>
