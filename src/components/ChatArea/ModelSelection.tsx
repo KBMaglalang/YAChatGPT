@@ -21,8 +21,8 @@ function ModelSelection() {
   });
 
   return (
-    <div className="form-control w-full">
-      <label className="label w-full">
+    <div className="form-control w-full mt-4">
+      <label className="label w-full ">
         <span className="label-text">Model</span>
       </label>
 
@@ -33,30 +33,29 @@ function ModelSelection() {
         options={models?.modelOptions}
         isLoading={isLoading}
         menuPosition="fixed"
-        className="mt-2 font-brand-roboto bg-transparent"
+        className="mt-2 font-brand-roboto "
         styles={{
           control: (baseStyles) => ({
             ...baseStyles,
-            backgroundColor: "none",
-            // borderColor: "none",
+            // backgroundColor: "none",
+            color: "#FFF",
           }),
           option: (baseStyles) => ({
             ...baseStyles,
             backgroundColor: "#212121",
-            color: "#fff",
+            color: "#FFF",
           }),
           input: (baseStyles) => ({
             ...baseStyles,
-            color: "#fff",
           }),
-          placeholder: (baseStyles) => ({
-            ...baseStyles,
-            color: "#fff",
-          }),
-          singleValue: (baseStyles) => ({
-            ...baseStyles,
-            color: "#fff",
-          }),
+          // placeholder: (baseStyles) => ({
+          //   ...baseStyles,
+          //   color: "#fff",
+          // }),
+          // singleValue: (baseStyles) => ({
+          //   ...baseStyles,
+          //   color: "#fff",
+          // }),
         }}
         onChange={(e) => setModel(e.value)}
       />

@@ -44,17 +44,17 @@ function ChatSettingsModal({ setModalOpen }: Props) {
 
       {/* modal box */}
       <div className="flex items-center px-4 py-8 min-h-screen">
-        <div className="relative py-4 mx-auto w-full max-w-lg rounded-md shadow-2xl  shadow-gray-700">
+        <div className="relative py-4 mx-auto w-full max-w-lg rounded-md shadow-2xl bg-base-200 shadow-gray-700">
           {/* settings input or logout */}
           <div className="mt-3 px-4">
             <div className="flex flex-col mt-2 text-center">
-              <h4 className="mb-2 text-xl font-bold text-white font-brand-roboto">
+              <h4 className="mb-2 text-xl font-bold text-base-content font-brand-roboto">
                 Chat Settings
               </h4>
             </div>
 
             {/* settings */}
-            <div className="flex flex-wrap justify-around items-center space-y-4 w-full bg-transparent lg:flex-col">
+            <div className="flex flex-wrap justify-around items-center space-y-4 w-full bg-transparent lg:flex-col text-base-content">
               {/* temperature - slider and input */}
               <Slider
                 title="Temperature"
@@ -141,7 +141,7 @@ function ChatSettingsModal({ setModalOpen }: Props) {
             </button> */}
             <button
               // className="font-brand-roboto w-full mt-2 p-2.5 flex-1 text-white rounded-md outline-none border ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
-              className="btn btn-outline flex-1 text-white font-brand-roboto"
+              className="btn btn-outline flex-1 text-base-content font-brand-roboto"
               onClick={(e) => setModalOpen(false)}
             >
               Exit
