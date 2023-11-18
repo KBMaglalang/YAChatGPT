@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.4](https://github.com/KBMaglalang/YAChatGPT/compare/v0.1.3...v0.1.4) (2023-11-18)
+
+
+### Features
+
+* add background color to drawers ([b03fde9](https://github.com/KBMaglalang/YAChatGPT/commit/b03fde99e1873bd3d0ed7c32dfa64388c9eabb1c))
+* toggle between light and dark ([5386f82](https://github.com/KBMaglalang/YAChatGPT/commit/5386f821933cb09b9cae1dc253f106134ef7b5a3))
+* update header to use constant and show chat name ([8b0f72c](https://github.com/KBMaglalang/YAChatGPT/commit/8b0f72cae9fc530f657ed436d68d0a47c1092288))
+* update README doc and images ([bb31ad7](https://github.com/KBMaglalang/YAChatGPT/commit/bb31ad702b0c87d64cbd080b0e4b46991ef7a016))
+* update styling of layout ([4a81cf7](https://github.com/KBMaglalang/YAChatGPT/commit/4a81cf713b8d7f37823aef8db09c456ca870a559))
+* update z position of the drawers ([9070cfd](https://github.com/KBMaglalang/YAChatGPT/commit/9070cfdb7675e83479950d0e821c5a79c44da97f))
+* user settings in the header ([94ec0df](https://github.com/KBMaglalang/YAChatGPT/commit/94ec0dfbc63692c5ba2bd695430508dc3eaf6659))
+
+
+### Bug Fixes
+
+* add missing useeffect ([5899b0e](https://github.com/KBMaglalang/YAChatGPT/commit/5899b0ef7ea7410dcdd96f69a0feac03427399f6))
+* buttons to be columns ([4e9d3b2](https://github.com/KBMaglalang/YAChatGPT/commit/4e9d3b24d7185a5a9f51c3a3c1a0c2210baec565))
+* directly call session provider ([b8d81df](https://github.com/KBMaglalang/YAChatGPT/commit/b8d81df03ffcf8102c9a35f71939110b0b2ced24))
+* remove extra use effect and clear user input on submit ([3495391](https://github.com/KBMaglalang/YAChatGPT/commit/34953917d9e88b18b5ca751251d687b5a5f5afcf))
+* show the message on the chat window ([b933f62](https://github.com/KBMaglalang/YAChatGPT/commit/b933f6216d5c0f355d9371e747951e9c3635ec93))
+* styling of component when loading or getting session ([d007899](https://github.com/KBMaglalang/YAChatGPT/commit/d007899c873101ea9aed42cc3193f3e375d7b661))
+* text positions ([191068f](https://github.com/KBMaglalang/YAChatGPT/commit/191068f0686bac75c1d05fb2357ef9aa92fd6ecd))
+
 ### [0.1.3](https://github.com/KBMaglalang/YAChatGPT/compare/v0.1.2...v0.1.3) (2023-10-11)
 
 
