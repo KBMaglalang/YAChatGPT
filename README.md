@@ -1,4 +1,4 @@
-# YAChatGPT
+# EasyAIChat
 
 Standing for "Yet Another ChatGPT Frontend," this project stemmed from a personal desire to gain more granularity in interacting with ChatGPT. Not just content with the conventional user-interface available on the OpenAI website, the aim was to offer users the ability to view detailed prompts and responses. Moreover, the aspiration was to create an environment where users could leverage template prompts, potentially simplifying repeated interactions and laying the groundwork for future user-friendly features. The initiative provided a perfect playground to experiment with the latest web technologies - from diving deep into the functionalities of Next.js 13 to tapping into the power of Firebase. The journey was equally intriguing, considering it involved acquainting oneself with a gamut of unfamiliar libraries, making it not just a software development task but also a steep and enriching learning curve.
 
@@ -29,27 +29,26 @@ Initially, Firebase threw me for a loop. Being a PaaS I hadn't ventured into bef
 
 I intend to implement these other features over time:
 
-- [x] Change to using streamed responses from OpenAI
+- [ ] Create checkpoints in conversations where you can return to and try something else
+- [ ] Global shortcuts
 - [ ] Support Import and Export options for both Conversations and Prompts
 - [ ] Implementing search in both Conversations and Prompts
-- [ ] Create checkpoints in conversations where you can return to and try something else
-- [ ] Add voice input
-- [ ] Global shortcuts
 
 ## Screenshots
 
-!['homepage'](doc/1-homepage.PNG)
-!['loginHomepage'](doc/2-loginHomepage.PNG)
-!['chat'](doc/3-chat.PNG)
-!['updatedTitle'](doc/4-updated%20title.PNG)
-!['mobileView'](doc/5-mobileView.PNG)
-!['settingsModal'](doc/6-chatSettingsModal.PNG)
-!['updateTitleModal'](doc/7-updateTitleModal.PNG)
-!['deletChatModal'](doc/8-deleteChatModal.PNG)
-!['createNewPromptModal'](doc/9-createNewPromptModal.PNG)
-!['editPromptModal'](doc/10-editPromptModal.PNG)
-!['deletePromptModal'](doc/11-deletePromptModal.PNG)
-!['webAppSettingsModal'](doc/12-webAppSettingsModal.PNG)
+!['homepage'](doc/1.png)
+!['loginHomepage'](doc/2.png)
+!['chat'](doc/3.png)
+!['updatedTitle'](doc/4.png)
+!['mobileView'](doc/5.png)
+!['settingsModal'](doc/6.png)
+!['updateTitleModal'](doc/7.png)
+!['deletChatModal'](doc/8.png)
+!['createNewPromptModal'](doc/9.png)
+!['editPromptModal'](doc/10.png)
+!['deletePromptModal'](doc/11.png)
+!['webAppSettingsModal'](doc/12.png)
+!['darkmode'](doc/13.png)
 
 ## How to Install and Run
 
