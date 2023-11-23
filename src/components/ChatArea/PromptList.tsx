@@ -12,12 +12,6 @@ type Props = {
 };
 
 export default function PromptList({ setModalOpen }: Props) {
-  // const handleAccept = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-  //   e.preventDefault();
-
-  //   setModalOpen(false);
-  // };
-
   return (
     <div className="overflow-y-auto fixed inset-0 z-10">
       {/* handles clicks outside the modal box */}

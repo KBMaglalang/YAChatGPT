@@ -19,7 +19,9 @@ export function Chat({ llmMessages }: Props) {
   // Reference for the scrollable div
   const scrollContainerRef = useRef<null | HTMLDivElement>(null);
 
-  // Automatically scrolls to the bottom of a scrollable div container when new messages are received
+  /* The `useEffect` hook is used to perform side effects in a functional component. In this case, the
+  `useEffect` hook is used to scroll to the bottom of a scrollable div container whenever the
+  `llmMessages` prop changes. */
   useEffect(() => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollTop =

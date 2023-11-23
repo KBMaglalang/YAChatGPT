@@ -4,6 +4,7 @@ import { ChatOpenAI } from "langchain/chat_models/openai";
 import { CallbackManager } from "langchain/callbacks";
 import { StreamingTextResponse, LangChainStream, Message } from "ai";
 
+// setup to use vercel ai
 export const runtime = "edge";
 
 export async function POST(req: Request) {

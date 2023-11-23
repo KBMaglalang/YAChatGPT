@@ -48,14 +48,6 @@ function ModelSelection() {
           input: (baseStyles) => ({
             ...baseStyles,
           }),
-          // placeholder: (baseStyles) => ({
-          //   ...baseStyles,
-          //   color: "#fff",
-          // }),
-          // singleValue: (baseStyles) => ({
-          //   ...baseStyles,
-          //   color: "#fff",
-          // }),
         }}
         onChange={(e) => setModel(e.value)}
       />

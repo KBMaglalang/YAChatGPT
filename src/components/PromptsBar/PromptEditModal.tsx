@@ -22,6 +22,13 @@ function PromptEditModal({
   const [promptTitle, setPromptTitle] = useState(title);
   const [promptTextArea, setPromptTextArea] = useState(prompt || "{{text}}");
 
+  /**
+   * The handleAccept function is a callback that is triggered when a button is clicked, and it
+   * prevents the default behavior, calls a callback function with two parameters, and sets a modal
+   * state to false.
+   * @param e - The parameter `e` is an event object of type `React.MouseEvent<HTMLButtonElement,
+   * MouseEvent>`. It represents the mouse event that triggered the function.
+   */
   const handleAccept = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
 

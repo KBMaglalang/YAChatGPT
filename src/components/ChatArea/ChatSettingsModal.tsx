@@ -28,12 +28,6 @@ function ChatSettingsModal({ setModalOpen }: Props) {
     setPromptSettings((prev) => ({ ...prev, [key]: newValue }));
   };
 
-  // const handleAccept = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-  //   e.preventDefault();
-
-  //   setModalOpen(false);
-  // };
-
   return (
     <div className="overflow-y-auto fixed inset-0 z-10">
       {/* handles clicks outside the modal box */}
@@ -110,21 +104,6 @@ function ChatSettingsModal({ setModalOpen }: Props) {
                   }
                 />
               </div>
-
-              {/* <div className="flex flex-row justify-between items-center space-x-2 w-full">
-                <span className="mb-2 messageSettings font-brand-roboto">
-                  Max Tokens
-                </span>
-
-                <input
-                  type="number"
-                  value={promptSettings.maxTokens}
-                  className="input input-bordered  bg-transparent"
-                  onChange={(e) =>
-                    handleSettingChange("maxTokens", parseInt(e.target.value))
-                  }
-                />
-              </div> */}
             </div>
 
             {/* model selection */}
@@ -133,12 +112,6 @@ function ChatSettingsModal({ setModalOpen }: Props) {
 
           {/* user selection */}
           <div className="gap-2 items-center mt-3 w-full px-4 flex flex-col">
-            {/* <button
-              className="btn btn-outline flex-1 text-base-content font-brand-roboto"
-              onClick={handleAccept}
-            >
-              Accept
-            </button> */}
             <button
               className="btn btn-outline w-full text-base-content font-brand-roboto"
               onClick={(e) => setModalOpen(false)}

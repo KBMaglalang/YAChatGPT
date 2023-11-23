@@ -12,12 +12,6 @@ type Props = {
 };
 
 export default function NewChatModal({ setModalOpen }: Props) {
-  // const handleAccept = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-  //   e.preventDefault();
-
-  //   setModalOpen(false);
-  // };
-
   return (
     <div className="overflow-y-auto fixed inset-0 z-10">
       {/* handles clicks outside the modal box */}
@@ -43,12 +37,6 @@ export default function NewChatModal({ setModalOpen }: Props) {
 
           {/* user selection */}
           <div className="gap-2 items-center mt-3 sm:flex">
-            {/* <button
-              className="w-full mt-2 p-2.5 flex-1  bg-indigo-600 rounded-md outline-none ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
-              onClick={handleAccept}
-            >
-              Accept
-            </button> */}
             <button
               className="font-brand-roboto w-full mt-2 p-2.5 flex-1  rounded-md outline-none border ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
               onClick={(e) => setModalOpen(false)}

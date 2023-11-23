@@ -21,6 +21,14 @@ export const Slider: React.FC<SliderProps> = ({
   value,
   callback,
 }) => {
+  /**
+   * The function "handleSliderChange" is a callback function that takes in an event of type
+   * React.ChangeEvent<HTMLInputElement> and calls a callback function with the parsed float value of
+   * the input element's value.
+   * @param e - The parameter `e` is of type `React.ChangeEvent<HTMLInputElement>`. This means it is an
+   * event object that is triggered when the value of an input element of type `HTMLInputElement`
+   * changes.
+   */
   const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     callback(parseFloat(e.target.value));
   };
