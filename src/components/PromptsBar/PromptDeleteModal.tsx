@@ -12,6 +12,12 @@ type Props = {
 };
 
 function PromptDeleteModal({ setModalOpen, callback }: Props) {
+  /**
+   * The handleAccept function is a callback that prevents the default behavior of a button click
+   * event, calls a callback function, and sets a modal state to false.
+   * @param e - The parameter `e` is an event object of type `React.MouseEvent<HTMLButtonElement,
+   * MouseEvent>`. It represents the mouse event that triggered the function.
+   */
   const handleAccept = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
 

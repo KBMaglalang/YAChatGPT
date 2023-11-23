@@ -17,6 +17,7 @@ import {
 } from "@/constants";
 
 export default async function Home() {
+  // get session
   const session = await getServerSession(authOptions);
 
   return (

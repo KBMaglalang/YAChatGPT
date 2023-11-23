@@ -66,17 +66,27 @@ function ChatPage({ params: { id } }: Props) {
     sendExtraMessageFields: true,
   });
 
+  /**
+
+  Use effect hook that checks if session exists.
+  If session does not exist, redirect to home page.
+  @param {object} router - The router object used for navigation.
+  @param {object} session - The session object to check for existence. */
   useEffect(() => {
     if (!session) {
       router.replace("/");
     }
   }, [router, session]);
 
-  // get document fields from firebase
+  /* The code `const [chatDoc, chatLoading, chatError] = useDocument(session && doc(db, "users",
+  session?.user?.email!, "chats", id));` is using the `useDocument` hook from the
+  `react-firebase-hooks/firestore` library to fetch a specific document from the Firestore database. */
   const [chatDoc, chatLoading, chatError] = useDocument(
     session && doc(db, "users", session?.user?.email!, "chats", id)
   );
 
+  /* The code is using the `useCollection` hook from the `react-firebase-hooks/firestore` library to
+  fetch a collection of documents from the Firestore database. */
   const [firebaseMessages, firebaseLoading] = useCollection(
     session &&
       query(
@@ -85,6 +95,8 @@ function ChatPage({ params: { id } }: Props) {
       )
   );
 
+  /* This `useEffect` hook is responsible for updating the `messages` state when new messages are
+  fetched from the Firestore database. */
   useEffect(() => {
     if (
       !firebaseLoading &&

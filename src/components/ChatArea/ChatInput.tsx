@@ -43,7 +43,8 @@ export function ChatInput({
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { data: session } = useSession();
 
-  // Dynamically adjusts the height of a textarea element based on the user's input
+  /* The `useEffect` hook in the code snippet is used to dynamically adjust the height of a textarea
+  element based on its content. */
   useEffect(() => {
     if (textareaRef.current) {
       textareaRef.current.style.height = "inherit"; // Reset height first to get a "clean slate"
@@ -52,6 +53,8 @@ export function ChatInput({
     }
   }, [llmInput]);
 
+  /* The `useEffect` hook is used to perform side effects in a functional component. In this case, the
+  `useEffect` hook is used to synchronize the `userInput` state with the `llmInput` state. */
   useEffect(() => {
     if (llmInput != userInput) {
       llmSetInput(userInput);

@@ -15,6 +15,13 @@ type Props = {
 function ChatEditModal({ setModalOpen, callback, title = "" }: Props) {
   const [chatTitle, setchatTitle] = useState(title);
 
+  /**
+   * The handleAccept function is a callback that is triggered when a button is clicked, it prevents
+   * the default behavior, calls a callback function with the chatTitle parameter, and sets the
+   * modalOpen state to false.
+   * @param e - The parameter `e` is an event object of type `React.MouseEvent<HTMLButtonElement,
+   * MouseEvent>`. It represents the mouse event that triggered the function.
+   */
   const handleAccept = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
 

@@ -37,6 +37,8 @@ function ChatRow({ id }: Props) {
     doc(db, "users", session?.user?.email!, "chats", id)
   );
 
+  /* The `useEffect` hook is used to perform side effects in a functional component. In this case, the
+  effect is triggered whenever the `pathname` or `id` changes. */
   useEffect(() => {
     if (!pathname) return;
 
@@ -74,6 +76,11 @@ function ChatRow({ id }: Props) {
     }
   };
 
+  /**
+   * The function "modalEditCallback" sets the state of "modalOpen" to true when called.
+   * @param e - The parameter `e` is an event object of type `React.MouseEvent<SVGSVGElement,
+   * MouseEvent>`. It represents the mouse click event that triggered the callback function.
+   */
   const modalEditCallback = async (
     e: React.MouseEvent<SVGSVGElement, MouseEvent>
   ) => {
@@ -82,6 +89,12 @@ function ChatRow({ id }: Props) {
     setModalOpen(true);
   };
 
+  /**
+   * The function `modalDeleteCallback` is a callback function that sets the state variable
+   * `modalDeleteOpen` to `true` when called, and it also stops the propagation of the click event.
+   * @param e - The parameter `e` is an event object of type `React.MouseEvent<SVGSVGElement,
+   * MouseEvent>`. It represents the mouse event that triggered the callback function.
+   */
   const modalDeleteCallback = async (
     e: React.MouseEvent<SVGSVGElement, MouseEvent>
   ) => {
@@ -90,6 +103,12 @@ function ChatRow({ id }: Props) {
     setModalDeleteOpen(true);
   };
 
+  /**
+   * The handleOnClick function stops event propagation and replaces the current route with a new route
+   * to the chat page.
+   * @param e - The parameter `e` is an event object of type `React.MouseEvent<HTMLSpanElement,
+   * MouseEvent>`. It represents the mouse click event that triggered the function.
+   */
   const handleOnClick = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
     e.stopPropagation();
 
