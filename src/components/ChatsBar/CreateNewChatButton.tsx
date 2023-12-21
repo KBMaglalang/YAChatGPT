@@ -26,6 +26,7 @@ function CreateNewChatButton() {
       userId: session?.user?.email!,
       createdAt: serverTimestamp(), // ! don't use local timestamp use server timestamp since you don't know where they are in the world
       title: '',
+      pinned: false,
     });
 
     router.replace(`/chat/${doc.id}`);
