@@ -1,23 +1,23 @@
-"use client";
+'use client';
 
-import React, { useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { useChat, Message } from "ai/react";
-import { useSession } from "next-auth/react";
-import { useCollection, useDocument } from "react-firebase-hooks/firestore";
-import { orderBy, query, addDoc, collection, doc } from "firebase/firestore";
-import useSWR from "swr";
+import React, { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useChat, Message } from 'ai/react';
+import { useSession } from 'next-auth/react';
+import { useCollection, useDocument } from 'react-firebase-hooks/firestore';
+import { orderBy, query, addDoc, collection, doc } from 'firebase/firestore';
+import useSWR from 'swr';
 
 // components
-import { Chat, ChatInput } from "@/components/ChatArea";
-import { BaseLayout } from "@/components/Layout";
+import { Chat, ChatInput } from '@/components/ChatArea';
+import { BaseLayout } from '@/components/Layout';
 
 // context or store
-import { useStateContext } from "@/context/stateContext";
+import { useStateContext } from '@/context/stateContext';
 
 // constants or functions
-import { CHATGPT_DEFAULT } from "@/constants";
-import { db } from "@/config/firebase/firebase";
+import { CHATGPT_DEFAULT } from '@/constants';
+import { db } from '@/config/firebase/firebase';
 
 type Props = {
   params: {
@@ -28,7 +28,7 @@ type Props = {
 function ChatPage({ params: { id } }: Props) {
   // * there was a change on the api endpoints v1 -> v2
   // useSWR to get models from openai
-  const { data: model } = useSWR("model", {
+  const { data: model } = useSWR('model', {
     fallbackData: CHATGPT_DEFAULT,
   });
   const { promptSettings } = useStateContext();
@@ -47,7 +47,7 @@ function ChatPage({ params: { id } }: Props) {
   } = useChat({
     onFinish: async (message) => {
       await addDoc(
-        collection(db, "users", session?.user?.email!, "chats", id, "messages"),
+        collection(db, 'users', session?.user?.email!, 'chats', id, 'messages'),
         message
       );
     },
@@ -74,7 +74,7 @@ function ChatPage({ params: { id } }: Props) {
   @param {object} session - The session object to check for existence. */
   useEffect(() => {
     if (!session) {
-      router.replace("/");
+      router.replace('/');
     }
   }, [router, session]);
 
@@ -82,7 +82,7 @@ function ChatPage({ params: { id } }: Props) {
   session?.user?.email!, "chats", id));` is using the `useDocument` hook from the
   `react-firebase-hooks/firestore` library to fetch a specific document from the Firestore database. */
   const [chatDoc, chatLoading, chatError] = useDocument(
-    session && doc(db, "users", session?.user?.email!, "chats", id)
+    session && doc(db, 'users', session?.user?.email!, 'chats', id)
   );
 
   /* The code is using the `useCollection` hook from the `react-firebase-hooks/firestore` library to
@@ -90,21 +90,17 @@ function ChatPage({ params: { id } }: Props) {
   const [firebaseMessages, firebaseLoading] = useCollection(
     session &&
       query(
-        collection(db, "users", session?.user?.email!, "chats", id, "messages"),
-        orderBy("createdAt", "asc")
+        collection(db, 'users', session?.user?.email!, 'chats', id, 'messages'),
+        orderBy('createdAt', 'asc')
       )
   );
 
   /* This `useEffect` hook is responsible for updating the `messages` state when new messages are
   fetched from the Firestore database. */
   useEffect(() => {
-    if (
-      !firebaseLoading &&
-      messages.length == 0 &&
-      firebaseMessages?.docs?.length! > 0
-    ) {
+    if (!firebaseLoading && messages.length == 0 && firebaseMessages?.docs?.length! > 0) {
       const newMessage = firebaseMessages?.docs
-        ?.filter((doc) => doc.id !== "")
+        ?.filter((doc) => doc.id !== '')
         ?.map((doc) => ({
           content: doc?.data().content,
           role: doc?.data().role,
@@ -117,7 +113,7 @@ function ChatPage({ params: { id } }: Props) {
   }, [firebaseLoading, messages, setMessages]);
 
   return (
-    <BaseLayout layoutTitle={chatDoc?.data()?.title || "New Chat"}>
+    <BaseLayout layoutTitle={chatDoc?.data()?.title || 'New Chat'}>
       {/* chat window */}
       <Chat llmMessages={messages} />
 

@@ -1,11 +1,11 @@
-import { NextResponse } from "next/server";
-import { AIMessage, HumanMessage } from "langchain/schema"; // ! this information is outdated or not availabe anymroe
-import { ChatOpenAI } from "langchain/chat_models/openai";
-import { CallbackManager } from "langchain/callbacks";
-import { StreamingTextResponse, LangChainStream, Message } from "ai";
+import { NextResponse } from 'next/server';
+import { AIMessage, HumanMessage } from 'langchain/schema'; // ! this information is outdated or not availabe anymroe
+import { ChatOpenAI } from 'langchain/chat_models/openai';
+import { CallbackManager } from 'langchain/callbacks';
+import { StreamingTextResponse, LangChainStream, Message } from 'ai';
 
 // setup to use vercel ai
-export const runtime = "edge";
+export const runtime = 'edge';
 
 export async function POST(req: Request) {
   try {
@@ -15,7 +15,7 @@ export async function POST(req: Request) {
     if (!messages) {
       return NextResponse.json(
         {
-          message: "Internal Server Error",
+          message: 'Internal Server Error',
         },
         { status: 500 }
       );
@@ -25,7 +25,7 @@ export async function POST(req: Request) {
     if (!settings) {
       return NextResponse.json(
         {
-          message: "Internal Server Error",
+          message: 'Internal Server Error',
         },
         { status: 500 }
       );
@@ -40,7 +40,7 @@ export async function POST(req: Request) {
       topP: settings?.topP || 1,
       frequencyPenalty: settings?.frequencyPenalty || 0,
       presencePenalty: settings?.presencePenalty || 0,
-      modelName: settings?.modelName || "gpt-3.5-turbo",
+      modelName: settings?.modelName || 'gpt-3.5-turbo',
 
       callbacks: CallbackManager.fromHandlers(handlers),
     });
@@ -48,9 +48,7 @@ export async function POST(req: Request) {
     llm
       .call(
         (messages as Message[]).map((m) =>
-          m.role == "user"
-            ? new HumanMessage(m.content)
-            : new AIMessage(m.content)
+          m.role == 'user' ? new HumanMessage(m.content) : new AIMessage(m.content)
         ),
         {},
         []
@@ -66,10 +64,10 @@ export async function POST(req: Request) {
 }
 
 function handleError(error: any) {
-  console.error("Error in handler:", error.message);
+  console.error('Error in handler:', error.message);
   return NextResponse.json(
     {
-      message: "Internal Server Error",
+      message: 'Internal Server Error',
     },
     { status: 500 }
   );

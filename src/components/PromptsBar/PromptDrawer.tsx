@@ -1,32 +1,26 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { useSession } from "next-auth/react";
-import { collection, orderBy, query } from "firebase/firestore";
-import { useCollection } from "react-firebase-hooks/firestore"; // ! setups a real time connection to the firebase database
-import {
-  ArrowDownCircleIcon,
-  DocumentTextIcon,
-} from "@heroicons/react/24/outline";
+import React, { useState } from 'react';
+import { useSession } from 'next-auth/react';
+import { collection, orderBy, query } from 'firebase/firestore';
+import { useCollection } from 'react-firebase-hooks/firestore'; // ! setups a real time connection to the firebase database
+import { ArrowDownCircleIcon, DocumentTextIcon } from '@heroicons/react/24/outline';
 
 // components
-import CreateNewPromptButton from "./CreateNewPromptButton";
-import PromptRow from "./PromptRow";
-import { Loading } from "../Common";
+import CreateNewPromptButton from './CreateNewPromptButton';
+import PromptRow from './PromptRow';
+import { Loading } from '../Common';
 
 // context or store
 
 // constants or functions
-import { db } from "@/config/firebase/firebase";
+import { db } from '@/config/firebase/firebase';
 
 export function PromptDrawer() {
   const { data: session } = useSession();
   const [prompts, loading, error] = useCollection(
     session &&
-      query(
-        collection(db, "users", session?.user?.email!, "prompt"),
-        orderBy("createdAt", "asc")
-      )
+      query(collection(db, 'users', session?.user?.email!, 'prompt'), orderBy('createdAt', 'asc'))
   );
 
   return (
@@ -34,22 +28,18 @@ export function PromptDrawer() {
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         {/* Page content here */}
-        <label htmlFor="my-drawer-4" className="drawer-button btn btn-outline ">
-          <DocumentTextIcon className="w-5 h-5" />
+        <label htmlFor="my-drawer-4" className="btn btn-outline drawer-button ">
+          <DocumentTextIcon className="h-5 w-5" />
         </label>
       </div>
 
       <div className="drawer-side z-50">
-        <label
-          htmlFor="my-drawer-4"
-          aria-label="close sidebar"
-          className="drawer-overlay"
-        ></label>
+        <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
 
         {/* Sidebar content here */}
-        <div className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+        <div className="menu h-full w-80 bg-base-200 p-4 text-base-content">
           {(prompts?.empty || loading || !session) && (
-            <div className="flex flex-col justify-center items-center flex-1 text-xl font-bold  font-brand-roboto">
+            <div className="flex flex-1 flex-col items-center justify-center font-brand-roboto text-xl  font-bold">
               {/* prompts loading from firebase */}
               {loading && <Loading />}
 
@@ -59,10 +49,10 @@ export function PromptDrawer() {
               {/* cta */}
               {!loading && prompts?.empty && (
                 <>
-                  <div className="hidden text-xl font-bold  truncate md:inline-flex font-brand-roboto">
+                  <div className="hidden truncate font-brand-roboto  text-xl font-bold md:inline-flex">
                     Create New Prompt
                   </div>
-                  <ArrowDownCircleIcon className="mx-auto mt-5 w-10 h-10  animate-bounce" />
+                  <ArrowDownCircleIcon className="mx-auto mt-5 h-10 w-10  animate-bounce" />
                 </>
               )}
             </div>
@@ -70,19 +60,17 @@ export function PromptDrawer() {
 
           {/* prompt options */}
           {session && !loading && !prompts?.empty && (
-            <div className="overflow-y-scroll flex-1">
-              <div className="flex flex-col my-2 space-y-2">
+            <div className="flex-1 overflow-y-scroll">
+              <div className="my-2 flex flex-col space-y-2">
                 {/* map through the chatRows */}
                 {!prompts?.empty &&
-                  prompts?.docs.map((prompt) => (
-                    <PromptRow key={prompt.id} id={prompt.id} />
-                  ))}
+                  prompts?.docs.map((prompt) => <PromptRow key={prompt.id} id={prompt.id} />)}
               </div>
             </div>
           )}
 
           {session && (
-            <div className={`flex flex-row mt-auto space-x-2 w-full`}>
+            <div className={`mt-auto flex w-full flex-row space-x-2`}>
               {/* new prompt button */}
               <div className="flex-1">
                 <CreateNewPromptButton />

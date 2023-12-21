@@ -1,23 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
-import { useDocument } from "react-firebase-hooks/firestore";
-import { deleteDoc, doc, updateDoc } from "firebase/firestore";
-import {
-  ChatBubbleLeftIcon,
-  PencilSquareIcon,
-  TrashIcon,
-} from "@heroicons/react/24/outline";
+import React, { useEffect, useState } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
+import { useDocument } from 'react-firebase-hooks/firestore';
+import { deleteDoc, doc, updateDoc } from 'firebase/firestore';
+import { ChatBubbleLeftIcon, PencilSquareIcon, TrashIcon } from '@heroicons/react/24/outline';
 
 // components
-import ChatEditModal from "./ChatEditModal";
-import ChatDeleteModal from "./ChatDeleteModal";
+import ChatEditModal from './ChatEditModal';
+import ChatDeleteModal from './ChatDeleteModal';
 
 // context or store
 
 // constants or functions
-import { db } from "@/config/firebase/firebase";
-import { getDisplayText } from "@/lib/displayTextLimit";
+import { db } from '@/config/firebase/firebase';
+import { getDisplayText } from '@/lib/displayTextLimit';
 
 type Props = {
   id: string;
@@ -34,7 +30,7 @@ function ChatRow({ id }: Props) {
 
   // get document fields from firebase
   const [chatDoc, chatLoading, chatError] = useDocument(
-    doc(db, "users", session?.user?.email!, "chats", id)
+    doc(db, 'users', session?.user?.email!, 'chats', id)
   );
 
   /* The `useEffect` hook is used to perform side effects in a functional component. In this case, the
@@ -54,8 +50,8 @@ function ChatRow({ id }: Props) {
    * @returns {void}
    */
   const updatePrompt = async (title: string) => {
-    await updateDoc(doc(db, "users", session?.user?.email!, "chats", id), {
-      title: title || "New Prompt",
+    await updateDoc(doc(db, 'users', session?.user?.email!, 'chats', id), {
+      title: title || 'New Prompt',
     });
   };
 
@@ -69,10 +65,10 @@ function ChatRow({ id }: Props) {
   const removeChat = async (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
     e.stopPropagation();
 
-    await deleteDoc(doc(db, "users", session?.user?.email!, "chats", id));
+    await deleteDoc(doc(db, 'users', session?.user?.email!, 'chats', id));
 
     if (active) {
-      router.replace("/"); // * using replace instead of push to prevent the user from going back to the deleted chat
+      router.replace('/'); // * using replace instead of push to prevent the user from going back to the deleted chat
     }
   };
 
@@ -81,9 +77,7 @@ function ChatRow({ id }: Props) {
    * @param e - The parameter `e` is an event object of type `React.MouseEvent<SVGSVGElement,
    * MouseEvent>`. It represents the mouse click event that triggered the callback function.
    */
-  const modalEditCallback = async (
-    e: React.MouseEvent<SVGSVGElement, MouseEvent>
-  ) => {
+  const modalEditCallback = async (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
     e.stopPropagation();
 
     setModalOpen(true);
@@ -95,9 +89,7 @@ function ChatRow({ id }: Props) {
    * @param e - The parameter `e` is an event object of type `React.MouseEvent<SVGSVGElement,
    * MouseEvent>`. It represents the mouse event that triggered the callback function.
    */
-  const modalDeleteCallback = async (
-    e: React.MouseEvent<SVGSVGElement, MouseEvent>
-  ) => {
+  const modalDeleteCallback = async (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
     e.stopPropagation();
 
     setModalDeleteOpen(true);
@@ -121,25 +113,17 @@ function ChatRow({ id }: Props) {
       <div
         onClick={handleOnClick}
         // className={`chatRow justify-center ${active && "bg-indigo-600"}`}
-        className={`btn btn-neutral w-full font-brand-roboto ${
-          active && "btn-active"
-        }`}
+        className={`btn btn-neutral w-full font-brand-roboto ${active && 'btn-active'}`}
       >
-        <ChatBubbleLeftIcon className="w-5 h-5" />
+        <ChatBubbleLeftIcon className="h-5 w-5" />
 
-        <span className="flex-1 md:inline-flex font-brand-roboto">
-          {getDisplayText(chatDoc?.data()?.title) || "New Chat"}
+        <span className="flex-1 font-brand-roboto md:inline-flex">
+          {getDisplayText(chatDoc?.data()?.title) || 'New Chat'}
         </span>
 
-        <PencilSquareIcon
-          onClick={modalEditCallback}
-          className="w-5 h-5  hover:text-blue-500"
-        />
+        <PencilSquareIcon onClick={modalEditCallback} className="h-5 w-5  hover:text-blue-500" />
 
-        <TrashIcon
-          onClick={modalDeleteCallback}
-          className="w-5 h-5  hover:text-red-700"
-        />
+        <TrashIcon onClick={modalDeleteCallback} className="h-5 w-5  hover:text-red-700" />
       </div>
 
       {/* chat edit modal */}
@@ -153,10 +137,7 @@ function ChatRow({ id }: Props) {
 
       {/* chat delete modal */}
       {modalDeleteOpen && (
-        <ChatDeleteModal
-          setModalOpen={setModalDeleteOpen}
-          callback={removeChat}
-        />
+        <ChatDeleteModal setModalOpen={setModalDeleteOpen} callback={removeChat} />
       )}
     </div>
   );

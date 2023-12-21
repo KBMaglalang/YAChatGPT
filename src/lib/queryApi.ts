@@ -1,6 +1,6 @@
 // import openai from "./chatgpt";
 // import { openai } from "@/config/openai";
-import { openai } from "@/config/openai/chatgpt";
+import { openai } from '@/config/openai/chatgpt';
 
 /**
  * Performs a query to the OpenAI chat completions API.
@@ -42,11 +42,9 @@ export const query = async (
 
     return res;
   } catch (err) {
-    console.error("Error querying OpenAI:", (err as Error).message); // log the error for debugging purposes
+    console.error('Error querying OpenAI:', (err as Error).message); // log the error for debugging purposes
     throw new Error(
-      `ChatGPT was unable to find an answer for that! (Error: ${
-        (err as Error).message
-      })`
+      `ChatGPT was unable to find an answer for that! (Error: ${(err as Error).message})`
     );
   }
 };

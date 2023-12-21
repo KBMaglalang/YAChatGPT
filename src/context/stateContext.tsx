@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState } from 'react';
 
 type promptSettingsType = {
   temperature: number;
@@ -19,7 +19,7 @@ type StateContextType = {
 };
 
 const defaultContextValue: StateContextType = {
-  userInput: "",
+  userInput: '',
   setUserInput: () => {},
   promptInput: () => {},
 
@@ -43,7 +43,7 @@ const StateContext = createContext(defaultContextValue);
 // Create a state provider component
 export const StateProvider: React.FC<StateProviderProps> = ({ children }) => {
   // Define a state variable using useState hook
-  const [userInput, setUserInput] = useState<string>("");
+  const [userInput, setUserInput] = useState<string>('');
   const [promptSettings, setPromptSettings] = useState({
     temperature: 0.8,
     topP: 1,
@@ -60,9 +60,9 @@ export const StateProvider: React.FC<StateProviderProps> = ({ children }) => {
    */
   const promptInput = (newInput: string) => {
     // check if the new Input contains {{text}} in the string
-    if (newInput.includes("{{text}}")) {
+    if (newInput.includes('{{text}}')) {
       // replace {{text}} with the userInput
-      newInput = newInput.replace("{{text}}", userInput);
+      newInput = newInput.replace('{{text}}', userInput);
     } else {
       // if not, just concatenate the newInput to the existing userInput
       newInput = userInput + newInput;
@@ -97,7 +97,7 @@ export const StateProvider: React.FC<StateProviderProps> = ({ children }) => {
 export const useStateContext = () => {
   const context = useContext(StateContext);
   if (!context) {
-    throw new Error("useStateContext must be used within a StateProvider");
+    throw new Error('useStateContext must be used within a StateProvider');
   }
   return context;
 };

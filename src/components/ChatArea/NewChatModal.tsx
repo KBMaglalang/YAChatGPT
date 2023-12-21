@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 // components
-import { SideBar } from "../ChatsBar";
+import { SideBar } from '../ChatsBar';
 
 // context or store
 
@@ -13,22 +13,20 @@ type Props = {
 
 export default function NewChatModal({ setModalOpen }: Props) {
   return (
-    <div className="overflow-y-auto fixed inset-0 z-10">
+    <div className="fixed inset-0 z-10 overflow-y-auto">
       {/* handles clicks outside the modal box */}
       <div
-        className="fixed inset-0 w-full h-full  opacity-40"
+        className="fixed inset-0 h-full w-full  opacity-40"
         onClick={(e) => setModalOpen(false)}
       ></div>
 
       {/* modal box */}
-      <div className="flex items-center px-4 py-8 min-h-screen">
-        <div className="relative p-4 mx-auto w-full max-w-lg rounded-md shadow-2xl  shadow-gray-700">
+      <div className="flex min-h-screen items-center px-4 py-8">
+        <div className="relative mx-auto w-full max-w-lg rounded-md p-4 shadow-2xl  shadow-gray-700">
           {/* settings input or logout */}
           <div className="mt-3">
-            <div className="flex flex-col mt-2 text-center">
-              <h4 className="mb-2 text-xl font-bold  font-brand-roboto">
-                Conversations
-              </h4>
+            <div className="mt-2 flex flex-col text-center">
+              <h4 className="mb-2 font-brand-roboto text-xl  font-bold">Conversations</h4>
 
               {/* list of chats  */}
               <SideBar />
@@ -36,9 +34,9 @@ export default function NewChatModal({ setModalOpen }: Props) {
           </div>
 
           {/* user selection */}
-          <div className="gap-2 items-center mt-3 sm:flex">
+          <div className="mt-3 items-center gap-2 sm:flex">
             <button
-              className="font-brand-roboto w-full mt-2 p-2.5 flex-1  rounded-md outline-none border ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
+              className="mt-2 w-full flex-1 rounded-md border  p-2.5 font-brand-roboto outline-none ring-indigo-600 ring-offset-2 hover:bg-gray-700 focus:ring-2"
               onClick={(e) => setModalOpen(false)}
             >
               Exit

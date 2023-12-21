@@ -1,8 +1,8 @@
-import React from "react";
-import { DocumentData } from "firebase/firestore";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import { UserCircleIcon } from "@heroicons/react/24/solid";
+import React from 'react';
+import { DocumentData } from 'firebase/firestore';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import { UserCircleIcon } from '@heroicons/react/24/solid';
 
 // components
 
@@ -15,30 +15,28 @@ type Props = {
 };
 
 function Message({ message }: Props) {
-  const isAssistant = message.role === "assistant";
+  const isAssistant = message.role === 'assistant';
 
   return (
-    <div className={`py-5 rounded-xl bg-base-300`}>
-      <div className="flex flex-col items-center md:items-start md:flex-row px-10 mx-auto space-x-5">
+    <div className={`rounded-xl bg-base-300 py-5`}>
+      <div className="mx-auto flex flex-col items-center space-x-5 px-10 md:flex-row md:items-start">
         {/* user and chatgpt icons */}
         {isAssistant ? (
           <img
-            src={
-              "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg"
-            }
+            src={'https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg'}
             alt="avatar"
-            className="w-8 h-8"
+            className="h-8 w-8"
           />
         ) : (
-          <UserCircleIcon className="w-8 h-8 " />
+          <UserCircleIcon className="h-8 w-8 " />
         )}
 
         {/* message container */}
-        <div className="flex flex-col w-full">
+        <div className="flex w-full flex-col">
           {/* message markdown */}
           <div className="flex flex-col flex-wrap items-center">
             <ReactMarkdown
-              className="pt-2 w-full max-w-4xl break-words prose flex-shrink-1 font-brand-roboto"
+              className="flex-shrink-1 prose w-full max-w-4xl break-words pt-2 font-brand-roboto"
               remarkPlugins={[remarkGfm]}
             >
               {message.content}

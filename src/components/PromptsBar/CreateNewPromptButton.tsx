@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { useSession } from "next-auth/react";
-import { PlusIcon } from "@heroicons/react/24/outline";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import React, { useState } from 'react';
+import { useSession } from 'next-auth/react';
+import { PlusIcon } from '@heroicons/react/24/outline';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 
 // components
-import PromptModal from "./PromptEditModal";
+import PromptModal from './PromptEditModal';
 
 // context or store
 
 // constants or functions
-import { db } from "@/config/firebase/firebase";
+import { db } from '@/config/firebase/firebase';
 
 function CreateNewPromptButton() {
   const { data: session } = useSession();
@@ -23,25 +23,19 @@ function CreateNewPromptButton() {
    * @returns {void}
    */
   const createNewPromptTemplate = async (title: string, prompt: string) => {
-    const doc = await addDoc(
-      collection(db, "users", session?.user?.email!, "prompt"),
-      {
-        userId: session?.user?.email!,
-        createdAt: serverTimestamp(), // ! don't use local timestamp use server timestamp
-        title: title || "New Prompt",
-        prompt: prompt || "",
-      }
-    );
+    const doc = await addDoc(collection(db, 'users', session?.user?.email!, 'prompt'), {
+      userId: session?.user?.email!,
+      createdAt: serverTimestamp(), // ! don't use local timestamp use server timestamp
+      title: title || 'New Prompt',
+      prompt: prompt || '',
+    });
   };
 
   return (
     <>
       {/* new prompt button */}
-      <div
-        onClick={() => setModalOpen(true)}
-        className="btn btn-primary w-full font-brand-roboto"
-      >
-        <PlusIcon className="w-4 h-4" />
+      <div onClick={() => setModalOpen(true)} className="btn btn-primary w-full font-brand-roboto">
+        <PlusIcon className="h-4 w-4" />
         <span>New Prompt</span>
       </div>
 
@@ -50,8 +44,8 @@ function CreateNewPromptButton() {
         <PromptModal
           setModalOpen={setModalOpen}
           callback={createNewPromptTemplate}
-          title={""}
-          prompt={""}
+          title={''}
+          prompt={''}
         />
       )}
     </>

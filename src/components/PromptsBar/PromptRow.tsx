@@ -1,22 +1,18 @@
-import React, { useState } from "react";
-import { useSession } from "next-auth/react";
-import {
-  TrashIcon,
-  PencilSquareIcon,
-  DocumentTextIcon,
-} from "@heroicons/react/24/outline";
-import { useDocument } from "react-firebase-hooks/firestore";
-import { deleteDoc, doc, updateDoc } from "firebase/firestore";
+import React, { useState } from 'react';
+import { useSession } from 'next-auth/react';
+import { TrashIcon, PencilSquareIcon, DocumentTextIcon } from '@heroicons/react/24/outline';
+import { useDocument } from 'react-firebase-hooks/firestore';
+import { deleteDoc, doc, updateDoc } from 'firebase/firestore';
 
 // components
-import PromptEditModal from "./PromptEditModal";
-import PromptDeleteModal from "./PromptDeleteModal";
+import PromptEditModal from './PromptEditModal';
+import PromptDeleteModal from './PromptDeleteModal';
 
 // context or store
-import { useStateContext } from "@/context/stateContext";
+import { useStateContext } from '@/context/stateContext';
 
 // constants or functions
-import { db } from "@/config/firebase/firebase";
+import { db } from '@/config/firebase/firebase';
 
 type Props = {
   id: string;
@@ -27,7 +23,7 @@ function PromptRow({ id }: Props) {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalDeleteOpen, setModalDeleteOpen] = useState(false);
   const [prompts, loading, error] = useDocument(
-    doc(db, "users", session?.user?.email!, "prompt", id)
+    doc(db, 'users', session?.user?.email!, 'prompt', id)
   );
   const { promptInput } = useStateContext();
 
@@ -39,9 +35,9 @@ function PromptRow({ id }: Props) {
    * @returns {void}
    */
   const updatePrompt = async (title: string, prompt: string) => {
-    await updateDoc(doc(db, "users", session?.user?.email!, "prompt", id), {
-      title: title || "New Prompt",
-      prompt: prompt || "",
+    await updateDoc(doc(db, 'users', session?.user?.email!, 'prompt', id), {
+      title: title || 'New Prompt',
+      prompt: prompt || '',
     });
   };
 
@@ -51,11 +47,9 @@ function PromptRow({ id }: Props) {
    * @param {React.MouseEvent<SVGSVGElement, MouseEvent>} e - The click event object.
    * @returns {void}
    */
-  const removePrompt = async (
-    e: React.MouseEvent<SVGSVGElement, MouseEvent>
-  ) => {
+  const removePrompt = async (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
     e.stopPropagation();
-    await deleteDoc(doc(db, "users", session?.user?.email!, "prompt", id));
+    await deleteDoc(doc(db, 'users', session?.user?.email!, 'prompt', id));
   };
 
   /**
@@ -64,9 +58,7 @@ function PromptRow({ id }: Props) {
    * @param {React.MouseEvent<SVGSVGElement, MouseEvent>} e - The click event object.
    * @returns {void}
    */
-  const modalEditPrompt = async (
-    e: React.MouseEvent<SVGSVGElement, MouseEvent>
-  ) => {
+  const modalEditPrompt = async (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
     e.stopPropagation();
 
     setModalOpen(true);
@@ -78,9 +70,7 @@ function PromptRow({ id }: Props) {
    * @param {React.MouseEvent<SVGSVGElement, MouseEvent>} e - The click event object.
    * @returns {void}
    */
-  const modelDeletePrompt = async (
-    e: React.MouseEvent<SVGSVGElement, MouseEvent>
-  ) => {
+  const modelDeletePrompt = async (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
     e.stopPropagation();
 
     setModalDeleteOpen(true);
@@ -99,24 +89,18 @@ function PromptRow({ id }: Props) {
         // className={`justify-center chatRow`}
         className={`btn btn-neutral w-full font-brand-roboto`}
       >
-        <DocumentTextIcon className="w-5 h-5 " />
+        <DocumentTextIcon className="h-5 w-5 " />
 
-        <span
-          className="flex-1 truncate md:inline-flex font-brand-roboto"
-          onClick={handleOnClick}
-        >
-          {prompts?.data()?.title || "New Prompt"}
+        <span className="flex-1 truncate font-brand-roboto md:inline-flex" onClick={handleOnClick}>
+          {prompts?.data()?.title || 'New Prompt'}
         </span>
 
-        <PencilSquareIcon
-          onClick={modalEditPrompt}
-          className="w-5 h-5  hover:text-blue-500"
-        />
+        <PencilSquareIcon onClick={modalEditPrompt} className="h-5 w-5  hover:text-blue-500" />
 
         <TrashIcon
           onClick={modelDeletePrompt}
           // className="w-5 h-5  hover:text-red-700"
-          className="w-5 h-5  hover:text-red-700"
+          className="h-5 w-5  hover:text-red-700"
         />
       </div>
 
@@ -132,10 +116,7 @@ function PromptRow({ id }: Props) {
 
       {/* prompt delete modal */}
       {modalDeleteOpen && (
-        <PromptDeleteModal
-          setModalOpen={setModalDeleteOpen}
-          callback={removePrompt}
-        />
+        <PromptDeleteModal setModalOpen={setModalDeleteOpen} callback={removePrompt} />
       )}
     </div>
   );

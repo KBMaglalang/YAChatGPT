@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 // components
 
@@ -12,7 +12,7 @@ type Props = {
   title: string | undefined;
 };
 
-function ChatEditModal({ setModalOpen, callback, title = "" }: Props) {
+function ChatEditModal({ setModalOpen, callback, title = '' }: Props) {
   const [chatTitle, setchatTitle] = useState(title);
 
   /**
@@ -31,43 +31,38 @@ function ChatEditModal({ setModalOpen, callback, title = "" }: Props) {
   };
 
   return (
-    <div className="overflow-y-auto fixed inset-0 z-10">
+    <div className="fixed inset-0 z-10 overflow-y-auto">
       {/* handles clicks outside the modal box */}
       <div
-        className="fixed inset-0 w-full h-full  opacity-40"
+        className="fixed inset-0 h-full w-full  opacity-40"
         onClick={(e) => setModalOpen(false)}
       ></div>
 
       {/* modal box */}
-      <div className="flex items-center px-4 py-8 min-h-screen">
-        <div className="relative p-4 mx-auto w-full max-w-lg rounded-md shadow-2xl bg-base-200 shadow-gray-700">
+      <div className="flex min-h-screen items-center px-4 py-8">
+        <div className="relative mx-auto w-full max-w-lg rounded-md bg-base-200 p-4 shadow-2xl shadow-gray-700">
           {/* chat input */}
           <div className="mt-3">
-            <div className="flex flex-col mt-2 text-center">
-              <h4 className="mb-2 text-xl font-bold  font-brand-roboto">
-                Chat Settings
-              </h4>
+            <div className="mt-2 flex flex-col text-center">
+              <h4 className="mb-2 font-brand-roboto text-xl  font-bold">Chat Settings</h4>
               <input
                 autoFocus
                 type="text"
                 value={chatTitle}
                 onChange={(e) => setchatTitle(e.target.value)}
-                className="p-2 my-2  rounded-lg  focus:outline-none font-brand-roboto"
+                className="my-2 rounded-lg  p-2  font-brand-roboto focus:outline-none"
                 placeholder="Chat Title"
               />
             </div>
           </div>
 
           {/* user selection */}
-          <div className="gap-2 items-center mt-3 flex flex-col  w-full">
-            <button
-              className="btn btn-primary font-brand-roboto w-full"
-              onClick={handleAccept}
-            >
+          <div className="mt-3 flex w-full flex-col items-center  gap-2">
+            <button className="btn btn-primary w-full font-brand-roboto" onClick={handleAccept}>
               Accept
             </button>
             <button
-              className="btn btn-outline  font-brand-roboto w-full"
+              className="btn btn-outline  w-full font-brand-roboto"
               onClick={(e) => setModalOpen(false)}
             >
               Cancel

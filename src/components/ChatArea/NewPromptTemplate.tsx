@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { BookOpenIcon } from "@heroicons/react/24/outline";
+import React, { useState } from 'react';
+import { BookOpenIcon } from '@heroicons/react/24/outline';
 
 // components
-import PromptList from "./PromptList";
+import PromptList from './PromptList';
 
 // context or store
 
@@ -16,9 +16,9 @@ function NewPromptTemplate() {
       {/* new prompt button */}
       <div
         onClick={() => setModalOpen(true)}
-        className="p-4 font-bold  bg-indigo-600 rounded font-brand-roboto hover:opacity-50 disabled:bg-gray-300 disabled:cursor-not-allowed textarea-expandable h-content"
+        className="textarea-expandable h-content  rounded bg-indigo-600 p-4 font-brand-roboto font-bold hover:opacity-50 disabled:cursor-not-allowed disabled:bg-gray-300"
       >
-        <BookOpenIcon className="w-4 h-4" />
+        <BookOpenIcon className="h-4 w-4" />
       </div>
 
       {/* prompt modal */}

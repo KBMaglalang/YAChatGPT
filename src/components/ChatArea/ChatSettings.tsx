@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Cog8ToothIcon } from "@heroicons/react/24/outline";
+import React, { useState } from 'react';
+import { Cog8ToothIcon } from '@heroicons/react/24/outline';
 
 // component
-import ChatSettingsModal from "./ChatSettingsModal";
+import ChatSettingsModal from './ChatSettingsModal';
 
 // context or store
 
@@ -14,10 +14,10 @@ export default function ChatSettings() {
   return (
     <div>
       <div
-        className="btn btn-primary disabled:bg-gray-300 disabled:cursor-not-allowed"
+        className="btn btn-primary disabled:cursor-not-allowed disabled:bg-gray-300"
         onClick={() => setModalOpen(true)}
       >
-        <Cog8ToothIcon className="w-4 h-4" />
+        <Cog8ToothIcon className="h-4 w-4" />
       </div>
 
       {modalOpen && <ChatSettingsModal setModalOpen={setModalOpen} />}
