@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 // components
 
@@ -19,20 +19,20 @@ function SettingsModal({ setModalOpen, signOut }: Props) {
   // };
 
   return (
-    <div className="overflow-y-auto fixed inset-0 z-10">
+    <div className="fixed inset-0 z-10 overflow-y-auto">
       {/* handles clicks outside the modal box */}
       <div
-        className="fixed inset-0 w-full h-full  opacity-40"
+        className="fixed inset-0 h-full w-full  opacity-40"
         onClick={(e) => setModalOpen(false)}
       ></div>
 
       {/* modal box */}
-      <div className="flex items-center px-4 py-8 min-h-screen">
-        <div className="relative p-4 mx-auto w-full max-w-lg rounded-md shadow-2xl bg-base-200  shadow-gray-700">
+      <div className="flex min-h-screen items-center px-4 py-8">
+        <div className="relative mx-auto w-full max-w-lg rounded-md bg-base-200 p-4 shadow-2xl  shadow-gray-700">
           {/* settings input or logout */}
           <div className="mt-3">
-            <div className="flex flex-col mt-2 text-center">
-              <h4 className="mb-2 text-xl font-bold text-base-content font-brand-roboto">
+            <div className="mt-2 flex flex-col text-center">
+              <h4 className="mb-2 font-brand-roboto text-xl font-bold text-base-content">
                 Settings
               </h4>
 
@@ -49,8 +49,8 @@ function SettingsModal({ setModalOpen, signOut }: Props) {
               </div> */}
 
               {/* logout */}
-              <div className="flex flex-row justify-between items-center mt-2 w-full text-base-content">
-                <span className="text-xl font-bold text-base-content font-brand-roboto">
+              <div className="mt-2 flex w-full flex-row items-center justify-between text-base-content">
+                <span className="font-brand-roboto text-xl font-bold text-base-content">
                   Logout
                 </span>
                 <button
@@ -65,7 +65,7 @@ function SettingsModal({ setModalOpen, signOut }: Props) {
           </div>
 
           {/* user selection */}
-          <div className="gap-2 items-center mt-3 flex flex-col  w-full">
+          <div className="mt-3 flex w-full flex-col items-center  gap-2">
             {/* <button
               className="w-full mt-2 p-2.5 flex-1  bg-indigo-600 rounded-md outline-none ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
               onClick={handleAccept}
@@ -74,7 +74,7 @@ function SettingsModal({ setModalOpen, signOut }: Props) {
             </button> */}
             <button
               // className="font-brand-roboto w-full mt-2 p-2.5 flex-1  rounded-md outline-none border ring-offset-2 ring-indigo-600 focus:ring-2 hover:bg-gray-700"
-              className="btn btn-outline  font-brand-roboto w-full"
+              className="btn btn-outline  w-full font-brand-roboto"
               onClick={(e) => setModalOpen(false)}
             >
               Exit

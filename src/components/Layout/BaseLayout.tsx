@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
 // components
-import { Header } from "../Header";
+import { Header } from '../Header';
 
 // context or store
 
 // constants or functions
-import { WEBSITE_TITLE } from "@/constants";
+import { WEBSITE_TITLE } from '@/constants';
 
 type Props = {
   children: React.ReactNode;
@@ -15,13 +15,11 @@ type Props = {
 
 export function BaseLayout({ children, layoutTitle }: Props) {
   return (
-    <div className="container flex flex-col w-full mx-auto h-full">
+    <div className="container mx-auto flex h-full w-full flex-col">
       <Header />
 
-      <div className="container flex flex-row h-full gap-2 overflow-hidden rounded-xl ">
-        <div className="flex flex-col items-center justify-center flex-grow w-8/12">
-          {children}
-        </div>
+      <div className="container flex h-full flex-row gap-2 overflow-hidden rounded-xl ">
+        <div className="flex w-8/12 flex-grow flex-col items-center justify-center">{children}</div>
       </div>
     </div>
   );

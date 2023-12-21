@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
 // components
-import ModelSelection from "./ModelSelection";
-import { Slider } from "../Common";
+import ModelSelection from './ModelSelection';
+import { Slider } from '../Common';
 
 // context or store
-import { useStateContext } from "@/context/stateContext";
+import { useStateContext } from '@/context/stateContext';
 
 // constants or functions
 
@@ -29,33 +29,33 @@ function ChatSettingsModal({ setModalOpen }: Props) {
   };
 
   return (
-    <div className="overflow-y-auto fixed inset-0 z-10">
+    <div className="fixed inset-0 z-10 overflow-y-auto">
       {/* handles clicks outside the modal box */}
       <div
-        className="fixed inset-0 w-full h-full  opacity-40"
+        className="fixed inset-0 h-full w-full  opacity-40"
         onClick={(e) => setModalOpen(false)}
       ></div>
 
       {/* modal box */}
-      <div className="flex items-center px-4 py-8 min-h-screen">
-        <div className="relative py-4 mx-auto w-full max-w-lg rounded-md shadow-2xl bg-base-200 shadow-gray-700">
+      <div className="flex min-h-screen items-center px-4 py-8">
+        <div className="relative mx-auto w-full max-w-lg rounded-md bg-base-200 py-4 shadow-2xl shadow-gray-700">
           {/* settings input or logout */}
           <div className="mt-3 px-4">
-            <div className="flex flex-col mt-2 text-center">
-              <h4 className="mb-2 text-xl font-bold text-base-content font-brand-roboto">
+            <div className="mt-2 flex flex-col text-center">
+              <h4 className="mb-2 font-brand-roboto text-xl font-bold text-base-content">
                 Chat Settings
               </h4>
             </div>
 
             {/* settings */}
-            <div className="flex flex-wrap justify-around items-center space-y-4 w-full bg-transparent lg:flex-col text-base-content">
+            <div className="flex w-full flex-wrap items-center justify-around space-y-4 bg-transparent text-base-content lg:flex-col">
               {/* temperature - slider and input */}
               <Slider
                 title="Temperature"
                 min={0}
                 max={2}
                 value={promptSettings.temperature}
-                callback={(value) => handleSettingChange("temperature", value)}
+                callback={(value) => handleSettingChange('temperature', value)}
               />
 
               {/* topP - slider and input */}
@@ -64,7 +64,7 @@ function ChatSettingsModal({ setModalOpen }: Props) {
                 min={0}
                 max={1}
                 value={promptSettings.topP}
-                callback={(value) => handleSettingChange("topP", value)}
+                callback={(value) => handleSettingChange('topP', value)}
               />
 
               {/* frequencyPenalty - slider and input */}
@@ -73,9 +73,7 @@ function ChatSettingsModal({ setModalOpen }: Props) {
                 min={-2}
                 max={2}
                 value={promptSettings.frequencyPenalty}
-                callback={(value) =>
-                  handleSettingChange("frequencyPenalty", value)
-                }
+                callback={(value) => handleSettingChange('frequencyPenalty', value)}
               />
 
               {/* presencePenalty - slider and input */}
@@ -84,9 +82,7 @@ function ChatSettingsModal({ setModalOpen }: Props) {
                 min={-2}
                 max={2}
                 value={promptSettings.presencePenalty}
-                callback={(value) =>
-                  handleSettingChange("presencePenalty", value)
-                }
+                callback={(value) => handleSettingChange('presencePenalty', value)}
               />
 
               {/* max tokens - input */}
@@ -99,9 +95,7 @@ function ChatSettingsModal({ setModalOpen }: Props) {
                   type="number"
                   value={promptSettings.maxTokens}
                   className="input input-bordered  bg-transparent"
-                  onChange={(e) =>
-                    handleSettingChange("maxTokens", parseInt(e.target.value))
-                  }
+                  onChange={(e) => handleSettingChange('maxTokens', parseInt(e.target.value))}
                 />
               </div>
             </div>
@@ -111,9 +105,9 @@ function ChatSettingsModal({ setModalOpen }: Props) {
           </div>
 
           {/* user selection */}
-          <div className="gap-2 items-center mt-3 w-full px-4 flex flex-col">
+          <div className="mt-3 flex w-full flex-col items-center gap-2 px-4">
             <button
-              className="btn btn-outline w-full text-base-content font-brand-roboto"
+              className="btn btn-outline w-full font-brand-roboto text-base-content"
               onClick={(e) => setModalOpen(false)}
             >
               Exit

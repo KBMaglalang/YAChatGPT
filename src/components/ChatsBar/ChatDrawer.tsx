@@ -1,32 +1,26 @@
-"use client";
+'use client';
 
-import React from "react";
-import { useSession } from "next-auth/react";
-import { collection, orderBy, query } from "firebase/firestore";
-import { useCollection } from "react-firebase-hooks/firestore"; // ! setups a real time connection to the firebase database
-import {
-  ArrowDownCircleIcon,
-  ChatBubbleLeftIcon,
-} from "@heroicons/react/24/outline";
+import React from 'react';
+import { useSession } from 'next-auth/react';
+import { collection, orderBy, query } from 'firebase/firestore';
+import { useCollection } from 'react-firebase-hooks/firestore'; // ! setups a real time connection to the firebase database
+import { ArrowDownCircleIcon, ChatBubbleLeftIcon } from '@heroicons/react/24/outline';
 
 // components
-import CreateNewChatButton from "./CreateNewChatButton";
-import ChatRow from "./ChatRow";
-import { Loading } from "../Common";
+import CreateNewChatButton from './CreateNewChatButton';
+import ChatRow from './ChatRow';
+import { Loading } from '../Common';
 
 // context or store
 
 // constants or functions
-import { db } from "@/config/firebase/firebase";
+import { db } from '@/config/firebase/firebase';
 
 export function ChatDrawer() {
   const { data: session } = useSession();
   const [chats, loading, error] = useCollection(
     session &&
-      query(
-        collection(db, "users", session?.user?.email!, "chats"),
-        orderBy("createdAt", "asc")
-      )
+      query(collection(db, 'users', session?.user?.email!, 'chats'), orderBy('createdAt', 'asc'))
   );
 
   return (
@@ -35,21 +29,17 @@ export function ChatDrawer() {
       <div className="drawer-content">
         {/* Page content here */}
         <label htmlFor="my-drawer" className="btn btn-outline drawer-button">
-          <ChatBubbleLeftIcon className="w-5 h-5 " />
+          <ChatBubbleLeftIcon className="h-5 w-5 " />
         </label>
       </div>
 
       <div className="drawer-side z-50">
-        <label
-          htmlFor="my-drawer"
-          aria-label="close sidebar"
-          className="drawer-overlay"
-        ></label>
+        <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
 
         {/* content */}
-        <div className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+        <div className="menu h-full w-80 bg-base-200 p-4 text-base-content">
           {(chats?.empty || loading || !session) && (
-            <div className="flex flex-col justify-center items-center mt-4 flex-1 text-xl font-bold  font-brand-roboto">
+            <div className="mt-4 flex flex-1 flex-col items-center justify-center font-brand-roboto text-xl  font-bold">
               {/* loading */}
               {loading && <Loading />}
 
@@ -59,10 +49,10 @@ export function ChatDrawer() {
               {/* cta */}
               {!loading && chats?.empty && (
                 <>
-                  <div className="text-xl font-bold truncate  font-brand-roboto">
+                  <div className="truncate font-brand-roboto text-xl  font-bold">
                     Create New Chats
                   </div>
-                  <ArrowDownCircleIcon className="mx-auto mt-5 w-10 h-10  animate-bounce" />
+                  <ArrowDownCircleIcon className="mx-auto mt-5 h-10 w-10  animate-bounce" />
                 </>
               )}
             </div>
@@ -70,19 +60,16 @@ export function ChatDrawer() {
 
           {/* chat options */}
           {session && !loading && !chats?.empty && (
-            <div className="overflow-y-scroll flex-1">
-              <div className="flex flex-col my-2 space-y-2">
+            <div className="flex-1 overflow-y-scroll">
+              <div className="my-2 flex flex-col space-y-2">
                 {/* map through the chatRows */}
-                {!chats?.empty &&
-                  chats?.docs.map((chat) => (
-                    <ChatRow key={chat.id} id={chat.id} />
-                  ))}
+                {!chats?.empty && chats?.docs.map((chat) => <ChatRow key={chat.id} id={chat.id} />)}
               </div>
             </div>
           )}
 
           {session && (
-            <div className={`flex flex-row mt-auto space-x-2 w-full`}>
+            <div className={`mt-auto flex w-full flex-row space-x-2`}>
               {/* new chat */}
               <div className="flex-1">
                 <CreateNewChatButton />

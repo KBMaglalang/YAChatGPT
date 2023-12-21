@@ -1,5 +1,5 @@
-import React from "react";
-import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
+import React from 'react';
+import { PaperAirplaneIcon } from '@heroicons/react/24/solid';
 
 // components
 
@@ -18,9 +18,9 @@ export default function UserSendButton({ session, llmInput }: Props) {
       <button
         type="submit"
         disabled={!session || !llmInput}
-        className="btn btn-primary disabled:bg-gray-300 disabled:cursor-not-allowed"
+        className="btn btn-primary disabled:cursor-not-allowed disabled:bg-gray-300"
       >
-        <PaperAirplaneIcon className="w-4 h-4 -rotate-45" />
+        <PaperAirplaneIcon className="h-4 w-4 -rotate-45" />
       </button>
     </div>
   );

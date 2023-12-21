@@ -54,8 +54,8 @@ I intend to implement these other features over time:
 
 ### Install
 
-1. Clone the repository: `git clone https://github.com/KBMaglalang/YAChatGPT`
-2. Navigate to the project directory: `cd YAChatGPT`
+1. Clone the repository: `git clone https://github.com/KBMaglalang/easyaichat`
+2. Navigate to the project directory: `cd easyaichat`
 3. Install the necessary packages: `npm install` or `npm i`
 4. Copy the `.env.example` file. You can create either `.env.local` or `.env` based on your preference
 5. Open the newly created .env or .env.local file and populate the fields with the required values. Ensure the necessary permissions are granted for any services or APIs you're connecting to.

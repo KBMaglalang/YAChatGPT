@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 // components
 
@@ -14,13 +14,7 @@ interface SliderProps {
   callback: (value: number) => void;
 }
 
-export const Slider: React.FC<SliderProps> = ({
-  title,
-  min,
-  max,
-  value,
-  callback,
-}) => {
+export const Slider: React.FC<SliderProps> = ({ title, min, max, value, callback }) => {
   /**
    * The function "handleSliderChange" is a callback function that takes in an event of type
    * React.ChangeEvent<HTMLInputElement> and calls a callback function with the parsed float value of
@@ -52,7 +46,7 @@ export const Slider: React.FC<SliderProps> = ({
         <span className="label-text">{title}</span>
       </label>
 
-      <div className="flex flex-row w-full items-center justify-center space-x-2">
+      <div className="flex w-full flex-row items-center justify-center space-x-2">
         <input
           type="range"
           min={min}

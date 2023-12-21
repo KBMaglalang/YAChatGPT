@@ -1,5 +1,5 @@
-import React from "react";
-import { StopIcon } from "@heroicons/react/24/solid";
+import React from 'react';
+import { StopIcon } from '@heroicons/react/24/solid';
 
 // components
 
@@ -13,19 +13,15 @@ type Props = {
   llmStop: () => void;
 };
 
-export default function UserStopButton({
-  session,
-  llmIsLoading,
-  llmStop,
-}: Props) {
+export default function UserStopButton({ session, llmIsLoading, llmStop }: Props) {
   return (
     <div>
       <button
         disabled={!session || !llmIsLoading}
         onClick={llmStop}
-        className="btn btn-error disabled:bg-gray-300 disabled:cursor-not-allowed"
+        className="btn btn-error disabled:cursor-not-allowed disabled:bg-gray-300"
       >
-        <StopIcon className="w-4 h-4" />
+        <StopIcon className="h-4 w-4" />
       </button>
     </div>
   );

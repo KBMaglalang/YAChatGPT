@@ -6,7 +6,5 @@ Truncates the given text if it exceeds the maximum length, and appends "..." at 
 
 export const getDisplayText = (text: string) => {
   const maxLength = 30;
-  return text?.length > maxLength
-    ? text?.substring(0, maxLength - 3) + "..."
-    : text;
+  return text?.length > maxLength ? text?.substring(0, maxLength - 3) + '...' : text;
 };

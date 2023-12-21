@@ -1,12 +1,12 @@
 type OpenAIMessage = {
-  role: "system" | "user" | "assistant";
+  role: 'system' | 'user' | 'assistant';
   content: string;
 };
 
 interface Message {
   content: string | ChatCompletion | {};
   createdAt: admin.firestore.Timestamp;
-  role: "user" | "system" | "assistant";
+  role: 'user' | 'system' | 'assistant';
   id: string;
 }
 

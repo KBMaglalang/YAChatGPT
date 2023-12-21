@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import React, { useRef, useEffect, FormEvent, KeyboardEvent } from "react";
-import { useSession } from "next-auth/react";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { v4 as uuidv4 } from "uuid";
+import React, { useRef, useEffect, FormEvent, KeyboardEvent } from 'react';
+import { useSession } from 'next-auth/react';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import { v4 as uuidv4 } from 'uuid';
 
 // components
-import ChatSettings from "./ChatSettings";
-import UserSendButton from "./UserSendButton";
-import UserStopButton from "./UserStopButton";
+import ChatSettings from './ChatSettings';
+import UserSendButton from './UserSendButton';
+import UserStopButton from './UserStopButton';
 
 // context or store
-import { useStateContext } from "@/context/stateContext";
+import { useStateContext } from '@/context/stateContext';
 
 // constants or functions
-import { db } from "@/config/firebase/firebase";
+import { db } from '@/config/firebase/firebase';
 
 type Props = {
   chatId: string;
@@ -22,9 +22,7 @@ type Props = {
   llmInput: string;
   llmSubmit: (e: FormEvent<HTMLFormElement>) => void;
   llmHandleInputChange: (
-    e:
-      | React.ChangeEvent<HTMLTextAreaElement>
-      | React.ChangeEvent<HTMLInputElement>
+    e: React.ChangeEvent<HTMLTextAreaElement> | React.ChangeEvent<HTMLInputElement>
   ) => void;
   llmIsLoading: boolean;
   llmSetInput: React.Dispatch<React.SetStateAction<string>>;
@@ -47,9 +45,9 @@ export function ChatInput({
   element based on its content. */
   useEffect(() => {
     if (textareaRef.current) {
-      textareaRef.current.style.height = "inherit"; // Reset height first to get a "clean slate"
+      textareaRef.current.style.height = 'inherit'; // Reset height first to get a "clean slate"
       const scrollHeight = textareaRef.current.scrollHeight;
-      textareaRef.current.style.height = scrollHeight + "px";
+      textareaRef.current.style.height = scrollHeight + 'px';
     }
   }, [llmInput]);
 
@@ -77,22 +75,15 @@ export function ChatInput({
     const message: Message = {
       content: llmInput,
       createdAt: serverTimestamp(),
-      role: "user",
+      role: 'user',
       id: uuidv4(),
     };
 
-    setUserInput("");
+    setUserInput('');
 
     // Adds a new document to the "messages" collection within a specific chat in the "users" collection of firebase
     await addDoc(
-      collection(
-        db,
-        "users",
-        session?.user?.email!,
-        "chats",
-        chatId,
-        "messages"
-      ),
+      collection(db, 'users', session?.user?.email!, 'chats', chatId, 'messages'),
       message
     );
 
@@ -107,7 +98,7 @@ export function ChatInput({
    * @returns {void}
    */
   const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.ctrlKey && e.key === "Enter") {
+    if (e.ctrlKey && e.key === 'Enter') {
       sendMessage(e as any);
     }
   };
@@ -116,7 +107,7 @@ export function ChatInput({
     <div className="mt-2 w-full text-sm">
       {/* input */}
       <form onSubmit={sendMessage} className="flex flex-row space-x-5">
-        <div className="flex flex-1 w-full ">
+        <div className="flex w-full flex-1 ">
           <textarea
             autoFocus
             ref={textareaRef}
@@ -124,7 +115,7 @@ export function ChatInput({
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
             onKeyDown={handleKeyDown}
-            className="textarea textarea-bordered bg-transparent flex-1 resize-none font-brand-roboto disabled:cursor-not-allowed disabled:text-gray-300"
+            className="textarea textarea-bordered flex-1 resize-none bg-transparent font-brand-roboto disabled:cursor-not-allowed disabled:text-gray-300"
             placeholder="Type your message here... (CTRL + ENTER to send)"
           />
         </div>
@@ -132,11 +123,7 @@ export function ChatInput({
         {/* user control buttons */}
         <div className="flex flex-col space-y-2">
           {llmIsLoading ? (
-            <UserStopButton
-              session={session}
-              llmIsLoading={llmIsLoading}
-              llmStop={llmStop}
-            />
+            <UserStopButton session={session} llmIsLoading={llmIsLoading} llmStop={llmStop} />
           ) : (
             <UserSendButton session={session} llmInput={llmInput} />
           )}

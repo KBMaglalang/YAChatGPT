@@ -1,16 +1,16 @@
-import React from "react";
-import Link from "next/link";
+import React from 'react';
+import Link from 'next/link';
 
 // components
-import { ChatDrawer } from "../ChatsBar";
-import { PromptDrawer } from "../PromptsBar";
-import SettingsRow from "../ChatArea/SettingsRow";
-import { ThemeToggle } from "../Common";
+import { ChatDrawer } from '../ChatsBar';
+import { PromptDrawer } from '../PromptsBar';
+import SettingsRow from '../ChatArea/SettingsRow';
+import { ThemeToggle } from '../Common';
 
 // context or store
 
 // constants or functions
-import { WEBSITE_TITLE } from "@/constants";
+import { WEBSITE_TITLE } from '@/constants';
 
 export function Header() {
   return (
@@ -26,7 +26,7 @@ export function Header() {
 
         {/* website name */}
         <div className="navbar-center">
-          <Link href={"/"}>
+          <Link href={'/'}>
             <h1 className="text-xl font-bold">{WEBSITE_TITLE}</h1>
           </Link>
         </div>

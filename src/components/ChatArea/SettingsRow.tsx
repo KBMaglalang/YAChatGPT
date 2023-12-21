@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { signOut } from "next-auth/react";
-import { UserIcon } from "@heroicons/react/24/outline";
+import React, { useState } from 'react';
+import { signOut } from 'next-auth/react';
+import { UserIcon } from '@heroicons/react/24/outline';
 
 // components
-import SettingsModal from "./SettingsModal";
+import SettingsModal from './SettingsModal';
 
 // context or store
 
@@ -17,12 +17,10 @@ function SettingsRow() {
   return (
     <div className="">
       <button className="btn btn-outline " onClick={() => setModalOpen(true)}>
-        <UserIcon className="w-4 h-4" />
+        <UserIcon className="h-4 w-4" />
       </button>
 
-      {modalOpen && (
-        <SettingsModal setModalOpen={setModalOpen} signOut={signOut} />
-      )}
+      {modalOpen && <SettingsModal setModalOpen={setModalOpen} signOut={signOut} />}
     </div>
   );
 }

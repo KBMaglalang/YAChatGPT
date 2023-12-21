@@ -1,2 +1,2 @@
-export * from "./queryApi";
-export * from "./displayTextLimit";
+export * from './queryApi';
+export * from './displayTextLimit';

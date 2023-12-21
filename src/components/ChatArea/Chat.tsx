@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import React, { useEffect, useRef } from "react";
-import { ArrowDownCircleIcon } from "@heroicons/react/24/outline";
+import React, { useEffect, useRef } from 'react';
+import { ArrowDownCircleIcon } from '@heroicons/react/24/outline';
 
 // components
-import Message from "./Message";
+import Message from './Message';
 
 // context or store
 
@@ -24,33 +24,27 @@ export function Chat({ llmMessages }: Props) {
   `llmMessages` prop changes. */
   useEffect(() => {
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollTop =
-        scrollContainerRef.current.scrollHeight;
+      scrollContainerRef.current.scrollTop = scrollContainerRef.current.scrollHeight;
     }
   }, [llmMessages]);
 
   return (
-    <div
-      className="overflow-y-auto overflow-x-hidden flex-1 w-full"
-      ref={scrollContainerRef}
-    >
+    <div className="w-full flex-1 overflow-y-auto overflow-x-hidden" ref={scrollContainerRef}>
       {/* cta */}
       {llmMessages?.length === 0 && (
-        <div className="flex flex-col justify-center items-center h-full">
-          <p className="mt-10 text-xl font-bold text-center  justify font-brand-roboto">
+        <div className="flex h-full flex-col items-center justify-center">
+          <p className="justify mt-10 text-center font-brand-roboto  text-xl font-bold">
             Type a prompt below!
           </p>
-          <div className="flex justify-center items-center mt-5">
-            <ArrowDownCircleIcon className="w-10 h-10  animate-bounce" />
+          <div className="mt-5 flex items-center justify-center">
+            <ArrowDownCircleIcon className="h-10 w-10  animate-bounce" />
           </div>
         </div>
       )}
 
       {/* messages */}
       <div className="space-y-2">
-        {llmMessages?.map((message: Message) => (
-          <Message key={message.id} message={message} />
-        ))}
+        {llmMessages?.map((message: Message) => <Message key={message.id} message={message} />)}
       </div>
     </div>
   );

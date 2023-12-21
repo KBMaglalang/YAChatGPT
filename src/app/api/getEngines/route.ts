@@ -1,5 +1,5 @@
-import { NextResponse } from "next/server";
-import { openai } from "@/config/openai/chatgpt";
+import { NextResponse } from 'next/server';
+import { openai } from '@/config/openai/chatgpt';
 
 export async function GET() {
   try {
@@ -21,14 +21,12 @@ export async function GET() {
       { status: 200 }
     );
   } catch (err) {
-    console.error("Error querying OpenAI models:", (err as Error).message); // log the error for debugging purposes
+    console.error('Error querying OpenAI models:', (err as Error).message); // log the error for debugging purposes
 
     return NextResponse.json(
       {
-        modelOptions: [
-          { value: "Error", label: "Error fetching OpenAI models" },
-        ],
-        error: "Internal Server Error",
+        modelOptions: [{ value: 'Error', label: 'Error fetching OpenAI models' }],
+        error: 'Internal Server Error',
       },
       { status: 500 }
     );
