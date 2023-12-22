@@ -1,12 +1,13 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useChat, Message } from 'ai/react';
 import { useSession } from 'next-auth/react';
 import { useCollection, useDocument } from 'react-firebase-hooks/firestore';
-import { orderBy, query, addDoc, collection, doc } from 'firebase/firestore';
+import { orderBy, query, addDoc, collection, doc, updateDoc, deleteDoc } from 'firebase/firestore';
 import useSWR from 'swr';
+import { ChatBubbleLeftIcon, PencilSquareIcon, TrashIcon } from '@heroicons/react/24/outline';
 
 // components
 import { Chat, ChatInput } from '@/components/ChatArea';
@@ -19,6 +20,8 @@ import { useStateContext } from '@/context/stateContext';
 import { CHATGPT_DEFAULT } from '@/constants';
 import { db } from '@/config/firebase/firebase';
 import { ButtonChatPinned } from '@/components/Common';
+import ChatEditModal from '@/components/ChatsBar/ChatEditModal';
+import ChatDeleteModal from '@/components/ChatsBar/ChatDeleteModal';
 
 type Props = {
   params: {
@@ -35,6 +38,8 @@ function ChatPage({ params: { id } }: Props) {
   const { promptSettings } = useStateContext();
   const { data: session } = useSession();
   const router = useRouter();
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalDeleteOpen, setModalDeleteOpen] = useState(false);
 
   const {
     messages,
@@ -113,6 +118,60 @@ function ChatPage({ params: { id } }: Props) {
     }
   }, [firebaseLoading, messages, setMessages]);
 
+  /**
+   * The function "modalEditCallback" sets the state of "modalOpen" to true when called.
+   * @param e - The parameter `e` is an event object of type `React.MouseEvent<SVGSVGElement,
+   * MouseEvent>`. It represents the mouse click event that triggered the callback function.
+   */
+  const modalEditCallback = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.stopPropagation();
+
+    setModalOpen(true);
+  };
+
+  // udpate a chat
+  /**
+   * Updates a prompt.
+   *
+   * @param {string} title - The updated title of the prompt.
+   * @param {string} prompt - The updated content of the prompt.
+   * @returns {void}
+   */
+  const updatePrompt = async (title: string) => {
+    await updateDoc(doc(db, 'users', session?.user?.email!, 'chats', id), {
+      title: title || 'New Prompt',
+    });
+  };
+
+  /**
+   * The function `modalDeleteCallback` is a callback function that sets the state variable
+   * `modalDeleteOpen` to `true` when called, and it also stops the propagation of the click event.
+   * @param e - The parameter `e` is an event object of type `React.MouseEvent<SVGSVGElement,
+   * MouseEvent>`. It represents the mouse event that triggered the callback function.
+   */
+  const modalDeleteCallback = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.stopPropagation();
+
+    setModalDeleteOpen(true);
+  };
+
+  /**
+   * Removes a chat from the "users" collection in Firebase and redirects the user to the home page.
+   *
+   * @param {React.MouseEvent<SVGSVGElement, MouseEvent>} e - The click event on the remove chat button.
+   *
+   * @returns {Promise<void>} - A promise that resolves when the chat is successfully removed and the user is redirected.
+   */
+  const removeChat = async (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
+    e.stopPropagation();
+
+    await deleteDoc(doc(db, 'users', session?.user?.email!, 'chats', id));
+
+    // if (active) {
+    router.replace('/'); // * using replace instead of push to prevent the user from going back to the deleted chat
+    // }
+  };
+
   return (
     <BaseLayout layoutTitle={chatDoc?.data()?.title || 'New Chat'}>
       {/* chat title */}
@@ -123,11 +182,29 @@ function ChatPage({ params: { id } }: Props) {
         </div>
 
         {/* chat options */}
-        <div>
+        <div className="flex flex-row space-x-2">
           {/* pinned */}
           <ButtonChatPinned pinnedState={chatDoc?.data()?.pinned} id={id} session={session} />
+
           {/* edit */}
+          <button className="btn btn-outline" onClick={modalEditCallback}>
+            <PencilSquareIcon className="h-5 w-5" />
+          </button>
+          {modalOpen && (
+            <ChatEditModal
+              setModalOpen={setModalOpen}
+              callback={updatePrompt}
+              title={chatDoc?.data()?.title}
+            />
+          )}
+
           {/* delete */}
+          <button className="btn btn-outline" onClick={modalDeleteCallback}>
+            <TrashIcon className="h-5 w-5  hover:text-red-700" />
+          </button>
+          {modalDeleteOpen && (
+            <ChatDeleteModal setModalOpen={setModalDeleteOpen} callback={removeChat} />
+          )}
         </div>
       </div>
 
