@@ -175,7 +175,7 @@ function ChatPage({ params: { id } }: Props) {
   return (
     <BaseLayout layoutTitle={chatDoc?.data()?.title || 'New Chat'}>
       {/* chat title */}
-      <div className="flex w-full flex-row items-center px-2">
+      <div className="flex w-full flex-row items-center px-2 pb-2">
         {/* chat title */}
         <div className="flex-1">
           <h1 className="text-2xl font-bold">{chatDoc?.data()?.title || 'New Chat'}</h1>
