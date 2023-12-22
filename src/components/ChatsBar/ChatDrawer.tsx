@@ -20,7 +20,7 @@ export function ChatDrawer() {
   const { data: session } = useSession();
   const [chats, loading, error] = useCollection(
     session &&
-      query(collection(db, 'users', session?.user?.email!, 'chats'), orderBy('createdAt', 'asc'))
+      query(collection(db, 'users', session?.user?.email!, 'chats'), orderBy('pinned', 'desc'))
   );
 
   return (
