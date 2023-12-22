@@ -18,19 +18,11 @@ type Props = {
 };
 
 export const ButtonChatPinned = ({ pinnedState, id, session }: Props) => {
-  console.log('🚀 ~ file: ButtonChatPinned.tsx:21 ~ ButtonChatPinned ~ session:', session);
-  console.log('🚀 ~ file: ButtonChatPinned.tsx:21 ~ ButtonChatPinned ~ id:', id);
-  console.log('🚀 ~ file: ButtonChatPinned.tsx:21 ~ ButtonChatPinned ~ pinnedState:', pinnedState);
   const [state, setState] = useState(pinnedState || false);
-  console.log('🚀 ~ file: ButtonChatPinned.tsx:22 ~ ButtonChatPinned ~ state:', state);
 
   // update state on toggle
   const handleToggleTheme = useCallback(
     async (e: React.ChangeEvent<HTMLInputElement>) => {
-      console.log(
-        '🚀 ~ file: ButtonChatPinned.tsx:33 ~ awaitupdateDoc ~ e.target.checked:',
-        !e.target.checked
-      );
       await updateDoc(doc(db, 'users', session?.user?.email!, 'chats', id), {
         pinned: !e.target.checked,
       });
