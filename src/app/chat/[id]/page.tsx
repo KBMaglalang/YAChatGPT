@@ -18,6 +18,7 @@ import { useStateContext } from '@/context/stateContext';
 // constants or functions
 import { CHATGPT_DEFAULT } from '@/constants';
 import { db } from '@/config/firebase/firebase';
+import { ButtonChatPinned } from '@/components/Common';
 
 type Props = {
   params: {
@@ -114,6 +115,22 @@ function ChatPage({ params: { id } }: Props) {
 
   return (
     <BaseLayout layoutTitle={chatDoc?.data()?.title || 'New Chat'}>
+      {/* chat title */}
+      <div className="flex w-full flex-row items-center px-2">
+        {/* chat title */}
+        <div className="flex-1">
+          <h1 className="text-2xl font-bold">{chatDoc?.data()?.title || 'New Chat'}</h1>
+        </div>
+
+        {/* chat options */}
+        <div>
+          {/* pinned */}
+          <ButtonChatPinned pinnedState={chatDoc?.data()?.pinned} id={id} session={session} />
+          {/* edit */}
+          {/* delete */}
+        </div>
+      </div>
+
       {/* chat window */}
       <Chat llmMessages={messages} />
 
